@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Belcorp.Premios.Application.Context\Belcorp.Premios.Application.Context.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.CrossCutting\Belcorp.Premios.Infrastructure.CrossCutting.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Context\Belcorp.Premios.Infrastructure.Data.Context.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Core\Belcorp.Premios.Infrastructure.Data.Core.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Security\Belcorp.Premios.Infrastructure.Security.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Transport\Belcorp.Premios.Infrastructure.Transport.csproj" />
+  </ItemGroup>
+
+</Project>

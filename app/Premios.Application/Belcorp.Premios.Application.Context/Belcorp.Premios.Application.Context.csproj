@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.UnitOfWork" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Belcorp.Premios.Application.Core\Belcorp.Premios.Application.Core.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Domain.Context\Belcorp.Premios.Domain.Context.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Agents\Belcorp.Premios.Infrastructure.Agents.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.CrossCutting.DTO\Belcorp.Premios.Infrastructure.CrossCutting.DTO.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Context\Belcorp.Premios.Infrastructure.Data.Context.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Entity\Belcorp.Premios.Infrastructure.Data.Entity.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Transport\Belcorp.Premios.Infrastructure.Transport.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MaintenanceModule\Specifications\" />
+  </ItemGroup>
+
+</Project>
