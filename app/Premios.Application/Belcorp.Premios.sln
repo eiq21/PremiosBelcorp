@@ -61,7 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belcorp.Premios.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belcorp.Premios.Security.API", "Belcorp.Premios.Security.API\Belcorp.Premios.Security.API.csproj", "{EC7AFCC3-56F3-465F-80FD-CC5D4975760A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belcorp.Premios.Client.Web", "Belcorp.Premios.Client.Web\Belcorp.Premios.Client.Web.csproj", "{C53E31CF-C887-491F-851F-48E7D7DAADBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Belcorp.Premios.Client.Web", "Belcorp.Premios.Client.Web\Belcorp.Premios.Client.Web.csproj", "{C53E31CF-C887-491F-851F-48E7D7DAADBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
