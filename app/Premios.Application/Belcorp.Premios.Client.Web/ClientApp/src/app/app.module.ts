@@ -1,34 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+//import { routes } from './routes';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { AppComponent } from './modules/core/containers/app';
+import { CoreModule } from './modules/core/core.module';
+//import { RouterStateSerializer } from '@ngrx/router-store';
+//import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
 
-import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
-  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CommonModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule.forRoot(
+      [{ path: '', redirectTo: '/awards', pathMatch: 'full' },
+      {
+        path: 'awards',
+        loadChildren: './modules/awards/awards.module#AwardsModule',
+        //canActivate: [SecurityGuardService],
+        runGuardsAndResolvers: 'always'
+      }],
+      { useHash: true, enableTracing: true }),
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    //,
+    //MessageBoxModule,
+    CoreModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    //{ provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    //NetworkManager,
+    //SecurityService,
+    //SecurityAgent,
+    //{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }

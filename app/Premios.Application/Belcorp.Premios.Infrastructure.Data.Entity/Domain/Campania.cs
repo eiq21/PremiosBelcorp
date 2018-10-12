@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
 {
     public class Campania
     {
+        public Campania()
+        {
+
+            CampaniaUrls = new HashSet<CampaniaUrl>();
+        }
+
         public int CampaniaId { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
@@ -12,5 +19,9 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
         public DateTime FechaCreacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public DateTime? FechaModificacion { get; set; }
+
+
+        public ICollection<CampaniaUrl> CampaniaUrls { get; set; }
+
     }
 }

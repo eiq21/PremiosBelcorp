@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
 {
@@ -12,6 +13,9 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public DateTime CreatedDate { get; set; }
         public string LastModifiedUser { get; set; }
         public DateTime? LastModifiedDate { get; set; }
-        
+
+        public ICollection<CampaignUrl> CampaignUrls { get; set; }
+
+
     }
 }

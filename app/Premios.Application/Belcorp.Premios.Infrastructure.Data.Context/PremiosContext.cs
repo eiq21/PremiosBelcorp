@@ -25,7 +25,10 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             modelBuilder.EnableAutoHistory(null);
             #region Configuraciones
 
+            modelBuilder.ApplyConfiguration(new TipoUrlConfiguration());
             modelBuilder.ApplyConfiguration(new CampaniaConfiguration());
+            modelBuilder.ApplyConfiguration(new CampaniaUrlConfiguracion());
+            modelBuilder.ApplyConfiguration(new UsuarioAdminConfiguration());
 
             #endregion
 
@@ -33,6 +36,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         }
         public virtual DbSet<Campania> Campania { get; set; }
         public virtual DbSet<UsuarioAdmin> UsuarioAdmin { get; set; }
+        public virtual DbSet<CampaniaUrl> CampaniaUrl { get; set; }
+        public virtual DbSet<TipoUrl> TipoUrl { get; set; }
 
         public override int SaveChanges()
         {

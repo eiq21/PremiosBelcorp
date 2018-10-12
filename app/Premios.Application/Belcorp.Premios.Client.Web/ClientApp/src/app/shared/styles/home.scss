@@ -1,0 +1,213 @@
+$fullhd1: 1920px;
+
+.pbResp {
+  height: 80vh;
+  display: none;
+
+  @include fromTo(s,m) {
+    display: block;
+  }
+}
+
+.bgResp {
+  background-image: url('../../../../../assets/img/top-resp.jpg');
+  background-size: cover;
+}
+
+.pb {
+  height: 80vh;
+  display: grid;
+  grid-template-areas: 'pb18';
+
+  @include fromTo(s,m) {
+    display: none;
+  }
+
+  //// * Zona superior para el logo
+  &Top {
+    // * Alinear en la parte superior los logos
+    align-self: flex-end;
+    z-index: 20;
+    color: $text;
+    padding: rem(10px) rem(75px);
+    width: 20%;
+    
+    img {
+      max-width: 12vw;
+      margin: rem(20px)
+    }
+    
+    @include fromTo(l, xl) {
+      padding: rem(10px) rem(75px);
+    }
+    
+    @include from($fullhd1) {
+      padding: rem(40px) rem(145px);
+    }
+  }
+  //// * Zona inferior para la botonera
+  &Nav {
+    // * enviar a la parte inferior la botonera
+    align-self: flex-start;
+    text-align: right;
+    padding: 0 rem(45px);
+    z-index: 1;
+    // * Retirar el fondo para superponer el video con el fondo
+    // background-image: linear-gradient( rgba(0, 0, 0, .75), rgba(255, 255, 255, 0));
+    .AccessItem {
+      text-shadow: 1px 1px 0 black;
+    }
+    
+    @include fromTo(l, xl) {
+      padding: 0 rem(45px);
+    }
+    
+    @include from($fullhd1) {
+      padding: 0 rem(115px);
+    }
+  }
+  // * Sección del slide donde se ubicará un fondo
+  &Info {
+    height: 87vh;
+    background: url('../../../../../assets/img/bg01.jpg');
+    background-size: cover;
+  }
+  // * Selecctores que se superpondrán dentro de la clase .pb
+  &Top, &Main, &Nav {
+    grid-area: pb18;
+  }
+}
+
+.VimeoPlayerVideo {
+  height: 0;
+  overflow: hidden;
+  //padding-bottom: 40.55%;
+  position: relative;
+  ///**
+  // * Para monitores mayores a 1024px y 1440px
+  // */
+  //@include fromTo(l, xl) {
+  //  padding-bottom: 40.5%;
+  //}
+  ///**
+  // * 
+  // * Para monitor mayores de 1920px
+  // * @testeado en imac 27''
+  // */
+  //@include from($fullhd1) {
+  //  margin-bottom: 40.5%;
+  //}
+  
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* this will override the width=""/height="" properties defined on the iframe */
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.pbVideo {
+  @include edContainer;
+  @include full;
+  @include noPaddingContainer;
+  padding: rem(25px) rem(75px);
+
+  @include fromTo(s, m) {
+    padding: rem(5px);
+  }
+
+  @include from($fullhd1) {
+    padding: rem(25px) rem(115px);
+  }
+}
+
+.pbVideoItem {
+  display: grid;
+  grid-template-areas: 'videoItem';
+}
+//
+  .pbVideoInsert {
+  }
+
+.pbVideoItemWrapper {
+  display: grid;
+  grid-template-areas: 'hoverVideo';
+  @include padding(.3);
+
+  &:hover {
+    position: absolute;
+    z-index: 10;
+    transition: all .3s ease-out;
+
+    @include fromTo(s, m) {
+      position: relative;
+      z-index: 10;
+    }
+  }
+}
+
+.VideoInfo {
+  align-self: flex-end;
+  color: $text;
+  padding: 30px;
+  width: 15vw;
+  font-family: var(--font-primary-bolder);
+  letter-spacing: -1px;
+
+  @include fromTo(s, m) {
+    font-size: var(--text-md);
+    padding: rem(10px);
+    letter-spacing: 0;
+    width: 40vw;
+  }
+}
+
+.pbVideoLinks {
+  position: relative;
+  z-index: -1;
+}
+
+.pbVideoInsert, .pbVideoLinks, .VideoInfo {
+  grid-area: hoverVideo;
+}
+
+.AppTitle {
+  text-transform: uppercase;
+  color: $heading-gray-color;
+  font-family: var(--font-primary-bolder);
+  padding: rem(30px) 0 rem(20px) 0;
+  display: inline-block;
+  letter-spacing: -1px;
+
+  @include fromTo(s, m) {
+    font-size: var(--text-xl);
+    line-height: rem(30px);
+    letter-spacing: 0;
+  }
+
+  @include from($fullhd1) {
+    padding-left: 2rem;
+  }
+}
+//
+.Shadow {
+  text-shadow: 0 2px 10px #444444;
+}
+
+.u-download {
+  font: {
+    weight: bold;
+    size: 4vw;
+  }
+
+  @media screen and (min-width: 64em) {
+    font-size: 2rem;
+  }
+}
+
+.VideoVolumen i {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}

@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>e4398c64-61b5-4aa2-a8dd-39cc69ca9728</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,37 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\index.ts" />
+    <None Remove="ClientApp\src\app\modules\awards\awards.module.ts" />
+    <None Remove="ClientApp\src\app\modules\awards\components\index\index.component.ts" />
+    <None Remove="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
+    <None Remove="ClientApp\src\app\modules\core\components\viewport.ts" />
+    <None Remove="ClientApp\src\app\modules\core\core.module.ts" />
+    <None Remove="ClientApp\src\app\routes.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\modules\awards\viewmodels\" />
+    <Folder Include="ClientApp\src\app\modules\core\viewmodels\" />
+    <Folder Include="ClientApp\src\app\modules\maintenance\" />
+    <Folder Include="ClientApp\src\app\modules\security\" />
+    <Folder Include="ClientApp\src\assets\fonts\" />
+    <Folder Include="ClientApp\src\assets\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\components\index\index.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\containers\manager.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\awards.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\viewport.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\core\containers\app.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\core\core.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\routes.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

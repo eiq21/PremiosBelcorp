@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+@import 'app/shared/styles/_vars.scss';
+@import 'font-belcorp.scss';
+
+// Definalos en true o false (sin escribir !default) antes de importar ed-grid
+$cssCore: false; // como trabajaré en Sass no quiero que compile tooodo el CSS
+$cssHelpers: true; // recomendamos activar las ayudas
+$devMode: false; // cuando quiera activar el modo dev, basta poner esta variable en true
+/*@import "../node_modules/ed-grid/ed-grid";*/
+
+@import "app/shared/styles/_typography.scss";
+
+$breakpoints: ( s:0, m:640px, l:1024px, xl:1440px, xxl:1756px ) !default;
+
+@import '../src/app/shared/styles/_layout.scss';
+@import '../src/app/shared/styles/_basic_reset.scss';
+
+.VimeoPlayerVideo {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 40.55%;
+  position: relative;
+  /**
+   * Para monitores mayores a 1024px y 1440px
+   */
+  /**
+   * 
+   * Para monitor mayores de 1920px
+   * @testeado en imac 27''
+   */
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .VimeoPlayerVideo {
+    padding-bottom: 40.5%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .VimeoPlayerVideo {
+    margin-bottom: 40.5%;
+  }
+}
+
+.VimeoPlayerVideo iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* this will override the width=""/height="" properties defined on the iframe */
+  width: 100%;
+  height: 100%;
+}
+
