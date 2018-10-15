@@ -29,6 +29,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             modelBuilder.ApplyConfiguration(new CampaniaConfiguration());
             modelBuilder.ApplyConfiguration(new CampaniaUrlConfiguracion());
             modelBuilder.ApplyConfiguration(new UsuarioAdminConfiguration());
+            modelBuilder.ApplyConfiguration(new EquipoConfiguration());
+            modelBuilder.ApplyConfiguration(new EquipoUrlConfiguration());
 
             #endregion
 
@@ -38,6 +40,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         public virtual DbSet<UsuarioAdmin> UsuarioAdmin { get; set; }
         public virtual DbSet<CampaniaUrl> CampaniaUrl { get; set; }
         public virtual DbSet<TipoUrl> TipoUrl { get; set; }
+        public virtual DbSet<Equipo> Equipo { get; set; }
+        public virtual DbSet<EquipoUrl> EquipoUrl { get; set; }
 
         public override int SaveChanges()
         {

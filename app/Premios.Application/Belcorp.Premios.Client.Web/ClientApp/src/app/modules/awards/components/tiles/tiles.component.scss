@@ -1,0 +1,22 @@
+
+.pbVideo {
+  max-width: 100%;
+  padding: 1.5625rem 4.6875rem;
+}
+
+.pbVideo > .ed-item {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .pbVideo {
+    padding: 0.3125rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .pbVideo {
+    padding: 1.5625rem 7.1875rem;
+  }
+}
