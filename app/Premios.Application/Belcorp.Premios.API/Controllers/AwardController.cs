@@ -29,5 +29,15 @@ namespace Belcorp.Premios.API.Controllers
                 CampaignUrl = _awardAppService.ListBannersByCampaign()
             });
         }
+
+        [HttpPost]
+        public IActionResult ListTiles()
+        {
+            return Ok(new ListTilesResponse
+            {
+                Tiles = _awardAppService.ListTiles()
+            });
+        }
     }
 }
+

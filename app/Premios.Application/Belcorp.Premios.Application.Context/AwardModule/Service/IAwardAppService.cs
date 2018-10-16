@@ -8,5 +8,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
     public interface IAwardAppService
     {
         ICollection<CampaignUrl> ListBannersByCampaign();
+        ICollection<Tiles> ListTiles();
     }
 }

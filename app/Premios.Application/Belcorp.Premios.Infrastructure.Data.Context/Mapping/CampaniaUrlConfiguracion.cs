@@ -14,17 +14,14 @@ namespace Belcorp.Premios.Infrastructure.Data.Context.Mapping
             builder.ToTable("CampaniaUrl");
             builder.HasKey(c => c.CampaniaUrlId);
 
-
             builder.HasOne(p => p.Campania)
               .WithMany(b => b.CampaniaUrls)
               .HasForeignKey(p => p.CampaniaId)
-              .OnDelete(DeleteBehavior.ClientSetNull)
               .HasConstraintName("FK_CampaniaUrl_Campania");
 
             builder.HasOne(p => p.TipoUrl)
               .WithMany(b => b.CampaniaUrls)
               .HasForeignKey(p => p.CampaniaId)
-              .OnDelete(DeleteBehavior.ClientSetNull)
               .HasConstraintName("FK_CampaniaUrl_TipoUrl");
         }
     }

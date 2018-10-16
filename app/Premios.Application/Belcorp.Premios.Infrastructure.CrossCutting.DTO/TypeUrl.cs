@@ -15,5 +15,6 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public DateTime? LastModifiedDate { get; set; }
 
         public ICollection<CampaignUrl> CampaignUrls { get; set; }
+        public ICollection<TeamUrl> TeamUrls { get; set; }
     }
 }

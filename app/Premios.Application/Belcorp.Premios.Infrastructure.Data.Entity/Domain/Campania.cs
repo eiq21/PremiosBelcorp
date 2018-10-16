@@ -9,6 +9,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
         {
 
             CampaniaUrls = new HashSet<CampaniaUrl>();
+            Equipos = new HashSet<Equipo>();
         }
 
         public int CampaniaId { get; set; }
@@ -22,6 +23,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
 
 
         public ICollection<CampaniaUrl> CampaniaUrls { get; set; }
+        public ICollection<Equipo> Equipos { get; set; }
 
     }
 }

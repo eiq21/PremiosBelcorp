@@ -8,8 +8,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
     {
         public TipoUrl()
         {
-
             CampaniaUrls = new HashSet<CampaniaUrl>();
+            EquipoUrls = new HashSet<EquipoUrl>();
         }
 
         public int TipoUrlId { get; set; }
@@ -22,5 +22,6 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
 
 
         public ICollection<CampaniaUrl> CampaniaUrls { get; set; }
+        public ICollection<EquipoUrl> EquipoUrls { get; set; }
     }
 }
