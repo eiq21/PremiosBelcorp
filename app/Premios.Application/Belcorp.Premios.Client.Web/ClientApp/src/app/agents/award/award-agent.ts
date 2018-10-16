@@ -9,13 +9,13 @@ import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
 
 @Injectable()
-export class AwardAgent {
+export class AwardAgent { 
 
-  private protocolUrl: string;
+  private protocolUrl: string;  
 
-  constructor(private networkManager: NetworkManager,
+  constructor(private networkManager: NetworkManager, 
     storageService: StorageService,
-    configurationService: ConfigurationService) {
+    configurationService: ConfigurationService) { 
 
     this.protocolUrl = storageService.retrieve(Constants.SistemaUrl.AWARD_URL);
 

@@ -1,12 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Tiles } from "../dtos/index";
 import { TileViewModel } from "../../modules/awards/viewmodels/index";
-//import { MentionItem } from "../../shared/mention/mention-item";
-//import { FormatDateService } from "../../shared/format-date-settings";
-import { Constants } from "../../shared/utils";
 
 @Injectable()
 export class AwardAdapter {
+
   constructor() {
   }
 

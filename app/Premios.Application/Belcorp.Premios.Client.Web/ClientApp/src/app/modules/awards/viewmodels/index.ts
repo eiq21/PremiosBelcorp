@@ -1,1 +1,1 @@
-export * from './tile-view-model';
+export * from './tile-view-model'; 

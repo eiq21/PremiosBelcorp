@@ -7,10 +7,6 @@ import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 
 @Component({
   selector: 'prem-premios-index',
-  template: ` 
-    <router-outlet name="premios-index">
-    </router-outlet>  
-  `,
   templateUrl: './body.component.html', 
   styleUrls: ['./body.component.scss']
 }) 

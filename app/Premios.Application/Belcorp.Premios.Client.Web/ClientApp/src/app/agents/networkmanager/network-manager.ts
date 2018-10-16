@@ -12,9 +12,9 @@ import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service";
 
 @Injectable()
-export class NetworkManager {
+export class NetworkManager { 
 
-  private resourceOwnerClientSecret: string;
+  private resourceOwnerClientSecret: string; 
 
   constructor(
     private httpClient: HttpClient,

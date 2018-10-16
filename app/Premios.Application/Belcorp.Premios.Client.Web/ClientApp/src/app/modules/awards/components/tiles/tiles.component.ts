@@ -7,10 +7,10 @@ import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
   templateUrl: './tiles.component.html',
   styleUrls: ['./tiles.component.scss']
 })
-export class TilesComponent implements OnInit {
+export class TilesComponent implements OnInit { 
 
-  @Input() TilesVM: TileViewModel[];
-  @Input() Rows: number[];  
+  @Input() TilesVM: TileViewModel[]; 
+  @Input() Rows: number[];    
 
   constructor(
   ) {
