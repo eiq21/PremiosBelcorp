@@ -6,6 +6,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.AppSettingModel
 {
     public class LdapConfig
     {
-        public string Url { get; set; }
+        public string Host { get; set; }
+        public int Puerto { get; set; }
     }
 }

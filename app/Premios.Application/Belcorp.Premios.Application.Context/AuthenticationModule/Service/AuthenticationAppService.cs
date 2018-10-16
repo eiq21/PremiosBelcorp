@@ -33,7 +33,7 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
             {
                 Username = username,
                 Password = password
-            }).isLoginFailed;
+            }).isLoginTrue;
            
              
         }
