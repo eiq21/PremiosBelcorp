@@ -18,6 +18,7 @@ using Belcorp.Premios.Infrastructure.Security.CORS;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using Belcorp.Premios.Security.API.CustomIdentity;
+using Belcorp.Premios.Infrastructure.CrossCutting.AppSettingModel;
 
 namespace Belcorp.Premios.Security.API
 {
@@ -44,7 +45,7 @@ namespace Belcorp.Premios.Security.API
             services.ConfigureDI();
             services.AddOptions();
 
-            //services.Configure<LdapService>(Configuration.GetSection("ldap"));
+            services.Configure<LdapConfig>(Configuration.GetSection("LdapConfig"));
             services.AddSecurity(Configuration);
 
             var cert = new X509Certificate2(
