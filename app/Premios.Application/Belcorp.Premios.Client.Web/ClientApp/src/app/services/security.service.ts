@@ -19,10 +19,9 @@ export class SecurityService {
     let connectTokenRequest: ConnectTokenRequest = new ConnectTokenRequest();
     connectTokenRequest.username = username;
     connectTokenRequest.password = password;
-    var ss = this.securityAgent.ConnectToken(connectTokenRequest)
-      .pipe(map((validateResponse) => validateResponse.access_token));
 
-    return ss;
+    return this.securityAgent.ConnectToken(connectTokenRequest)
+      .pipe(map((validateResponse) => validateResponse.access_token));
   }
 
 }
