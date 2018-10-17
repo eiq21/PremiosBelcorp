@@ -21,12 +21,12 @@ import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
   imports: [
     CommonModule,
     BrowserModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     HttpClientModule,
     RouterModule.forRoot(
       [{ path: '', redirectTo: '/awards', pathMatch: 'full' },
       {
-        path: 'awards',
+        path: 'awards', 
         loadChildren: './modules/awards/awards.module#AwardsModule',
         //canActivate: [SecurityGuardService],
         runGuardsAndResolvers: 'always'

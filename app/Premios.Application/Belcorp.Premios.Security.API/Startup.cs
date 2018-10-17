@@ -70,7 +70,11 @@ namespace Belcorp.Premios.Security.API
             //       options.ApiName = Constants.IdentityServer.API_RESOURCE_SECURITY;
             //   });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+            .AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

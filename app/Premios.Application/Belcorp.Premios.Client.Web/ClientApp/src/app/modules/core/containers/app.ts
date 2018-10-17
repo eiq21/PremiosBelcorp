@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-//import { ConfigurationService } from '../../../services/configuration.service';
+import { ConfigurationService } from '../../../services/configuration.service';
 
+import { AuthenticationService } from '../../../services/index';
 @Component({
   selector: 'prem-app',
   template: `<prem-viewport></prem-viewport>`,
@@ -12,17 +13,19 @@ export class AppComponent implements OnInit {
   Authenticated: boolean = false;
   subscription: Subscription;
 
-  //constructor(private configurationService: ConfigurationService) {
+  constructor(
+    private configurationService: ConfigurationService,
+    private authenticationService: AuthenticationService
+  ) {
 
-  //}
-
-  constructor()
-  {
-
-  }
+  } 
 
   ngOnInit() {
-  //  this.configurationService.loadConfig();
+
+
+
+    this.configurationService.loadConfig();
+
   }
 
 }

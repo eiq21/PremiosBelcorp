@@ -99,7 +99,7 @@ export class Constants {
 
   static IdentityServer = class {
     static readonly API_RESOURCE_SECURITY = "apiSecurity";
-    static readonly API_RESOURCE_AWARDS = "apiAwards";
+    static readonly API_RESOURCE_AWARDS = "apiProtocols";
 
     static readonly API_RESOURCE_SECURITY_SCOPE = "apiSeguridadscope";
     static readonly API_RESOURCE_AWARDS_SCOPE = "apiAwardsscope";

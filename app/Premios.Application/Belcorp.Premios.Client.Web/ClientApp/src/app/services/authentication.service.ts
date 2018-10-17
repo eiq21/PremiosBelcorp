@@ -32,9 +32,9 @@ export class AuthenticationService {
           //  loggedInUser.GrantedAccesses = userGrantedAccess.GrantedAccesses;
           //  userGrantedAccess.UserProcesses.forEach(userProcess => { loggedInUser.Processes.push(userProcess.Process) });
           //  loggedInUser.isSuperAdmin = loggedInUser.GrantedAccesses.find(q => q.Code == Constants.PermisoSistema.PERMISO_ADMINISTRADOR_SISTEMA) != null;
-
+          //
           //  this.authUserService.setLoggedInUser(loggedInUser);
-          //  observer.next("");
+          observer.next(""); 
           //});
 
         } else {

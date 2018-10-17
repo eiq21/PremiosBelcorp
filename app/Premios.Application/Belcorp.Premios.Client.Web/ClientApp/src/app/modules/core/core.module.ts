@@ -6,7 +6,7 @@ import { ViewportComponent } from './components/viewport';
 //import { MaterialModule } from '../../shared/material';
 //import { ViewportComponent } from './components/viewport';
 import { LayoutComponent } from './components/layout/layout.component';
-//import { AuthenticationService, AuthUserService, SecurityGuardService, AdminGuardService, StorageService, ConfigurationService, MessageService, ReportService } from '../../services/index';
+import { AuthenticationService, AuthUserService, StorageService, ConfigurationService } from '../../services/index';
 //import { MessageAgent } from '../../agents/message/message-agent';
 //import { ReportAgent } from '../../agents/report/report-agent';
 //import { NavtoolbarComponent } from './components/navtoolbar/navtoolbar.component';
@@ -24,12 +24,12 @@ export const COMPONENTS = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
   providers: [
-    //AuthenticationService,
-    //AuthUserService,
+    AuthenticationService,
+    AuthUserService,
     //SecurityGuardService,
     //AdminGuardService,
-    //StorageService,
-    //ConfigurationService,
+    StorageService,
+    ConfigurationService,
     //MessageService,
     //MessageAgent,
     //ReportService,

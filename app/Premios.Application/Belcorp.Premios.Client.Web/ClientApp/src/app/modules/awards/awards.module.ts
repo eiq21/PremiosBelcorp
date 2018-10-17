@@ -11,6 +11,7 @@ import { AwardService } from '../../services';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 
+
 const routes: Routes = [
   { path: '', component: BodyComponent },
   { path: '**', redirectTo: '/awards', pathMatch: 'full' }
@@ -30,11 +31,11 @@ const routes: Routes = [
     AwardAgent,
     AwardAdapter
   ],
-  declarations: [
+  declarations: [ 
     BodyComponent,
     TileComponent,
     TilesComponent,
-    BannerComponent
+    BannerComponent 
   ],
   entryComponents: [
 
@@ -46,9 +47,10 @@ export class AwardsModule implements OnInit  {
 
   constructor() {
 
-  }
+  }  
 
-  ngOnInit() {
+  ngOnInit() { 
+
   }
 
 }

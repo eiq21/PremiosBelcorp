@@ -33,7 +33,7 @@ export class SecurityAgent {
   }
 
   ConnectToken(connectTokenRequest: ConnectTokenRequest): Observable<ConnectTokenResponse> { 
-    let postParameters: PostParameters = new PostParameters();
+    let postParameters: PostParameters = new PostParameters(); 
 
     postParameters.PathOperation = this.identityUrl + PathOperation.ConnectToken;
     postParameters.RequestParameter = connectTokenRequest; 

@@ -19,21 +19,24 @@ export class ConfigurationService {
   ) { }
 
   loadConfig() {
-    var base = document.getElementsByTagName('base')[0].href;
+    var base = document.getElementsByTagName('base')[0].href; 
     const baseURI = base.endsWith('/') ? base : `${base}/`;
     let url = `${baseURI}Configuration/GetConfiguration`;
 
     this.loadDevelopment();
 
-    this.http.get(url).subscribe((result: any) => {
-      this.serverSettings = result;
-      this.storageService.store(Constants.SistemaUrl.IDENTITY_URL, this.serverSettings.identityUrl);
-      this.storageService.store(Constants.SistemaUrl.AWARD_URL, this.serverSettings.awardUrl);
-      //this.storageService.store(Constants.SistemaUrl.SECURITY_URL, this.serverSettings.securityUrl);
-      this.storageService.store(Constants.IdentityServerResource.RESOURCE_OWNER_CLIENT_SECRET, this.serverSettings.resourceOwnerClientSecret);
-      this.isReady = true;
-      this.settingsLoadedSource.next();
-    });
+
+    this.isReady = true;
+    this.settingsLoadedSource.next();
+    //this.http.get(url).subscribe((result: any) => {
+    //  this.serverSettings = result;
+    //  this.storageService.store(Constants.SistemaUrl.IDENTITY_URL, this.serverSettings.identityUrl);
+    //  this.storageService.store(Constants.SistemaUrl.AWARD_URL, this.serverSettings.awardUrl);
+    //  //this.storageService.store(Constants.SistemaUrl.SECURITY_URL, this.serverSettings.securityUrl);
+    //  this.storageService.store(Constants.IdentityServerResource.RESOURCE_OWNER_CLIENT_SECRET, this.serverSettings.resourceOwnerClientSecret);
+    //  this.isReady = true;
+    //  this.settingsLoadedSource.next();
+    //});
   }
 
   loadDevelopment() {

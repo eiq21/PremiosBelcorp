@@ -11,24 +11,24 @@ import { StorageService } from "../../services/storage.service";
 @Injectable()
 export class AwardAgent { 
 
-  private protocolUrl: string;  
+  private awardUrl: string;  
 
   constructor(private networkManager: NetworkManager, 
     storageService: StorageService,
     configurationService: ConfigurationService) { 
 
-    this.protocolUrl = storageService.retrieve(Constants.SistemaUrl.AWARD_URL);
+    this.awardUrl = storageService.retrieve(Constants.SistemaUrl.AWARD_URL);
 
     if (configurationService.isReady)
-      this.protocolUrl = configurationService.awardUrl;
+      this.awardUrl = configurationService.awardUrl;
     else
-      configurationService.settingsLoaded$.subscribe(x => this.protocolUrl = configurationService.awardUrl);
+      configurationService.settingsLoaded$.subscribe(x => this.awardUrl = configurationService.awardUrl);
   }
 
   ListTiles(): Observable<ListTilesResponse> {
     let postParameters: PostParameters = new PostParameters();
 
-    postParameters.PathOperation = this.protocolUrl + PathOperation.ListTiles;
+    postParameters.PathOperation = this.awardUrl + PathOperation.ListTiles;
     //postParameters.RequestParameter = listCentersRequest;
 
     return this.networkManager.Post(postParameters) as Observable<ListTilesResponse>;

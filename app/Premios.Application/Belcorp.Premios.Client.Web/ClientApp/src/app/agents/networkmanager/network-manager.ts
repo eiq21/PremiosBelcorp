@@ -37,12 +37,12 @@ export class NetworkManager {
 
     const headers = new HttpHeaders({ 'content-type': 'application/json' });
     const options = { headers: headers };
-    var parameters = postParameters.RequestParameter || null;
+    //var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
     return Observable.create(observer => {
 
-      this.httpClient.post(`${postParameters.PathOperation}`, JSON.stringify(parameters), options)
+      this.httpClient.post(`${postParameters.PathOperation}`, null, options)
         .subscribe((data) => {
 
           try {
@@ -90,7 +90,8 @@ export class NetworkManager {
 
   IdentityServerPost(postParameters: PostParameters): Observable<BaseResponse> {
     const headers = new HttpHeaders({ 'content-type': 'application/x-www-form-urlencoded' });
-    const options = { headers: headers };
+    const options = { headers: headers }
+
     var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
@@ -99,7 +100,7 @@ export class NetworkManager {
     body.set('client_id', Constants.IdentityServer.CLIENT_TOKEN_ID);
     body.set('client_secret', this.resourceOwnerClientSecret);
     body.set('scope', Constants.IdentityServer.API_RESOURCE_AWARDS + " "  + Constants.IdentityServer.API_RESOURCE_SECURITY);
-    body.set('username', postParameters.RequestParameter.username);
+    body.set('username', postParameters.RequestParameter.username); 
     body.set('password', postParameters.RequestParameter.password);
 
     return Observable.create(observer => {
@@ -132,7 +133,7 @@ export class NetworkManager {
             observer.complete();
           }
         });
-    });
+      });
   }
 
   ErrorHandler(error, _self) {

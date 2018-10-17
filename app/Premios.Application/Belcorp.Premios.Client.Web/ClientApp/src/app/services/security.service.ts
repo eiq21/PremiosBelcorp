@@ -14,13 +14,15 @@ export class SecurityService {
     this.securityAgent = securityAgent;
   }
 
-  ConnectToken(username: string, password: string): Observable<string> {
+  ConnectToken(username: string, password: string): Observable<string>
+  {
     let connectTokenRequest: ConnectTokenRequest = new ConnectTokenRequest();
     connectTokenRequest.username = username;
     connectTokenRequest.password = password;
-
-    return this.securityAgent.ConnectToken(connectTokenRequest)
+    var ss = this.securityAgent.ConnectToken(connectTokenRequest)
       .pipe(map((validateResponse) => validateResponse.access_token));
+
+    return ss;
   }
 
 }
