@@ -3,6 +3,7 @@ using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
 using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Request;
 using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Response;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Belcorp.Premios.API.Controllers
                 CampaignUrl = _awardAppService.ListBannersByCampaign()
             });
         }
-
+        [EnableCors("CorsPolicy")]
         [HttpPost]
         public IActionResult ListTiles()
         {
