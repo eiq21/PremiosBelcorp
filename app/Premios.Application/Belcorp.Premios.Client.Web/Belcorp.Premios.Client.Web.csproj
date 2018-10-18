@@ -20,15 +20,25 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
+    <None Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\agents\award\award-agent.ts" />
     <None Remove="ClientApp\src\app\agents\award\path-operation.ts" />
+    <None Remove="ClientApp\src\app\agents\award\request\index.ts" />
+    <None Remove="ClientApp\src\app\agents\award\request\list-detail-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\index.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\list-detail-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response-dto.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response.ts" />
@@ -45,6 +55,7 @@
     <None Remove="ClientApp\src\app\index.ts" />
     <None Remove="ClientApp\src\app\models\adapters\award-adapter.ts" />
     <None Remove="ClientApp\src\app\models\dtos\campaignurl.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\Tiles.ts" />
     <None Remove="ClientApp\src\app\models\models\configuration.model.ts" />
@@ -52,6 +63,7 @@
     <None Remove="ClientApp\src\app\modules\awards\awards.module.ts" />
     <None Remove="ClientApp\src\app\modules\awards\components\body\body.component.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
+    <None Remove="ClientApp\src\app\modules\awards\viewmodels\detail-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\tile-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
@@ -71,10 +83,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\agents\award\request\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\banner\" />
-    <Folder Include="ClientApp\src\app\modules\awards\components\detail\" />
-    <Folder Include="ClientApp\src\app\modules\awards\components\viewvideo\" />
+    <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-vote\" />
+    <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-suggestions\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\tiles\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\tile\" />
     <Folder Include="ClientApp\src\app\modules\core\viewmodels\" />
@@ -87,7 +98,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\award-agent.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\list-detail-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-detail-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\core\base-response-dto.ts" />
@@ -104,6 +118,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\security-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adapters\award-adapter.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\campaignurl.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\tiles.ts" />
@@ -114,6 +129,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\awards.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\detail-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\tile-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\viewport.ts" />

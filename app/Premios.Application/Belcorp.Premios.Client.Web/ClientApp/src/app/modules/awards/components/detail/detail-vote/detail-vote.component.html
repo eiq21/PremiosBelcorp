@@ -1,0 +1,50 @@
+<section class="VoteItem">
+  <a class="VoteBack light SecTitle text--md" [routerLink]="['/awards/']"><i class="fa fa-angle-left"></i>Volver a la cartelera</a>
+  <article class="Temporal">
+    <div class="Video">
+      <div class="VideoTitleWrap">
+        <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
+        <div class="RateVote Hide"><a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a></div>
+      </div>
+      <div class="VideoVimeo">
+        <div class="Vimeo-wrapper" id="videoDetalle" data-vimeo-autoplay="data-vimeo-autoplay"></div>
+        <!--data-vimeo-id="{{ objDetail.ValueUrl }}"-->
+      </div>
+      <div class="tabs mTB15">
+        <mat-tab-group class="bar">
+          <mat-tab label="Sinopsis">
+            <div class="pbScroll">
+              {{ objDetail.Synopsis }}
+            </div>
+          </mat-tab>
+          <mat-tab label="Protagonistas">
+            <div class="pbScroll">
+              {{ objDetail.Protagonists }}
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <!--<div class="tabsResp Hide">
+        <div class="content">
+          <div class="Sinopsis">
+            <div class="pbScroll">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </div>
+          </div>
+        </div>
+      </div>-->
+    </div>
+    <detail-suggestions></detail-suggestions>
+  </article>
+</section>
+<div class="Hide" id="responsiveImg">
+  <div class="backgroundF"></div>
+</div>
+<div class="Hide" id="template">
+  <div class="Rate grCenter" id="ratevideo">
+    <div class="RateAction text--full"><a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a></div>
+    <div class="RateText">
+      Texto creativo al final del video
+    </div>
+  </div>
+</div>

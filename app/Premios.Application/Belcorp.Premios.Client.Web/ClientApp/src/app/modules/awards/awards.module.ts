@@ -12,6 +12,8 @@ import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { DetailComponent } from './components/detail/detail.component';
 import { MaterialModule } from '../../shared/material';
+import { DetailSuggestionsComponent } from './components/detail/detail-suggestions/detail-suggestions.component';
+import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote.component';
 
 
 
@@ -40,7 +42,9 @@ const routes: Routes = [
     TileComponent,
     TilesComponent,
     BannerComponent,
-    DetailComponent 
+    DetailComponent,
+    DetailSuggestionsComponent,
+    DetailVoteComponent 
   ], 
   entryComponents: [
 

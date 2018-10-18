@@ -1,5 +1,4 @@
-//import { GetProtocolRequest, ListCentersRequest, ListBulksRequest, ListProcessesRequest, ListEquipmentsByProcessRequest, InsertProtocolHeaderRequest, ListAgitationTypesRequest, InsertProtocolTaskRequest, UpdateProtocolRequest, ListProtocolsByPageRequest, GetProtocolWithDetailsRequest, ListRawMaterialsByProtocolRequest, UpdateProtocolHeaderRequest, ValidateProtocolHeaderRequest, GetBulkWithMaterialsRequest, ApproveFlowRequest, RefuseProtocolRequest, UnsubscribeProtocolRequest, ActivateProtocolRequest, ListProtocolsPendingApprovalRequest, CountProtocolsPendingApprovalRequest, ListProtocolVersionsByProtocolNumberRequest, GetProtocolsInComparisonRequest, RestartFlowRequest, UploadProtocolImageRequest, DownloadProtocolImageRequest, ValidateProtocolHeaderNotRestrictiveRequest, ValidateAssociatedBulksNotRestrictiveRequest } from "./request";
-import { ListTilesResponse, ListBannersResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -7,6 +6,7 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
+import { ListDetailRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
@@ -44,6 +44,15 @@ export class AwardAgent {
     
   }
 
+  ListDetailByTeam(listDetailRequest: ListDetailRequest): Observable<ListDetailResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.ListDetailByTeam;
+    postParameters.RequestParameter = listDetailRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<ListDetailResponse>;
+
+  }
   
 
 }

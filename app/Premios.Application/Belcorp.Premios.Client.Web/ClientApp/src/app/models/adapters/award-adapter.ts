@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Tiles, CampaignUrl } from "../dtos/index";
-import { TileViewModel, BannerViewModel } from "../../modules/awards/viewmodels/index";
+import { Tiles, CampaignUrl, Detail } from "../dtos/index";
+import { TileViewModel, BannerViewModel, DetailViewModel } from "../../modules/awards/viewmodels/index";
 
 @Injectable()
 export class AwardAdapter {
@@ -43,6 +43,23 @@ export class AwardAdapter {
     });
 
     return bannerVM;
+  }
+
+  DetailToDetailViewModel(detail: Detail[]): DetailViewModel[] {
+
+    let detailVM: DetailViewModel[] = new Array<DetailViewModel>();
+
+    detail.forEach(function (d) {
+      let det: DetailViewModel = new DetailViewModel();
+        det.TeamId = d.TeamId;
+        det.Synopsis = d.Synopsis;
+        det.Protagonists = d.Protagonists;
+        det.ValueUrl = d.ValueUrl;
+        det.Name = d.Name;
+      detailVM.push(det);
+    });
+
+    return detailVM;
   }
 
 }

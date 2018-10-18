@@ -26,7 +26,7 @@ export class BodyComponent implements OnInit, OnDestroy {
   ) {
     this._route = route;
 
-    this.awardService = awardService;
+    this.awardService = awardService; 
     this.awardAdapter = awardAdapter;
     this.as = as;
  

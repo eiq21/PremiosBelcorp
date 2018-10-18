@@ -22,6 +22,7 @@ namespace Belcorp.Premios.API.Controllers
             _awardAppService = awardAppService;
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpPost]
         public IActionResult ListBannersByCampaign([FromBody]ListBannersByCampaignRequest listBannersByCampaignRequest)
         {
@@ -37,6 +38,16 @@ namespace Belcorp.Premios.API.Controllers
             return Ok(new ListTilesResponse
             {
                 Tiles = _awardAppService.ListTiles()
+            });
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost]
+        public IActionResult ListDetailByTeam([FromBody]ListDetailByTeamRequest listDetailByTeamRequest)
+        {
+            return Ok(new ListDetailResponse
+            {
+                Detail = _awardAppService.ListDetailByTeam(listDetailByTeamRequest.TeamId)
             });
         }
     }

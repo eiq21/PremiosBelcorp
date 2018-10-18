@@ -9,5 +9,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
     {
         ICollection<CampaignUrl> ListBannersByCampaign();
         ICollection<Tiles> ListTiles();
+        ICollection<DetailByTeam> ListDetailByTeam(int teamId);
     }
 }

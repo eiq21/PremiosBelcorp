@@ -124,5 +124,28 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             return lstTiles.OrderBy(x => Guid.NewGuid()).ToList();
 
         }
-     }
+
+        public ICollection<DetailByTeam> ListDetailByTeam(int teamId) //int campaignId
+        {
+            int? activeCampaign = this.GetActiveCampaign();
+
+            var query = (from e in _unitOfWork.DbContext.Equipo
+                         join eu in _unitOfWork.DbContext.EquipoUrl on e.EquipoId equals eu.EquipoId
+                         where e.CampaniaId == activeCampaign.Value &&
+                               eu.TipoUrlId == 9 && e.Activo == true && e.Eliminado == false
+                               && e.EquipoId == teamId
+                         select new DetailByTeam()
+                         {
+                             TeamId = e.EquipoId,
+                             Name = e.Nombre,
+                             Protagonists = e.Protagonistas,
+                             Synopsis = e.Sinopsis,
+                             ValueUrl = eu.ValorUrl
+                         });
+            //where c.CampaignId);
+            var lstTeamDetail = query.ToList();
+
+            return lstTeamDetail;
+        }
+    }
 }
