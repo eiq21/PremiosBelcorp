@@ -21,13 +21,13 @@ namespace Belcorp.Premios.Infrastructure.Agents.LDAP
  
         public ValidateUserResponse ValidateUser(ValidateUserRequest validateUserRequest)
         {
-            bool isLoginTrue = true;
+            bool isLoginTrue = false;
 
             LdapConnection ldapConn = new LdapConnection();
             try
             {
-                ldapConn.Connect(_config.Host, _config.Puerto);
-                ldapConn.Bind(validateUserRequest.Username, validateUserRequest.Password);
+                ldapConn.Connect(_config.Host, _config.Port);
+                ldapConn.Bind(validateUserRequest.Username + _config.Domain, validateUserRequest.Password);
                 isLoginTrue = true;
             }
             catch (Exception ex)

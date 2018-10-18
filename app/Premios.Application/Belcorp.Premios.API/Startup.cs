@@ -87,7 +87,7 @@ namespace Belcorp.Premios.API
                 app.UseDeveloperExceptionPage();
             }
             app.UseApiExceptionHandler();
-            //app.UseAllowAllCORS();
+            app.UseAllowAllCORS();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseStaticFiles();
