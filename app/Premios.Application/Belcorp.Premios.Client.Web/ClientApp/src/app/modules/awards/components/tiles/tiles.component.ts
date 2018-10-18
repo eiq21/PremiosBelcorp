@@ -9,8 +9,8 @@ import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
 })
 export class TilesComponent implements OnInit { 
 
-  @Input() TilesVM: TileViewModel[]; 
-  @Input() Rows: number[];    
+  @Input() listTiles: TileViewModel[]; 
+  @Input() Rows: number[]; 
 
   constructor(
   ) {

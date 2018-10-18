@@ -10,17 +10,21 @@ import { BannerComponent } from './components/banner/banner.component';
 import { AwardService } from '../../services';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
+import { DetailComponent } from './components/detail/detail.component';
+import { MaterialModule } from '../../shared/material';
+
 
 
 const routes: Routes = [
   { path: '', component: BodyComponent },
+  { path: 'detail/:id', component: DetailComponent },
   { path: '**', redirectTo: '/awards', pathMatch: 'full' }
 ];
 
 
 @NgModule({
   imports: [
-    //MaterialModule,
+    MaterialModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
@@ -35,8 +39,9 @@ const routes: Routes = [
     BodyComponent,
     TileComponent,
     TilesComponent,
-    BannerComponent 
-  ],
+    BannerComponent,
+    DetailComponent 
+  ], 
   entryComponents: [
 
   ],
@@ -44,13 +49,14 @@ const routes: Routes = [
   ]
 })
 export class AwardsModule implements OnInit  {
-
-  constructor() {
-
+  constructor(
+  ) {
+    
   }  
 
   ngOnInit() { 
-
+    
+    
   }
 
 }

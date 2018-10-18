@@ -14,61 +14,68 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   private _route: ActivatedRoute;  
   public listTiles: TileViewModel[];
-  public Rows: number[];
+  public Rows: number[] = new Array<number>();
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
   private as: AuthenticationService;
-  private sc: SecurityService;
 
   constructor(route: ActivatedRoute,
     awardService: AwardService,
     awardAdapter: AwardAdapter,
-    as: AuthenticationService,
-    sc: SecurityService
+    as: AuthenticationService  
   ) {
     this._route = route;
 
     this.awardService = awardService;
     this.awardAdapter = awardAdapter;
     this.as = as;
-    //this.listTiles = new TileViewModel[];
-    this.as.login("galileo\extswfhundred01", "Belcorp201810"); 
-
-  
+ 
   }
 
   ngOnInit() {
 
     //this.PlayerVimeo = new Player();
 
+    this.as.login("extswfhundred01", "Belcorp201810").subscribe(result => {
+      var rd = result;
+    }, error => {
+      var err = error;
+    });
+
     this.listTilesForActiveCampaign();
   }
 
 
   ngAfterViewInit() { 
-    //this.previewVideo()
   }
 
 
   listTilesForActiveCampaign() {
     let _self = this;
 
-    this.awardService.ListTiles().subscribe(tiles => {
+    this.awardService.ListTiles().subscribe(tiles => { 
       this.listTiles = this.awardAdapter.TilesToTilesViewModel(tiles);
+
+      var prenumRows = (this.listTiles.length) / 6;
+      var numRows = Math.ceil(prenumRows);
+
+        if (numRows <= 1) {
+          this.Rows.push(1);
+        } else {
+
+          for (var _i = 0; _i < numRows; _i++) {
+            this.Rows[_i] = _i;
+          }
+
+        }
+
     }, error => this.ErrorHandler(error, _self));
-
-    var numRows = (this.listTiles.length) / 6;
-
-    for (var _i = 0; _i < numRows; _i++) {
-        this.Rows[_i] = _i;
-    }
-
 
   }
 
 
   ErrorHandler(error, _self) {
-    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   } 
 
   ngOnDestroy() {

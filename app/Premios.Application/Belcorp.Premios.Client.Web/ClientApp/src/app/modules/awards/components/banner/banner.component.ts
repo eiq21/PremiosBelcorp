@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import Glide from '@glidejs/glide';
 import Player from '@vimeo/player';
+import { AwardService } from '../../../../services';
+import { AwardAdapter } from '../../../../models/adapters/award-adapter';
+import { ActivatedRoute } from '@angular/router';
+import { BannerViewModel } from '../../../../modules/awards/viewmodels/index';
+import { Constants } from '../../../../shared/utils';
 
 @Component({
   selector: 'prem-banner',
@@ -9,14 +14,55 @@ import Player from '@vimeo/player';
 })
 export class BannerComponent implements OnInit {
 
-  constructor() { }
+  private _route: ActivatedRoute;
+  private awardService: AwardService;
+  private awardAdapter: AwardAdapter;
+  public listBanners: BannerViewModel[];
+  public imageIP: string;
+  public imageMovil: string;
 
-  ngOnInit() {
-    this.vimeoVideo()
-    this.tabs()
+  constructor(
+    route: ActivatedRoute,
+    awardService: AwardService,
+    awardAdapter: AwardAdapter,
+  ) {
+
+    this._route = route;
+    this.awardService = awardService;
+    this.awardAdapter = awardAdapter;
+
+    
   }
 
-  ngOnDestroy() {
+  ngOnInit() {
+
+    this.getBannersByActiveCampaign();
+
+    
+  }
+
+
+  getBannersByActiveCampaign()
+  {
+    let _self = this;
+
+    this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
+
+      this.listBanners = this.awardAdapter.BannersToBannersViewModel(CampaignUrl);
+
+      let bannerInicio = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INICIO);
+      let bannerIP = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
+      let bannerGA = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
+      let bannerMovil = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_MOVIL);
+
+      this.vimeoVideo();
+      this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl);
+
+      this.imageMovil = "../../../../../assets/img/" + bannerMovil[0].ValueUrl;
+      this.imageIP = "../../../../../assets/img/" + bannerIP[0].ValueUrl;
+
+    }, error => this.ErrorHandler(error, _self));
+
   }
 
   vimeoVideo() {
@@ -46,7 +92,7 @@ export class BannerComponent implements OnInit {
   }
 
 
-  tabs() {
+  tabs(bannerInicio, bannerGanadoresAnteriores) {
     const options = {
       type: 'carousel',
       startAt: 0,
@@ -65,12 +111,12 @@ export class BannerComponent implements OnInit {
 
     if (document.querySelector('div.pb')) {
       vimeoPlayer = new Player('insertPlayerOnInitSlide', {
-        id: 291800076,
+        id: bannerInicio,
         background: true
       })
 
       vimeoPlayertwo = new Player('insertPlayerOnLastSlide', {
-        id: 291800076,
+        id: bannerGanadoresAnteriores,
         background: false
       })
 
@@ -168,8 +214,8 @@ export class BannerComponent implements OnInit {
         // Current inner width of the browser window (in pixels)
         let iW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
 
-        container.style.height = alto + 'px'
-      }
+        container.style.height = alto + 'px'   
+      } 
 
       resize()
 
@@ -205,4 +251,11 @@ export class BannerComponent implements OnInit {
 
   }
 
+  ErrorHandler(error, _self) {
+    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+  } 
+
+
+  ngOnDestroy() {
+  }
 }

@@ -154,4 +154,11 @@ export class Constants {
     static readonly ANCHOBALDOSAS = 6;
     static readonly ALTOBALDOSAS = 4;
   }
+
+  static TiposUrl = class {
+    static readonly BANNER_INICIO = 1;
+    static readonly BANNER_INFORMACIONPREMIOS = 2;
+    static readonly BANNER_GANADORESANTERIORES = 3;
+    static readonly BANNER_MOVIL = 5;
+  }
 }

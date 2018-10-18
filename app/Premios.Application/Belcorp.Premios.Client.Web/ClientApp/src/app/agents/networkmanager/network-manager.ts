@@ -37,12 +37,12 @@ export class NetworkManager {
 
     const headers = new HttpHeaders({ 'content-type': 'application/json' });
     const options = { headers: headers };
-    //var parameters = postParameters.RequestParameter || null;
+    var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
     return Observable.create(observer => {
 
-      this.httpClient.post(`${postParameters.PathOperation}`, null, options)
+      this.httpClient.post(`${postParameters.PathOperation}`, JSON.stringify(parameters), options)
         .subscribe((data) => {
 
           try {
@@ -103,6 +103,9 @@ export class NetworkManager {
     body.set('username', postParameters.RequestParameter.username); 
     body.set('password', postParameters.RequestParameter.password);
 
+    console.log(body);
+    console.log(options);
+
     return Observable.create(observer => {
       this.httpClient.post(`${postParameters.PathOperation}`, body.toString(), options)
         .subscribe((data : ConnectTokenResponse) => {
@@ -140,7 +143,7 @@ export class NetworkManager {
     if (error.status != 401) {
       console.error('CUSTOM ERROR');
       console.log(error);
-      _self.openMessagebox('Protocolo', Constants.MensajeSistema.ERROR_INESPERADO_CONTACTE_ADMINISTRADOR_SISTEMAS, '4');
+      //_self.openMessagebox('Protocolo', Constants.MensajeSistema.ERROR_INESPERADO_CONTACTE_ADMINISTRADOR_SISTEMAS, '4');
     }
   }
 

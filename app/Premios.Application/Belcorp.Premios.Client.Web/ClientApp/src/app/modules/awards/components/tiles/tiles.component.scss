@@ -20,3 +20,32 @@
     padding: 1.5625rem 7.1875rem;
   }
 }
+
+.s-100,
+.ed-item.s-100 {
+  width: 100%;
+}
+
+.AppTitle {
+  text-transform: uppercase;
+  color: #A5A8AB;
+  font-family: var(--font-primary-bolder);
+  padding: 1.875rem 0 1.25rem 0;
+  display: inline-block;
+  letter-spacing: -1px;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .AppTitle {
+    font-size: var(--text-xl);
+    line-height: 1.875rem;
+    letter-spacing: 0;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .AppTitle {
+    padding-left: 2rem;
+  }
+}
+

@@ -9,8 +9,8 @@ import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
 })
 export class TileComponent implements OnInit {
 
-  @Input() TilesVM: TileViewModel[];
-  @Input() Rows: number[];
+  @Input() listTiles: TileViewModel[];
+  @Input() Rows: number[] = new Array<number>();
 
   timeoutId: any = null;
   vimeoPlayer: any = null;
@@ -23,7 +23,7 @@ export class TileComponent implements OnInit {
 
   }
 
-  ViewVideo(i) {
+  ViewVideo(i, videoCode) {
 
     var cont = i.target.firstElementChild;
     var idInsertVideo = null;
@@ -52,7 +52,7 @@ export class TileComponent implements OnInit {
         }
 
         this.vimeoPlayer = new Player(idInsertVideo, {
-          id: 292172861,
+          id: videoCode,
           background: true
         })
 

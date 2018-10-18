@@ -1,5 +1,5 @@
 //import { GetProtocolRequest, ListCentersRequest, ListBulksRequest, ListProcessesRequest, ListEquipmentsByProcessRequest, InsertProtocolHeaderRequest, ListAgitationTypesRequest, InsertProtocolTaskRequest, UpdateProtocolRequest, ListProtocolsByPageRequest, GetProtocolWithDetailsRequest, ListRawMaterialsByProtocolRequest, UpdateProtocolHeaderRequest, ValidateProtocolHeaderRequest, GetBulkWithMaterialsRequest, ApproveFlowRequest, RefuseProtocolRequest, UnsubscribeProtocolRequest, ActivateProtocolRequest, ListProtocolsPendingApprovalRequest, CountProtocolsPendingApprovalRequest, ListProtocolVersionsByProtocolNumberRequest, GetProtocolsInComparisonRequest, RestartFlowRequest, UploadProtocolImageRequest, DownloadProtocolImageRequest, ValidateProtocolHeaderNotRestrictiveRequest, ValidateAssociatedBulksNotRestrictiveRequest } from "./request";
-import { ListTilesResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -33,5 +33,17 @@ export class AwardAgent {
 
     return this.networkManager.Post(postParameters) as Observable<ListTilesResponse>;
   }
+
+  ListBannersByActiveCampaign(): Observable<ListBannersResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.ListBannersByCampaign;
+    //postParameters.RequestParameter = listCentersRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<ListBannersResponse>;
+    
+  }
+
+  
 
 }

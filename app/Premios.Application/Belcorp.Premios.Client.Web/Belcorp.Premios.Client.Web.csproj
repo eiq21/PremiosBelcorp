@@ -28,6 +28,7 @@
     <None Remove="ClientApp\src\app\agents\award\award-agent.ts" />
     <None Remove="ClientApp\src\app\agents\award\path-operation.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\index.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response-dto.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response.ts" />
@@ -43,12 +44,14 @@
     <None Remove="ClientApp\src\app\agents\security\security-agent.ts" />
     <None Remove="ClientApp\src\app\index.ts" />
     <None Remove="ClientApp\src\app\models\adapters\award-adapter.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\campaignurl.ts" />
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\Tiles.ts" />
     <None Remove="ClientApp\src\app\models\models\configuration.model.ts" />
     <None Remove="ClientApp\src\app\models\models\user.model.ts" />
     <None Remove="ClientApp\src\app\modules\awards\awards.module.ts" />
     <None Remove="ClientApp\src\app\modules\awards\components\body\body.component.ts" />
+    <None Remove="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\tile-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
@@ -62,6 +65,8 @@
     <None Remove="ClientApp\src\app\services\index.ts" />
     <None Remove="ClientApp\src\app\services\security.service.ts" />
     <None Remove="ClientApp\src\app\services\storage.service.ts" />
+    <None Remove="ClientApp\src\app\shared\material\index.ts" />
+    <None Remove="ClientApp\src\app\shared\material\material.module.ts" />
     <None Remove="ClientApp\src\app\shared\utils.ts" />
   </ItemGroup>
 
@@ -83,6 +88,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\award-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\core\base-response-dto.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\core\base-response.ts" />
@@ -99,6 +105,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adapters\award-adapter.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\campaignurl.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\tiles.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\configuration.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\user.model.ts" />
@@ -106,6 +113,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\containers\manager.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\awards.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\tile-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\core\components\viewport.ts" />
@@ -119,6 +127,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\security.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\storage.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\material\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\material\material.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\utils.ts" />
   </ItemGroup>
 
