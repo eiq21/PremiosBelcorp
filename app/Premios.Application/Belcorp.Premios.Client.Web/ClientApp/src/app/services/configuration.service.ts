@@ -4,6 +4,7 @@ import { StorageService } from './storage.service';
 import { Observable, Observer, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Constants } from '../shared/utils';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -42,11 +43,11 @@ export class ConfigurationService {
   loadDevelopment() {
 
     if (this.identityUrl == null) {
-      this.storageService.store(Constants.SistemaUrl.IDENTITY_URL, 'http://localhost:25612/');
+      this.storageService.store(Constants.SistemaUrl.IDENTITY_URL, environment.IdentityUrl);
     }
 
     if (this.awardUrl == null) {
-      this.storageService.store(Constants.SistemaUrl.AWARD_URL, 'http://localhost:7945/api/');
+      this.storageService.store(Constants.SistemaUrl.AWARD_URL, environment.AwardsUrl);
     }
 
     //if (this.securityUrl == null) {
