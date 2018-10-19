@@ -6,7 +6,7 @@ import { ViewportComponent } from './components/viewport';
 //import { MaterialModule } from '../../shared/material';
 //import { ViewportComponent } from './components/viewport';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AuthenticationService, AuthUserService, StorageService, ConfigurationService } from '../../services/index';
+import { AuthenticationService, AuthUserService, StorageService, ConfigurationService, SecurityGuardService } from '../../services/index';
 //import { MessageAgent } from '../../agents/message/message-agent';
 //import { ReportAgent } from '../../agents/report/report-agent';
 //import { NavtoolbarComponent } from './components/navtoolbar/navtoolbar.component';
@@ -26,7 +26,7 @@ export const COMPONENTS = [
   providers: [
     AuthenticationService,
     AuthUserService,
-    //SecurityGuardService,
+    SecurityGuardService,
     //AdminGuardService,
     StorageService,
     ConfigurationService,

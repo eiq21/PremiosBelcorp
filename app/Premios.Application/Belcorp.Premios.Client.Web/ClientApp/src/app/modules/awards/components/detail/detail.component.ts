@@ -15,7 +15,7 @@ import { DetailViewModel } from '../../viewmodels';
 export class DetailComponent implements OnInit, OnDestroy {
 
   public TeamId: number;
-  public listDetail: DetailViewModel[];
+  private listDetail: DetailViewModel[];
   public objDetail: DetailViewModel;
 
   constructor(

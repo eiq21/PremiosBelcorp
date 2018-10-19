@@ -2,12 +2,12 @@ import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { AwardsManagerComponent } from './containers/manager';
+import { AwardsManagerComponent } from './containers/manager';
 import { BodyComponent } from './components/body/body.component';
 import { TileComponent } from './components/tile/tile.component';
 import { TilesComponent } from './components/tiles/tiles.component';
 import { BannerComponent } from './components/banner/banner.component';
-import { AwardService } from '../../services';
+import { AwardService, AuthenticationService } from '../../services';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { DetailComponent } from './components/detail/detail.component';
@@ -18,8 +18,26 @@ import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote
 
 
 const routes: Routes = [
-  { path: '', component: BodyComponent },
-  { path: 'detail/:id', component: DetailComponent },
+  {
+    path: '', component: AwardsManagerComponent,
+    children: [
+      {
+        outlet: 'premios-manager',
+        path: '',
+        component: BodyComponent
+      }
+    ]
+  },
+  {
+    path: 'detail/:id', component: AwardsManagerComponent,
+    children: [
+      {
+        outlet: 'premios-manager',
+        path: '',
+        component: DetailComponent
+      }
+    ]
+  },
   { path: '**', redirectTo: '/awards', pathMatch: 'full' }
 ];
 
@@ -44,7 +62,8 @@ const routes: Routes = [
     BannerComponent,
     DetailComponent,
     DetailSuggestionsComponent,
-    DetailVoteComponent 
+    DetailVoteComponent,
+    AwardsManagerComponent 
   ], 
   entryComponents: [
 
@@ -53,14 +72,11 @@ const routes: Routes = [
   ]
 })
 export class AwardsModule implements OnInit  {
-  constructor(
-  ) {
-    
-  }  
+
+   
 
   ngOnInit() { 
-    
-    
+
   }
 
 }

@@ -12,7 +12,7 @@ import { DetailViewModel } from '../../../viewmodels';
 })
 export class DetailVoteComponent implements OnInit {
 
-  @Input() objDetail: DetailViewModel[];
+  @Input() objDetail: DetailViewModel;
   private _route: ActivatedRoute; 
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
@@ -27,10 +27,13 @@ export class DetailVoteComponent implements OnInit {
     this._route = route;
     this.awardService = awardService;
     this.awardAdapter = awardAdapter;
+
+    
   }
 
   ngOnInit() {
     this.videoDetalle();
+
   }
 
  

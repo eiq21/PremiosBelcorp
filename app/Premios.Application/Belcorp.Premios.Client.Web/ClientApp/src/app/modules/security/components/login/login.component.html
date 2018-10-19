@@ -1,0 +1,22 @@
+<div class="Container">
+  <header class="VoteItem">
+    <div class="VoteCont"><a href="index.html"><img src="../../../../../assets/img/logo-premios-belcorp.png"></a></div>
+    <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
+  </header>
+  <div class="pbForm">
+    <div class="pbLogTitle"> <span>Regístrate</span></div>
+    <form [formGroup]="loginForm" class="form" novalidate>
+      <div class="pbForm-wrap">
+        <input id="user" name="user" class="pbInput" type="text" formControlName="username" placeholder="Usuario:" autocomplete="off">
+        <input id="password" name="password" class="pbInput" formControlName="password"  type="password" placeholder="Contraseña:" autocomplete="off" (keyup)="$event.keyCode == 13 && Login()">
+        <button class="pbSend fbForm-send" value="Ingresar" (click)="Login()">Ingresar</button>
+      </div>
+    </form>
+    <div class="pbByeTitle">
+      <p>Si tienes alguna duda comunicate<br> con nosotros: ccorporativa@belcorp.biz</p>
+    </div>
+  </div>
+</div>
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>

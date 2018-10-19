@@ -36,11 +36,11 @@ export class BodyComponent implements OnInit, OnDestroy {
 
     //this.PlayerVimeo = new Player();
 
-    this.as.login("extswfhundred01", "Belcorp201810").subscribe(result => {
-      var rd = result;
-    }, error => {
-      var err = error;
-    });
+    //this.as.login("extswfhundred01", "Belcorp201810").subscribe(result => {
+    //  var rd = result;
+    //}, error => {
+    //  var err = error;
+    //});
 
     this.listTilesForActiveCampaign();
   }

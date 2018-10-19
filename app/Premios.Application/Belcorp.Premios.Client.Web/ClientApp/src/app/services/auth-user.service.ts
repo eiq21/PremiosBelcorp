@@ -9,12 +9,13 @@ export class AuthUserService {
   }
   
   isUserLoggedIn(): boolean {
-    return (this.storageService.retrieve("user")) ? true : false;
+    //return (this.storageService.retrieve("user")) ? true : false;
+    return (this.storageService.retrieve("usertoken")) ? true : false;
   }
 
-  isSuperAdmin(): boolean {
-    return this.storageService.retrieve("user") && this.storageService.retrieve("user").isSuperAdmin;
-  }
+  //isSuperAdmin(): boolean {
+  //  return this.storageService.retrieve("user") && this.storageService.retrieve("user").isSuperAdmin;
+  //}
 
   //getLoggedInUser(): UserModel {
   //  return this.storageService.retrieve("user");
@@ -33,7 +34,7 @@ export class AuthUserService {
   }
 
   LogOutUser() {
-    this.storageService.remove('user');
+    //this.storageService.remove('user');
     this.storageService.remove("usertoken");
   }
 }

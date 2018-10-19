@@ -126,7 +126,7 @@ export class Constants {
 
   static Routes = class {
     static readonly LOGIN = "/security/login";
-    static readonly HOME = "/awards/list";
+    static readonly HOME = "/awards";
   }
 
   static SistemaUrl = class {
