@@ -7,10 +7,10 @@
         <div class="RateVote Hide"><a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a></div>
       </div>
       <div class="VideoVimeo">
-        <div class="Vimeo-wrapper" id="videoDetalle" data-vimeo-id="" data-vimeo-autoplay="data-vimeo-autoplay"></div>
+        <div class="Vimeo-wrapper" id="videoDetalle"></div>
       </div>
-      <div class="tabs mTB15">
-        <mat-tab-group class="bar">
+      <div id="tabs">
+        <mat-tab-group>
           <mat-tab label="Sinopsis">
             <div class="pbScroll">
               {{ objDetail.Synopsis }}
@@ -47,3 +47,9 @@
     </div>
   </div>
 </div>
+<ngx-spinner bdColor="rgba(0,0,0,0.1)"
+             size="medium"
+             color="#FF0025"
+             type="ball-spin-clockwise">
+  <p style="font-size: 20px; color: #FF0025">Cargando...</p>
+</ngx-spinner>

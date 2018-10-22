@@ -14,6 +14,7 @@ import { CustomRouterStateSerializer } from './shared/utils';
 import { SecurityAgent } from './agents/security/security-agent';
 import { NetworkManager } from './agents/networkmanager/index';
 import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -24,8 +25,6 @@ import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
     HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     FormsModule,
-    //,
-    //MessageBoxModule,
     CoreModule.forRoot()
   ],
   providers: [

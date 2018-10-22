@@ -6,6 +6,7 @@ import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { ActivatedRoute } from '@angular/router';
 import { BannerViewModel } from '../../../../modules/awards/viewmodels/index';
 import { Constants } from '../../../../shared/utils';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'prem-banner',
@@ -20,24 +21,29 @@ export class BannerComponent implements OnInit {
   public listBanners: BannerViewModel[];
   public imageIP: string;
   public imageMovil: string;
+  private spinner: NgxSpinnerService;
 
   constructor(
     route: ActivatedRoute,
     awardService: AwardService,
     awardAdapter: AwardAdapter,
+    spinner: NgxSpinnerService
   ) {
 
     this._route = route;
     this.awardService = awardService;
     this.awardAdapter = awardAdapter;
-
+    this.spinner = spinner;
     
   }
 
   ngOnInit() {
 
+    
+
     this.getBannersByActiveCampaign();
 
+  
     
   }
 
@@ -45,6 +51,8 @@ export class BannerComponent implements OnInit {
   getBannersByActiveCampaign()
   {
     let _self = this;
+
+    this.spinner.show();
 
     this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
 
@@ -60,6 +68,8 @@ export class BannerComponent implements OnInit {
 
       this.imageMovil = "../../../../../assets/img/" + bannerMovil[0].ValueUrl;
       this.imageIP = "../../../../../assets/img/" + bannerIP[0].ValueUrl;
+
+      this.spinner.hide();
 
     }, error => this.ErrorHandler(error, _self));
 

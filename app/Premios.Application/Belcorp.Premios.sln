@@ -20,6 +20,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.4-Domain", "1.4-Domain", "{03257201-28EC-4858-930E-90D59C4C36DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.5-Infrastructure", "1.5-Infrastructure", "{76BFA25F-AF31-41F0-BB66-BEAB92754757}"
+	ProjectSection(SolutionItems) = preProject
+		Belcorp.Premios.API\Program.cs = Belcorp.Premios.API\Program.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Agents", "Agents", "{51C38564-391D-4F76-9EC0-0443CD6A977F}"
 EndProject

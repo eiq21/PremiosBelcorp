@@ -142,23 +142,7 @@ body {
   }
 }
 
-.Vimeo-wrapper {
-  grid-area: vimeo;
-  height: 0;
-  width: 100%;
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-}
 
-.Vimeo-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* this will override the width=""/height="" properties defined on the iframe */
-  width: 100%;
-  height: 100%;
-}
 
 .grCenter {
   align-self: center;
@@ -341,75 +325,6 @@ body {
   font-family: 'Museo Sans';
 }
 
-[data-tabby-content] {
-  display: none;
-}
-
-[data-tabby-content][data-tabby-active] {
-  display: block;
-}
-
-[data-tabby-bar] {
-  padding-top: 15px;
-  color: #4D2669;
-  transition: all .3s ease-out;
-  border-top: 4px solid transparent;
-}
-
-[data-tabby-bar]:hover {
-  color: #ffffff;
-  transition: all .3s ease-out;
-}
-
-.bar [data-tabby-active] {
-  border-top: 4px solid red;
-}
-
-[data-tabby-active] {
-  color: #ffffff;
-}
-
-.content {
-  font-family: 'Museo Sans Light';
-}
-
-.bar [data-tabby-active] {
-  padding-top: 15px;
-}
-
-.mTB15 {
-  margin: 0.9375rem 0;
-}
-
-.mT15 {
-  margin-top: 0.9375rem;
-}
-
-.text-right {
-  text-align: right;
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .tabs {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .tabsResp {
-    margin-top: 1.875rem;
-    display: block;
-  }
-}
-
-.bar li, .barTitle {
-  display: inline;
-}
-
-.bar li:first-child {
-  margin-right: 30px;
-}
-
 
 .w100 {
   width: 100%;
@@ -492,4 +407,3 @@ body {
 .w100 {
   width: 100%;
 }
-

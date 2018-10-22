@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import Player from '@vimeo/player';
-import { ActivatedRoute } from '@angular/router';
-import { AwardService, AuthenticationService, SecurityService } from '../../../../../services';
-import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
 import { DetailViewModel } from '../../../viewmodels';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'detail-vote',
@@ -13,50 +11,76 @@ import { DetailViewModel } from '../../../viewmodels';
 export class DetailVoteComponent implements OnInit {
 
   @Input() objDetail: DetailViewModel;
-  private _route: ActivatedRoute; 
-  private awardService: AwardService;
-  private awardAdapter: AwardAdapter;
-  public TeamId: number;
-
+  @Input() listDetail: DetailViewModel[];
+  private spinner: NgxSpinnerService;
 
   constructor(
-    route: ActivatedRoute,
-    awardService: AwardService,
-    awardAdapter: AwardAdapter
+    spinner: NgxSpinnerService
   ) {
-    this._route = route;
-    this.awardService = awardService;
-    this.awardAdapter = awardAdapter;
-
-    
+    this.spinner = spinner;
   }
 
   ngOnInit() {
+
+     
+
+  }
+
+  ngAfterViewInit() {
+
+    this.spinner.show();
+
     this.videoDetalle();
 
+    this.spinner.hide();
   }
 
  
 
   videoDetalle() {
 
-  const d = document,
-    vimeoWrapper = Array.from(d.querySelectorAll('.Vimeo-wrapper')),
-    t = d.getElementById('videoTitle'),
-    vimeoTagID = d.getElementById('videoDetalle')
-    let video = null;
+    const d = document,
+      vimeoWrapper = Array.prototype.slice.call(d.querySelectorAll('.Vimeo-wrapper')),
+      t = d.getElementById('videoTitle')
 
-  if (vimeoTagID) {
-     // Construir el player con el id proporcionado en el html
-     video = new Player(vimeoTagID, { id: vimeoTagID.getAttribute('data-vimeo-id') }),
+    let vimeoTagID, vimeoID, player = {}, action
+
+    vimeoWrapper.map((elem, index) => {
+
+      vimeoTagID = elem.getAttribute('id')
+      vimeoID = elem.getAttribute('data-vimeo-id')
+
+      player[index] = new Player(vimeoTagID, {
+        id: this.objDetail.ValueUrl,
+        muted: false,
+        autoplay: true
+      })
+
+      player[index].getVideoTitle().then(function (title) {
+        t.innerText = title
+        console.log('title:', title)
+      })
+
+    })
+
+  //const d = document,
+  //  vimeoWrapper = Array.from(d.querySelectorAll('.Vimeo-wrapper')),
+  //  t = d.getElementById('videoTitle'),
+  //  vimeoTagID = d.getElementById('videoDetalle')
+  //  let video = null;
+
+
+  //if (vimeoTagID) {
+  //   // Construir el player con el id proporcionado en el html
+  //   video = new Player(vimeoTagID, { id: vimeoTagID.getAttribute('data-vimeo-id') }),
        
-     video.getVideoTitle().then(function (title) {
-       t.innerText = title
-       console.log('title:', title)
-     })
+  //   video.getVideoTitle().then(function (title) {
+  //     t.innerText = title
+  //     console.log('title:', title)
+  //   })
 
-   }
-}
+  // }
+  }
 
   ErrorHandler(error, _self) {
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');

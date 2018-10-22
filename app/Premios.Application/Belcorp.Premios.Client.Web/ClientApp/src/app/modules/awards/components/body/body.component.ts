@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
-import { AwardService, AuthenticationService, SecurityService } from '../../../../services';
+import { AwardService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 
 
@@ -17,30 +17,21 @@ export class BodyComponent implements OnInit, OnDestroy {
   public Rows: number[] = new Array<number>();
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
-  private as: AuthenticationService;
+
+  
 
   constructor(route: ActivatedRoute,
     awardService: AwardService,
-    awardAdapter: AwardAdapter,
-    as: AuthenticationService  
+    awardAdapter: AwardAdapter
   ) {
     this._route = route;
 
     this.awardService = awardService; 
     this.awardAdapter = awardAdapter;
-    this.as = as;
- 
+
   }
 
   ngOnInit() {
-
-    //this.PlayerVimeo = new Player();
-
-    //this.as.login("extswfhundred01", "Belcorp201810").subscribe(result => {
-    //  var rd = result;
-    //}, error => {
-    //  var err = error;
-    //});
 
     this.listTilesForActiveCampaign();
   }

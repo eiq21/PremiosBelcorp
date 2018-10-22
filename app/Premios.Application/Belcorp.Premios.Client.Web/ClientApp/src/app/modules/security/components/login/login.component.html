@@ -1,6 +1,6 @@
 <div class="Container">
   <header class="VoteItem">
-    <div class="VoteCont"><a href="index.html"><img src="../../../../../assets/img/logo-premios-belcorp.png"></a></div>
+    <div class="VoteCont"><img src="../../../../../assets/img/logo-premios-belcorp.png"></div>
     <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
   </header>
   <div class="pbForm">
@@ -19,6 +19,14 @@
     </div>
   </div>
 </div>
-<div class="loading-shade" *ngIf="loading">
-  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
-</div>
+<ngx-spinner bdColor="rgba(0,0,0,0.1)"
+             size="medium"
+             color="#FF0025"
+             type="ball-spin-clockwise">
+  <p style="font-size: 20px; color: #FF0025">Cargando...</p>
+</ngx-spinner>
+
+
+<!--<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn" [mode]="indeterminate"></mat-spinner>
+</div>-->

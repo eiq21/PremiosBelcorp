@@ -4,7 +4,16 @@
       <div class="VoteCont"><a href="index.html"><img src="../../../../../assets/img/logo-premios-belcorp.png"></a></div>
       <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
     </header>
-    <detail-vote [objDetail]="objDetail"></detail-vote>
-  </main>
+    <div>
+      <detail-vote [objDetail]="objDetail" [listDetail]="listDetail">
 
+      </detail-vote>
+    </div>
+  </main>
+ <ngx-spinner bdColor="rgba(0,0,0,0.1)"
+              size="medium"
+              color="#FF0025"
+              type="ball-spin-clockwise">
+   <p style="font-size: 20px; color: #FF0025">Cargando...</p>
+ </ngx-spinner>
 

@@ -14,6 +14,7 @@ import { DetailComponent } from './components/detail/detail.component';
 import { MaterialModule } from '../../shared/material';
 import { DetailSuggestionsComponent } from './components/detail/detail-suggestions/detail-suggestions.component';
 import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -48,7 +49,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     AwardService,

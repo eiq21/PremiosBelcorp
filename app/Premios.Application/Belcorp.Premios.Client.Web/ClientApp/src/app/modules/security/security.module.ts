@@ -10,6 +10,7 @@ import { SecurityAgent } from '../../agents/security/security-agent';
 import { SecurityManagerComponent } from './containers/manager';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { AwardAgent } from '../../agents/award/award-agent';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     NetworkManager,

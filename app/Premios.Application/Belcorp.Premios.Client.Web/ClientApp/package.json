@@ -37,6 +37,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ed-grid": "2.5.10",
+    "ngx-spinner": "^6.1.2",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"
   },
