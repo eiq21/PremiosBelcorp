@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import Glide from '@glidejs/glide';
 import Player from '@vimeo/player';
-import { AwardService } from '../../../../services';
-import { AwardAdapter } from '../../../../models/adapters/award-adapter';
-import { ActivatedRoute } from '@angular/router';
-import { BannerViewModel } from '../../../../modules/awards/viewmodels/index';
-import { Constants } from '../../../../shared/utils';
+import { AwardService } from '../../../../../services';
+import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
+import { BannerViewModel } from '../../../../../modules/awards/viewmodels/index';
+import { Constants } from '../../../../../shared/utils';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -15,38 +14,33 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class BannerComponent implements OnInit {
 
-  private _route: ActivatedRoute;
-  private awardService: AwardService;
-  private awardAdapter: AwardAdapter;
   public listBanners: BannerViewModel[];
   public imageIP: string;
   public imageMovil: string;
+
   private spinner: NgxSpinnerService;
+  private awardAdapter: AwardAdapter;
+  private awardService: AwardService;
 
   constructor(
-    route: ActivatedRoute,
-    awardService: AwardService,
+    spinner: NgxSpinnerService,
     awardAdapter: AwardAdapter,
-    spinner: NgxSpinnerService
+    awardService: AwardService
   ) {
-
-    this._route = route;
-    this.awardService = awardService;
-    this.awardAdapter = awardAdapter;
     this.spinner = spinner;
-    
+    this.awardAdapter = awardAdapter;
+    this.awardService = awardService;
   }
 
   ngOnInit() {
 
-    
-
-    this.getBannersByActiveCampaign();
-
-  
+    this.getBannersByActiveCampaign()
     
   }
 
+  ngAfterViewInit() {
+  
+  }
 
   getBannersByActiveCampaign()
   {
@@ -57,23 +51,23 @@ export class BannerComponent implements OnInit {
     this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
 
       this.listBanners = this.awardAdapter.BannersToBannersViewModel(CampaignUrl);
+        let bannerInicio = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INICIO);
+        let bannerIP = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
+        let bannerGA = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
+        let bannerMovil = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_MOVIL);
 
-      let bannerInicio = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INICIO);
-      let bannerIP = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
-      let bannerGA = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
-      let bannerMovil = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_MOVIL);
+        this.vimeoVideo();
+        this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl);
 
-      this.vimeoVideo();
-      this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl);
-
-      this.imageMovil = "../../../../../assets/img/" + bannerMovil[0].ValueUrl;
-      this.imageIP = "../../../../../assets/img/" + bannerIP[0].ValueUrl;
-
-      this.spinner.hide();
+        this.imageMovil = "../../../../../../assets/img/" + bannerMovil[0].ValueUrl;
+        this.imageIP = "../../../../../../assets/img/" + bannerIP[0].ValueUrl;
 
     }, error => this.ErrorHandler(error, _self));
 
+    this.spinner.hide();
+    
   }
+
 
   vimeoVideo() {
     const d = document,

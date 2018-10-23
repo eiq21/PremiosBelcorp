@@ -54,12 +54,14 @@ export class DetailComponent implements OnInit, OnDestroy {
     }, error => this.ErrorHandler(error, _self));
   }
 
-  ngOnDestroy() {
-
-  }
 
 
   ErrorHandler(error, _self) {
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
+
+  ngOnDestroy() {
+
+  }
+
 }

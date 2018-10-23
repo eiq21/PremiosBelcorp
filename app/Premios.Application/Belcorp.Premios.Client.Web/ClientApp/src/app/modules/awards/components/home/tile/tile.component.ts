@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import Player from '@vimeo/player';
-import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
+import { TileViewModel } from '../../../../../modules/awards/viewmodels/index';
 
 @Component({
   selector: 'prem-tile',
@@ -29,7 +29,7 @@ export class TileComponent implements OnInit {
     var idInsertVideo = null;
     idInsertVideo = cont.id;
 
-    
+
     this.timeoutId = setTimeout(() => {
         if (this.vimeoPlayer) {
           this.vimeoPlayer.play().then(function () {
@@ -64,8 +64,11 @@ export class TileComponent implements OnInit {
   }
 
   UnloadVideo(i) {
+
+
     var cont = i.target.firstElementChild;
     const hide = (elem, visibility) => elem.style.display = visibility;
+
 
     if (this.vimeoPlayer) {
       this.vimeoPlayer.unload().then(function () {

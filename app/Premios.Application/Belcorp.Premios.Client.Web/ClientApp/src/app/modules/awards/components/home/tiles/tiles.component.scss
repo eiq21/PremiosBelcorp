@@ -1,0 +1,125 @@
+.ed-container, .pbVimeoItem, .Bye, .pbVideo, .Vote, .Temporal, .Container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.pbVideo {
+  max-width: 100%;
+  padding: 1.5625rem 4.6875rem;
+}
+
+.pbVideo > .ed-item {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .pbVideo {
+    padding: 0.3125rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .pbVideo {
+    padding: 1.5625rem 7.1875rem;
+  }
+}
+
+.pbVideoItem {
+  display: grid;
+  grid-template-areas: 'videoItem';
+}
+
+.pbVideoItemWrapper {
+  display: grid;
+  grid-template-areas: 'hoverVideo';
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.pbVideoItemWrapper:hover {
+  position: absolute;
+  z-index: 10;
+  transition: all .3s ease-out;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .pbVideoItemWrapper:hover {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.VideoInfo {
+  align-self: flex-end;
+  color: #ffffff;
+  padding: 30px;
+  width: 15vw;
+  font-family: var(--font-primary-bolder);
+  letter-spacing: -1px;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .VideoInfo {
+    font-size: var(--text-md);
+    padding: 0.625rem;
+    letter-spacing: 0;
+    width: 40vw;
+  }
+}
+
+.pbVideoLinks {
+  position: relative;
+  z-index: -1;
+}
+
+.pbVideoInsert, .pbVideoLinks, .VideoInfo {
+  grid-area: hoverVideo;
+}
+
+.AppTitle {
+  text-transform: uppercase;
+  color: #A5A8AB;
+  font-family: var(--font-primary-bolder);
+  padding: 1.875rem 0 1.25rem 0;
+  display: inline-block;
+  letter-spacing: -1px;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .AppTitle {
+    font-size: var(--text-xl);
+    line-height: 1.875rem;
+    letter-spacing: 0;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .AppTitle {
+    padding-left: 2rem;
+  }
+}
+
+.Shadow {
+  text-shadow: 0 2px 10px #444444;
+}
+
+.u-download {
+  font-weight: bold;
+  font-size: 4vw;
+}
+
+@media screen and (min-width: 64em) {
+  .u-download {
+    font-size: 2rem;
+  }
+}
+
+.VideoVolumen i {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}

@@ -40,7 +40,12 @@ export class NetworkManager {
     var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
+    console.log("ahi va");
+    console.log(JSON.stringify(parameters)); 
+
     return Observable.create(observer => {
+
+     
 
       this.httpClient.post(`${postParameters.PathOperation}`, JSON.stringify(parameters), options)
         .subscribe((data) => {
