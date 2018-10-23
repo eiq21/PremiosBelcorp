@@ -3,6 +3,7 @@ import Player from '@vimeo/player';
 import { DetailViewModel } from '../../../viewmodels';
 import { NgxSpinnerService } from 'ngx-spinner';
 
+
 @Component({
   selector: 'detail-vote',
   templateUrl: './detail-vote.component.html',
@@ -30,9 +31,53 @@ export class DetailVoteComponent implements OnInit {
 
     this.spinner.show();
 
-    this.videoDetalle();
+    //setTimeout(() => {
+        this.videoDetalle();
+    //});
 
     this.spinner.hide();
+
+  }
+
+  activeTab1() {
+
+    let sinopsisTab = <HTMLElement>document.querySelector('.Sinopsis');
+    let collaboratorTab = <HTMLElement>document.querySelector('.Collaborator');
+
+    let tabS = <HTMLElement>document.querySelector('.tab1');
+    let tabC = <HTMLElement>document.querySelector('.tab2');
+
+    if (sinopsisTab) {
+      sinopsisTab.setAttribute("data-tabby-active", "");
+      tabS.setAttribute("data-tabby-active", "");
+    }
+
+    if (collaboratorTab) {
+      collaboratorTab.attributes.removeNamedItem("data-tabby-active");
+      tabC.attributes.removeNamedItem("data-tabby-active");
+    }
+
+  }
+
+  activeTab2() {
+
+    let tabS = <HTMLElement>document.querySelector('.tab1');
+    let tabC = <HTMLElement>document.querySelector('.tab2');
+
+    let sinopsisTab = <HTMLElement>document.querySelector('.Sinopsis');
+    let collaboratorTab = <HTMLElement>document.querySelector('.Collaborator');
+
+    if (sinopsisTab) {
+      sinopsisTab.attributes.removeNamedItem("data-tabby-active");
+      tabS.attributes.removeNamedItem("data-tabby-active");
+    }
+
+    if (collaboratorTab) {
+      collaboratorTab.setAttribute("data-tabby-active", "");
+      tabC.setAttribute("data-tabby-active", "");
+    }
+
+
   }
 
  
@@ -56,30 +101,8 @@ export class DetailVoteComponent implements OnInit {
         autoplay: true
       })
 
-      player[index].getVideoTitle().then(function (title) {
-        t.innerText = title
-        console.log('title:', title)
-      })
+    })  
 
-    })
-
-  //const d = document,
-  //  vimeoWrapper = Array.from(d.querySelectorAll('.Vimeo-wrapper')),
-  //  t = d.getElementById('videoTitle'),
-  //  vimeoTagID = d.getElementById('videoDetalle')
-  //  let video = null;
-
-
-  //if (vimeoTagID) {
-  //   // Construir el player con el id proporcionado en el html
-  //   video = new Player(vimeoTagID, { id: vimeoTagID.getAttribute('data-vimeo-id') }),
-       
-  //   video.getVideoTitle().then(function (title) {
-  //     t.innerText = title
-  //     console.log('title:', title)
-  //   })
-
-  // }
   }
 
   ErrorHandler(error, _self) {

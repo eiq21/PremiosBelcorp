@@ -9,29 +9,37 @@
       <div class="VideoVimeo">
         <div class="Vimeo-wrapper" id="videoDetalle"></div>
       </div>
-      <div id="tabs">
-        <mat-tab-group>
-          <mat-tab label="Sinopsis">
+      <div class="tabs mTB15">
+        <ul class="bar">
+          <li class="tab1" data-tabby-bar="1" (click)="activeTab1()" data-tabby-active>
+            <div class="barTitle SecTitle text--lg">Sinopsis</div>
+          </li>
+          <li class="tab2" data-tabby-bar="2" (click)="activeTab2()">
+            <div class="barTitle SecTitle text--lg">Protagonistas</div>
+          </li>
+        </ul>
+        <div class="content mT15">
+          <div class="Sinopsis" data-tabby-content="1" data-tabby-active>
             <div class="pbScroll">
               {{ objDetail.Synopsis }}
             </div>
-          </mat-tab>
-          <mat-tab label="Protagonistas">
+          </div>
+          <div class="Collaborator" data-tabby-content="2">
             <div class="pbScroll">
               {{ objDetail.Protagonists }}
             </div>
-          </mat-tab>
-        </mat-tab-group>
+          </div>
+        </div>
       </div>
-      <!--<div class="tabsResp Hide">
+      <div class="tabsResp Hide">
         <div class="content">
           <div class="Sinopsis">
             <div class="pbScroll">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              {{ objDetail.Synopsis }}
             </div>
           </div>
         </div>
-      </div>-->
+      </div>
     </div>
     <detail-suggestions></detail-suggestions>
   </article>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TileViewModel } from '../../../../modules/awards/viewmodels/index';
+import { TileViewModel } from '../../../../../modules/awards/viewmodels/index';
 
 
 @Component({

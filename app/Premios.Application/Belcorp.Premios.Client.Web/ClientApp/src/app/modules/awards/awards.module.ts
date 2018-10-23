@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AwardsManagerComponent } from './containers/manager';
-import { BodyComponent } from './components/body/body.component';
-import { TileComponent } from './components/tile/tile.component';
-import { TilesComponent } from './components/tiles/tiles.component';
-import { BannerComponent } from './components/banner/banner.component';
-import { AwardService, AuthenticationService } from '../../services';
+import { BodyComponent } from '././components/home/body/body.component';
+import { TileComponent } from '././components/home/tile/tile.component';
+import { TilesComponent } from '././components/home/tiles/tiles.component';
+import { BannerComponent } from '././components/home/banner/banner.component';
+import { AwardService } from '../../services';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { DetailComponent } from './components/detail/detail.component';
@@ -15,6 +15,7 @@ import { MaterialModule } from '../../shared/material';
 import { DetailSuggestionsComponent } from './components/detail/detail-suggestions/detail-suggestions.component';
 import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -25,14 +26,14 @@ const routes: Routes = [
       {
         outlet: 'premios-manager',
         path: '',
-        component: BodyComponent
+        component: HomeComponent
       }
     ]
   },
   {
     path: 'detail/:id', component: AwardsManagerComponent,
     children: [
-      {
+      { 
         outlet: 'premios-manager',
         path: '',
         component: DetailComponent
@@ -65,7 +66,8 @@ const routes: Routes = [
     DetailComponent,
     DetailSuggestionsComponent,
     DetailVoteComponent,
-    AwardsManagerComponent 
+    AwardsManagerComponent,
+    HomeComponent 
   ], 
   entryComponents: [
 
