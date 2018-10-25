@@ -40,12 +40,10 @@ export class NetworkManager {
     var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
-    console.log("ahi va");
-    console.log(JSON.stringify(parameters)); 
+    console.log("aqui va:");
+    console.log(parameters);
 
-    return Observable.create(observer => {
-
-     
+    return Observable.create(observer => {     
 
       this.httpClient.post(`${postParameters.PathOperation}`, JSON.stringify(parameters), options)
         .subscribe((data) => {
@@ -108,8 +106,8 @@ export class NetworkManager {
     body.set('username', postParameters.RequestParameter.username); 
     body.set('password', postParameters.RequestParameter.password);
 
-    console.log(body);
-    console.log(options);
+    //console.log(body);
+    //console.log(options);
 
     return Observable.create(observer => {
       this.httpClient.post(`${postParameters.PathOperation}`, body.toString(), options)

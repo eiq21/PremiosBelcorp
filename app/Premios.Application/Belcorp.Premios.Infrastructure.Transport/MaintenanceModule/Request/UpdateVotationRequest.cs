@@ -5,9 +5,11 @@ using System.Text;
 
 namespace Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Request
 {
-    public class ListDetailByTeamRequest
+    public class UpdateVotationRequest
     {
         public int TeamId { get; set; }
-        public string CodeUser { get; set; }
+        public string UserCode { get; set; }
+        public int Value { get; set; }
+        public int VotationId { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             modelBuilder.ApplyConfiguration(new UsuarioAdminConfiguration());
             modelBuilder.ApplyConfiguration(new EquipoConfiguration());
             modelBuilder.ApplyConfiguration(new EquipoUrlConfiguration());
+            modelBuilder.ApplyConfiguration(new VotacionConfiguration());
 
             #endregion
 
@@ -42,6 +43,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         public virtual DbSet<TipoUrl> TipoUrl { get; set; }
         public virtual DbSet<Equipo> Equipo { get; set; }
         public virtual DbSet<EquipoUrl> EquipoUrl { get; set; }
+        public virtual DbSet<Votacion> Votacion { get; set; }
 
         public override int SaveChanges()
         {

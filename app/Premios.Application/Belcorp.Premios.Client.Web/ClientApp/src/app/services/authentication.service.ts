@@ -6,6 +6,7 @@ import { AuthUserService } from './auth-user.service';
 //import { UserModel } from '../models/models/user.model';
 import { Router } from '@angular/router';
 import { Constants } from '../shared/utils';
+import { UserModel } from '../models/models/user.model';
 
 @Injectable()
 export class AuthenticationService {
@@ -27,13 +28,13 @@ export class AuthenticationService {
         if (token) {
           this.authUserService.setUserToken(token);
           //this.securityService.ListUserGrantedAccessesByUsername(username).subscribe(userGrantedAccess => {
-          //  let loggedInUser = new UserModel();
-          //  loggedInUser.Username = username;
+            let loggedInUser = new UserModel();
+            loggedInUser.Username = username;
           //  loggedInUser.GrantedAccesses = userGrantedAccess.GrantedAccesses;
           //  userGrantedAccess.UserProcesses.forEach(userProcess => { loggedInUser.Processes.push(userProcess.Process) });
           //  loggedInUser.isSuperAdmin = loggedInUser.GrantedAccesses.find(q => q.Code == Constants.PermisoSistema.PERMISO_ADMINISTRADOR_SISTEMA) != null;
           //
-          //  this.authUserService.setLoggedInUser(loggedInUser);
+            this.authUserService.setLoggedInUser(loggedInUser);
           observer.next(""); 
           //});
 

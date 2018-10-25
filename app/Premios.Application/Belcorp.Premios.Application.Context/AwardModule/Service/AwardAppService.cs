@@ -9,6 +9,7 @@ using System.Text;
 using System.Linq;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Infrastructure.Data.Entity.Domain;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Belcorp.Premios.Application.Context.AwardModule.Service
 {
@@ -125,27 +126,95 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
 
         }
 
-        public ICollection<DetailByTeam> ListDetailByTeam(int teamId) //int campaignId
+        public ICollection<DetailByTeam> ListDetailByTeam(int teamId, string codeUser) //int campaignId
         {
             int? activeCampaign = this.GetActiveCampaign();
 
             var query = (from e in _unitOfWork.DbContext.Equipo
                          join eu in _unitOfWork.DbContext.EquipoUrl on e.EquipoId equals eu.EquipoId
+                         join v in _unitOfWork.DbContext.Votacion.Where(x => x.CodUsuario == codeUser)
+                               on eu.EquipoId equals v.EquipoId
+                         into vl
+                         from vlj in vl.DefaultIfEmpty()
                          where e.CampaniaId == activeCampaign.Value &&
                                eu.TipoUrlId == 9 && e.Activo == true && e.Eliminado == false
                                && e.EquipoId == teamId
-                         select new DetailByTeam()
+                        select new DetailByTeam()
                          {
                              TeamId = e.EquipoId,
                              Name = e.Nombre,
                              Protagonists = e.Protagonistas,
                              Synopsis = e.Sinopsis,
-                             ValueUrl = eu.ValorUrl
-                         });
+                             ValueUrl = eu.ValorUrl,
+                             Vote = vlj.Valor,
+                             VotationId = vlj.VotacionId
+
+                        });
             //where c.CampaignId);
             var lstTeamDetail = query.ToList();
 
             return lstTeamDetail;
+        }
+
+        public Votation InsertVotation(InsertVotation insertVotation)
+        {
+            Votacion objVotacion = new Votacion() {
+                EquipoId = insertVotation.TeamId,
+                CodUsuario = insertVotation.UserCode,
+                Valor = insertVotation.Value,
+                FechaCreacion = DateTime.Now,
+                UsuarioCreacion = insertVotation.UserCode
+            };
+
+            EntityEntry<Votacion> votacionResult = _unitOfWork.DbContext.Votacion.Add(objVotacion);
+
+            _unitOfWork.SaveChanges();
+
+            var votation = votacionResult.Entity;
+
+            Votation objVotation = new Votation()
+            {
+                VotationId = votation.VotacionId,
+                TeamId = votation.EquipoId,
+                UserCode = votation.CodUsuario,
+                Value = votation.Valor,
+                CreatedUser = votation.UsuarioCreacion,
+                CreatedDate = votation.FechaCreacion
+            };
+
+            return objVotation;
+
+        }
+
+        public Votation UpdateVotation(UpdateVotation updateVotation)
+        {
+            Votacion objVotacion = new Votacion()
+            {
+                VotacionId = updateVotation.VotationId,
+                EquipoId = updateVotation.TeamId,
+                CodUsuario = updateVotation.UserCode,
+                Valor = updateVotation.Value,
+                UsuarioModificacion = updateVotation.UserCode
+            };
+
+            EntityEntry<Votacion> votacionResult = _unitOfWork.DbContext.Votacion.Update(objVotacion);
+
+            _unitOfWork.SaveChanges();
+
+            var votation = votacionResult.Entity;
+
+            Votation objVotation = new Votation()
+            {
+                VotationId = votation.VotacionId,
+                TeamId = votation.EquipoId,
+                UserCode = votation.CodUsuario,
+                Value = votation.Valor,
+                LastModifiedUser = votation.UsuarioModificacion,
+                LastModifiedDate = votation.FechaModificacion
+            };
+
+            return objVotation;
+
         }
     }
 }

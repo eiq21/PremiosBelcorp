@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { UserModel } from '../models/models/user.model';
 import { StorageService } from './storage.service';
+import { UserModel } from '../models/models/user.model';
 
 @Injectable()
 export class AuthUserService {
@@ -17,13 +18,13 @@ export class AuthUserService {
   //  return this.storageService.retrieve("user") && this.storageService.retrieve("user").isSuperAdmin;
   //}
 
-  //getLoggedInUser(): UserModel {
-  //  return this.storageService.retrieve("user");
-  //}
+  getLoggedInUser(): UserModel {
+    return this.storageService.retrieve("user");
+  }
 
-  //setLoggedInUser(userModel: UserModel) {
-  //  this.storageService.store('user', userModel);
-  //}
+  setLoggedInUser(userModel: UserModel) {
+    this.storageService.store('user', userModel);
+  }
 
   getUserToken(): string {
     return this.storageService.retrieve("usertoken");
@@ -34,7 +35,7 @@ export class AuthUserService {
   }
 
   LogOutUser() {
-    //this.storageService.remove('user');
+    this.storageService.remove('user');
     this.storageService.remove("usertoken");
   }
 }

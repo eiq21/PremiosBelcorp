@@ -4,4 +4,6 @@ export class Detail {
   public Synopsis: string;
   public Protagonists: string;
   public ValueUrl: string;
+  public Vote: number;
+  public VotationId: number;
 }

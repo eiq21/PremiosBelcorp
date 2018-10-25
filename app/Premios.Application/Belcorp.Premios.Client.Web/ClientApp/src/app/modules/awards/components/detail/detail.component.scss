@@ -1,4 +1,3 @@
-
 .Vote {
   max-width: 100%;
   color: #ffffff;
@@ -73,21 +72,3 @@
   font-family: 'Museo Sans';
 }
 
-
-.Vimeo-wrapper {
-  grid-area: vimeo;
-  height: 0;
-  width: 100%;
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-
-  & iframe {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    /* this will override the width=""/height="" properties defined on the iframe */
-    width: 100% !important;
-    height: 100% !important;
-  }
-}

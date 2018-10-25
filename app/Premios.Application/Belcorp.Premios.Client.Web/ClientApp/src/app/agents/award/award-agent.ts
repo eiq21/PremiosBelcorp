@@ -1,4 +1,4 @@
-import { ListTilesResponse, ListBannersResponse, ListDetailResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
-import { ListDetailRequest } from "./request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
@@ -53,6 +53,26 @@ export class AwardAgent {
     return this.networkManager.Post(postParameters) as Observable<ListDetailResponse>;
 
   }
-  
+
+  InsertVotation(insertVotationRequest: InsertVotationRequest): Observable<InsertVotationResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.InsertVotation;
+    postParameters.RequestParameter = insertVotationRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<InsertVotationResponse>;
+
+  }
+
+
+  UpdateVotation(updateVotationRequest: UpdateVotationRequest): Observable<UpdateVotationResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.UpdateVotation;
+    postParameters.RequestParameter = updateVotationRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<UpdateVotationResponse>;
+
+  }
 
 }

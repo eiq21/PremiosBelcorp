@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Tiles, CampaignUrl, Detail } from "../dtos/index";
+import { Tiles, CampaignUrl, Detail, Votation } from "../dtos/index";
 import { TileViewModel, BannerViewModel, DetailViewModel } from "../../modules/awards/viewmodels/index";
+import { VotationViewModel } from "../../modules/awards/viewmodels/votation-view-model";
 
 @Injectable()
 export class AwardAdapter {
@@ -56,10 +57,33 @@ export class AwardAdapter {
         det.Protagonists = d.Protagonists;
         det.ValueUrl = d.ValueUrl;
         det.Name = d.Name;
+        det.Vote = d.Vote;
+        det.VotationId = d.VotationId;
       detailVM.push(det);
     });
 
     return detailVM;
   }
+
+  VotationToVotationViewModel(votation: Votation[]): VotationViewModel[] {
+
+    let votationVM: VotationViewModel[] = new Array<VotationViewModel>();
+
+    votation.forEach(function (v) {
+
+      let vot: VotationViewModel = new VotationViewModel();
+
+      vot.TeamId = v.TeamId;
+      vot.VotationId = v.VotationId;
+      vot.Value = v.Value;
+      vot.UserCode = v.UserCode;
+
+      votationVM.push(vot);
+
+    });
+
+    return votationVM;
+  }
+
 
 }

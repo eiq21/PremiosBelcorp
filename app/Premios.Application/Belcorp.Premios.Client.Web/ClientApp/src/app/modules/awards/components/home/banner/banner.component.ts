@@ -106,7 +106,7 @@ export class BannerComponent implements OnInit {
     }
 
     const carrusel = new Glide('.pb', options)
-    const vol = document.getElementById('volume')
+    const vol = document.querySelector('#volume') as HTMLElement 
 
 
     let vimeoPlayer, vimeoPlayertwo
@@ -114,9 +114,9 @@ export class BannerComponent implements OnInit {
     // ! insertar el video de fondo antes que arranque el carrusel
 
     if (document.querySelector('div.pb')) {
-      vimeoPlayer = new Player('insertPlayerOnInitSlide', {
+      vimeoPlayer = new Player('insertPlayerOnInitSlide', { 
         id: bannerInicio,
-        background: true
+        background: true 
       })
 
       vimeoPlayertwo = new Player('insertPlayerOnLastSlide', {

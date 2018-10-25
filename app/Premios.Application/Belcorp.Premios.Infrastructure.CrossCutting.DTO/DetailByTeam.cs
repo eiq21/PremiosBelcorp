@@ -10,5 +10,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public string Synopsis { get; set; }
         public string Protagonists { get; set; }
         public string ValueUrl { get; set; }
+        public int? VotationId { get; set; }
+        public int? Vote { get; set; }
     }
 }

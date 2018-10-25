@@ -21,25 +21,33 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
+    <Compile Remove="ClientApp\src\assets\js\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
+    <Content Remove="ClientApp\src\assets\js\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
+    <EmbeddedResource Remove="ClientApp\src\assets\js\**" />
     <None Remove="ClientApp\src\app\modules\awards\components\viewvideo\**" />
+    <None Remove="ClientApp\src\assets\js\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\agents\award\award-agent.ts" />
     <None Remove="ClientApp\src\app\agents\award\path-operation.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\index.ts" />
+    <None Remove="ClientApp\src\app\agents\award\request\insert-votation-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\list-detail-request.ts" />
+    <None Remove="ClientApp\src\app\agents\award\request\update-votation-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\index.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\insert-votation-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-detail-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\update-votation-response.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response-dto.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response.ts" />
     <None Remove="ClientApp\src\app\agents\networkmanager\auth-interceptor.ts" />
@@ -58,6 +66,7 @@
     <None Remove="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\Tiles.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\votation.ts" />
     <None Remove="ClientApp\src\app\models\models\configuration.model.ts" />
     <None Remove="ClientApp\src\app\models\models\user.model.ts" />
     <None Remove="ClientApp\src\app\modules\awards\awards.module.ts" />
@@ -66,6 +75,7 @@
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\detail-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\tile-view-model.ts" />
+    <None Remove="ClientApp\src\app\modules\awards\viewmodels\votation-view-model.ts" />
     <None Remove="ClientApp\src\app\modules\core\components\layout\layout.component.ts" />
     <None Remove="ClientApp\src\app\modules\core\components\viewport.ts" />
     <None Remove="ClientApp\src\app\modules\core\core.module.ts" />
@@ -101,15 +111,18 @@
     <Folder Include="ClientApp\src\app\modules\security\components\login\" />
     <Folder Include="ClientApp\src\assets\fonts\" />
     <Folder Include="ClientApp\src\assets\img\" />
-    <Folder Include="ClientApp\src\assets\js\" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\award-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\update-votation-request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\insert-votation-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\list-detail-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\update-votation-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\insert-votation-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-detail-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
@@ -130,12 +143,14 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\campaignurl.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\votation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\tiles.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\configuration.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\user.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\components\home\body\body.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\containers\manager.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\awards.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\votation-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\viewmodels\detail-view-model.ts" />
@@ -163,6 +178,21 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\material\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\material\material.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\utils.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\app\agents\award\response\update-votation-response.js">
+      <DependentUpon>update-votation-response.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\agents\award\response\update-votation-response.js.map">
+      <DependentUpon>update-votation-response.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\agents\award\response\insert-votation-response.js">
+      <DependentUpon>insert-votation-response.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\app\agents\award\response\insert-votation-response.js.map">
+      <DependentUpon>insert-votation-response.js</DependentUpon>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,19 +1,20 @@
-.Vimeo-wrapper {
+.VideoVimeo {
   grid-area: vimeo;
   height: 0;
   width: 100%;
   overflow: hidden;
   padding-bottom: 56.25%;
   position: relative;
+}
 
-  & iframe {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    /* this will override the width=""/height="" properties defined on the iframe */
-    width: 100% !important;
-    height: 100% !important;
-  }
+
+.VideoVimeo iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  /* this will override the width=""/height="" properties defined on the iframe */
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .Temporal {
@@ -187,88 +188,6 @@ body {
 }
 
 
-
-.RateAction {
-  text-align: center;
-}
-
-.RateAction i {
-  color: #25aae1;
-  margin: 20px;
-  font-size: 6.875rem;
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .RateAction i {
-    font-size: 2.8125rem;
-    margin: 5px;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 1023px) {
-  .RateAction i {
-    font-size: 3rem;
-    margin: 5px;
-  }
-}
-
-.RateVote {
-  position: absolute;
-  right: 0;
-  top: 3vh;
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .RateVote {
-    top: auto;
-    position: inherit;
-  }
-}
-
-.RateVote i {
-  color: #25aae1;
-  margin: 2px;
-  font-size: 1.875rem;
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .RateVote i {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 1023px) {
-  .RateVote i {
-    font-size: 1rem;
-  }
-}
-
-.RateText {
-  color: #ffffff;
-  text-align: center;
-  font-size: 2.5rem;
-}
-
-@media screen and (min-width: 0) and (max-width: 639px) {
-  .RateText {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (min-width: 640px) and (max-width: 1023px) {
-  .RateText {
-    font-size: 1.1rem;
-  }
-}
-
-.Collaborator ul {
-  height: 20vh;
-}
-
-.Collaborator h3 {
-  line-height: 3em;
-}
-
 .pbScroll {
   margin-left: inherit;
   padding-right: 30px;
@@ -388,7 +307,7 @@ body {
   margin: 10px;
 }
 
-.VersionType.bgLand--00 {
+/*.VersionType.bgLand--00 {
   background: url("../../../../../../assets/img/bgland01.jpg");
   background-size: cover;
 }
@@ -396,7 +315,7 @@ body {
 .VersionType.bgLand--01 {
   background: url("../../../../../../assets/img/bgland01.jpg");
   background-size: cover;
-}
+}*/
 
 .VersionType a {
   display: block;
@@ -414,10 +333,6 @@ body {
 .w100 {
   width: 100%;
 }
-
-
-
-
 
 @media screen and (min-width: 0) and (max-width: 639px) {
   .tabs {
@@ -495,3 +410,240 @@ body {
 .bar li:first-child {
   margin-right: 30px;
 }
+
+
+/***estrellas votacion**/
+
+.rating {
+  top: 50%;
+  left: 50%;
+  transform: rotateY(180deg);
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  display: block;
+  cursor:pointer;
+  width: 150px;
+}
+
+.rating label:before {
+  content: '\f005';
+  font-family: fontAwesome;
+  position: relative;
+  display: block;
+  font-size: 7rem;
+  color: #0c3558;
+}
+
+.rating label:after {
+  content: '\f005';
+  font-family: fontAwesome;
+  position: absolute;
+  display: block;
+  font-size: 7rem;
+  color: #25aae1;
+  top: 0;
+  opacity: 0;
+  transition: .5s;
+  text-shadow: 0 2px 5px rgba(0,0,0, .5);
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
+  opacity: 1;
+}
+
+.RateText {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateText {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateText {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .rating {
+    font-size: 2.8125rem;
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .rating {
+    font-size: 3rem;
+    margin: 5px;
+  }
+}
+/*****************/
+
+
+/**estrellas informativas**/
+/*RateAction {
+  text-align: center;
+}
+
+.RateAction i {
+  color: #FF0000;
+  margin: 20px;
+  font-size: 6.875rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateAction i {
+    font-size: 2.8125rem;
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateAction i {
+    font-size: 3rem;
+    margin: 5px;
+  }
+}*/
+
+.RateVote {
+  position: absolute;
+  right: 0;
+  top: 3vh;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateVote {
+    top: auto;
+    position: inherit;
+  }
+}
+
+.RateVote i {
+  margin: 2px;
+  font-size: 1.875rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateVote i {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateVote i {
+    font-size: 1rem;
+  }
+}
+
+.RateStarVote {
+  color: #25aae1;
+}
+
+.RateStarNoVote {
+  color: #0c3558;
+}
+
+
+/*****/
+
+  /*RateAction {
+  text-align: center;
+}
+
+.RateAction i {
+  color: #0c3558;
+  margin: 20px;
+  font-size: 6.875rem;
+}
+
+.RateAction > a:hover i,
+.RateAction > a:hover i ~ RateAction {
+  color: #25aae1;
+}
+
+
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateAction i {
+    font-size: 2.8125rem;
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateAction i {
+    font-size: 3rem;
+    margin: 5px;
+  }
+}
+
+.RateVote {
+  position: absolute;
+  right: 0;
+  top: 3vh;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateVote {
+    top: auto;
+    position: inherit;
+  }
+}
+
+.RateVote i {
+  color: #25aae1;
+  margin: 2px;
+  font-size: 1.875rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateVote i {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateVote i {
+    font-size: 1rem;
+  }
+}
+
+.RateText {
+  color: #ffffff;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .RateText {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  .RateText {
+    font-size: 1.1rem;
+  }
+}
+
+.Collaborator ul {
+  height: 20vh;
+}
+
+.Collaborator h3 {
+  line-height: 3em; 
+}*/

@@ -1,5 +1,6 @@
 ﻿using Belcorp.Premios.Application.Context.AwardModule.Service;
 using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
+using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
 using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Request;
 using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Response;
 using Microsoft.AspNetCore.Authorization;
@@ -47,7 +48,43 @@ namespace Belcorp.Premios.API.Controllers
         {
             return Ok(new ListDetailResponse
             {
-                Detail = _awardAppService.ListDetailByTeam(listDetailByTeamRequest.TeamId)
+                Detail = _awardAppService.ListDetailByTeam(listDetailByTeamRequest.TeamId, listDetailByTeamRequest.CodeUser)
+            });
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost]
+        public IActionResult InsertVotation([FromBody]InsertVotationRequest InsertVotationRequest)
+        {
+
+            InsertVotation insertVotation = new InsertVotation() {
+                TeamId = InsertVotationRequest.TeamId,
+                UserCode = InsertVotationRequest.UserCode,
+                Value = InsertVotationRequest.Value
+            };
+
+            return Ok(new InsertVotationResponse
+            {
+                Votation = _awardAppService.InsertVotation(insertVotation)
+            });
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost]
+        public IActionResult UpdateVotation([FromBody]UpdateVotationRequest UpdateVotationRequest)
+        {
+
+            UpdateVotation updateVotation = new UpdateVotation()
+            {
+                TeamId = UpdateVotationRequest.TeamId,
+                UserCode = UpdateVotationRequest.UserCode,
+                Value = UpdateVotationRequest.Value,
+                VotationId = UpdateVotationRequest.VotationId
+            };
+
+            return Ok(new UpdateVotationResponse
+            {
+                Votation = _awardAppService.UpdateVotation(updateVotation)
             });
         }
     }

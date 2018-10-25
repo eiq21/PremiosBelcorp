@@ -3,8 +3,19 @@
   <article class="Temporal">
     <div class="Video">
       <div class="VideoTitleWrap">
-        <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
-        <div class="RateVote Hide"><a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a></div>
+          <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
+          <div class="RateVote">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <!--<a class="RateAction--vote" href="#" data-action-vote="1"><i class="RateAction--vote fa fa-star"></i></a>
+                <a class="RateAction--vote" href="#" data-action-vote="2"><i class="RateAction--vote fa fa-star"></i></a>
+                <a class="RateAction--vote" href="#" data-action-vote="3"><i class="RateAction--vote fa fa-star"></i></a>
+                <a class="RateAction--vote" href="#" data-action-vote="4"><i class="RateAction--vote fa fa-star"></i></a>
+                <a class="RateAction--vote" href="#" data-action-vote="5"><i class="RateAction--vote fa fa-star"></i></a>-->
+          </div>
       </div>
       <div class="VideoVimeo">
         <div class="Vimeo-wrapper" id="videoDetalle"></div>
@@ -49,12 +60,26 @@
 </div>
 <div class="Hide" id="template">
   <div class="Rate grCenter" id="ratevideo">
-    <div class="RateAction text--full"><a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a><a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a></div>
+    <!--<div class="RateAction text--full">
+          <a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a>
+          <a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a>
+          <a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a>
+          <a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a>
+          <a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a>
+    </div>-->
+    <div class="rating">
+      <input type="radio" name="star" id="star5" (click)="calificarVideo($event, 5, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star5"></label>
+      <input type="radio" name="star" id="star4" (click)="calificarVideo($event, 4, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star4"></label>
+      <input type="radio" name="star" id="star3" (click)="calificarVideo($event, 3, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star3"></label>
+      <input type="radio" name="star" id="star2" (click)="calificarVideo($event, 2, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star2"></label>
+      <input type="radio" name="star" id="star1" (click)="calificarVideo($event, 1, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star1"></label>
+    </div>
     <div class="RateText">
-      Texto creativo al final del video
+      Califica el video!
     </div>
   </div>
 </div>
+
 <ngx-spinner bdColor="rgba(0,0,0,0.1)"
              size="medium"
              color="#FF0025"

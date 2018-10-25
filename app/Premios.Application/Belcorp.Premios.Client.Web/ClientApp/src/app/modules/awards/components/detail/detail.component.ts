@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AwardService } from '../../../../services';
+import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { DetailViewModel } from '../../viewmodels';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -22,6 +22,7 @@ export class DetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute, 
     private awardService: AwardService,
     private awardAdapter: AwardAdapter,
+    private authUserService: AuthUserService,
     private spinner: NgxSpinnerService
   ) {
 
@@ -40,10 +41,12 @@ export class DetailComponent implements OnInit, OnDestroy {
    
   }
 
-  listDetailByTeam() {
+  listDetailByTeam() { 
     let _self = this;
 
-    this.awardService.ListDetailByTeam(this.TeamId).subscribe(detail => {
+    let userLogged = this.authUserService.getLoggedInUser().Username;
+
+    this.awardService.ListDetailByTeam(this.TeamId, userLogged).subscribe(detail => {
       this.listDetail = this.awardAdapter.DetailToDetailViewModel(detail);
 
       this.objDetail = this.listDetail[0];

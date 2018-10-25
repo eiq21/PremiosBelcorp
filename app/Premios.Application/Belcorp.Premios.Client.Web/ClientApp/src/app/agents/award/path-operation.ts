@@ -1,5 +1,7 @@
 export enum PathOperation { 
   ListBannersByCampaign = "award/ListBannersByCampaign",
   ListTiles = "award/ListTiles",
-  ListDetailByTeam = "award/ListDetailByTeam"
+  ListDetailByTeam = "award/ListDetailByTeam",
+  InsertVotation = "award/InsertVotation",
+  UpdateVotation = "award/UpdateVotation"
 }

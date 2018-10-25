@@ -2,5 +2,6 @@
 
 export class ListDetailRequest  {
   public TeamId: number;
+  public CodeUser: string;
   
 }
