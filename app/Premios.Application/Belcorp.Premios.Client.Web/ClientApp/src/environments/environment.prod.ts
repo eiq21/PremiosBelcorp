@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  AwardsUrl: 'http://localhost:7945/api/',
-  IdentityUrl: 'http://localhost:25612/'
+  AwardsUrl: 'http://premiosqa.belcorp.biz:81/ApiPremios/api/',
+  IdentityUrl: 'http://premiosqa.belcorp.biz:81/ApiSeguridadPremios/'
 };

@@ -30,7 +30,7 @@
             var claims = new List<Claim>
             {
                 //new Claim("sub", user.UserId.ToString()),
-                //new Claim("name", user.Username),
+                new Claim("name", context.Subject.GetSubjectId()),
                 //new Claim("givenname", user.FirstName),
                 //new Claim("surname", user.LastName),
                 //new Claim("preferred_username", user.Username),
