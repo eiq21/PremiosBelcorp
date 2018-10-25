@@ -32,7 +32,7 @@ namespace Belcorp.Premios.API.Controllers
                 CampaignUrl = _awardAppService.ListBannersByCampaign()
             });
         }
-        [EnableCors("CorsPolicy")]
+      
         [HttpPost]
         public IActionResult ListTiles()
         {
