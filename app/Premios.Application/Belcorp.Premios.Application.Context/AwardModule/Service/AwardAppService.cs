@@ -193,8 +193,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                 VotacionId = updateVotation.VotationId,
                 EquipoId = updateVotation.TeamId,
                 CodUsuario = updateVotation.UserCode,
-                Valor = updateVotation.Value,
-                UsuarioModificacion = updateVotation.UserCode
+                Valor = updateVotation.Value
             };
 
             EntityEntry<Votacion> votacionResult = _unitOfWork.DbContext.Votacion.Update(objVotacion);

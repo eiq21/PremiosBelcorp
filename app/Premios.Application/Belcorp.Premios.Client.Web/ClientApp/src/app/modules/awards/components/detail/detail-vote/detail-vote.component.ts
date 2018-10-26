@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import Player from '@vimeo/player';
 import { DetailViewModel, VotationViewModel } from '../../../viewmodels';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -15,6 +15,8 @@ export class DetailVoteComponent implements OnInit {
 
   @Input() objDetail: DetailViewModel;
   @Input() listDetail: DetailViewModel[];
+  @ViewChild("RateVote") rateVote: ElementRef;
+
   private listVotation: VotationViewModel[];
   private spinner: NgxSpinnerService;
   private awardService: AwardService;
@@ -154,27 +156,42 @@ export class DetailVoteComponent implements OnInit {
     if (votationId == null) {
 
       this.awardService.InsertVotation(teamID, userLogged, vote).subscribe(votation => {
-        this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);
 
-       
+        this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);       
         this.spinner.hide(); 
+
       }, error => this.ErrorHandler(error, _self));
 
     } else
     {
       this.awardService.UpdateVotation(teamID, userLogged, vote, votationId).subscribe(votation => {
-        this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);
 
+        this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);
         this.spinner.hide();
+
       }, error => this.ErrorHandler(error, _self));
     }
+
+
     
   }
 
+  isPrint(star, vote) {  
+
+    if (parseInt(vote) >= parseInt(star)) {
+      return true;
+    } else
+    {
+      return false; 
+    }
+
+  }
   
 
   ErrorHandler(error, _self) {
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
-  } 
+  }
+
+  
 
 }

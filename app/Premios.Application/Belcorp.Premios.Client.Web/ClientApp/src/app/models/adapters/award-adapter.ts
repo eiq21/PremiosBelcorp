@@ -65,22 +65,20 @@ export class AwardAdapter {
     return detailVM;
   }
 
-  VotationToVotationViewModel(votation: Votation[]): VotationViewModel[] {
+  VotationToVotationViewModel(votation: Votation): VotationViewModel[] {
 
     let votationVM: VotationViewModel[] = new Array<VotationViewModel>();
+    let vot: VotationViewModel = new VotationViewModel();
+    let objVote: Votation;
 
-    votation.forEach(function (v) {
+    objVote = votation;
 
-      let vot: VotationViewModel = new VotationViewModel();
+    vot.TeamId = objVote.TeamId;
+    vot.VotationId = objVote.VotationId;
+    vot.Value = objVote.Value;
+    vot.UserCode = objVote.UserCode;
 
-      vot.TeamId = v.TeamId;
-      vot.VotationId = v.VotationId;
-      vot.Value = v.Value;
-      vot.UserCode = v.UserCode;
-
-      votationVM.push(vot);
-
-    });
+    votationVM.push(vot); 
 
     return votationVM;
   }

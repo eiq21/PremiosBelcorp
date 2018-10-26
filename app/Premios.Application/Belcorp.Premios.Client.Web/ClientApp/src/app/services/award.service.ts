@@ -38,7 +38,7 @@ export class AwardService {
       .pipe(map((listDetailResponse) => listDetailResponse.Detail));
   }
 
-  InsertVotation(teamId: number, userCode: string, value: number): Observable<Votation[]>
+  InsertVotation(teamId: number, userCode: string, value: number): Observable<Votation>
   {
     let insertVotationRequest: InsertVotationRequest = new InsertVotationRequest();
     insertVotationRequest.TeamId = teamId;
@@ -50,7 +50,7 @@ export class AwardService {
 
   }
 
-  UpdateVotation(teamId: number, userCode: string, value: number, votationId: number): Observable<Votation[]> {
+  UpdateVotation(teamId: number, userCode: string, value: number, votationId: number): Observable<Votation> {
     let updateVotationRequest: UpdateVotationRequest = new UpdateVotationRequest();
     updateVotationRequest.TeamId = teamId;
     updateVotationRequest.UserCode = userCode;
