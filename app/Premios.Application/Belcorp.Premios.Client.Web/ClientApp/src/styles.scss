@@ -42,3 +42,12 @@ $breakpoints: ( s:0, m:640px, l:1024px, xl:1440px, xxl:1756px ) !default;
   align-items: center;
   justify-content: center;
 }
+
+.Vimeo-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* this will override the width=""/height="" properties defined on the iframe */
+  width: 100%;
+  height: 100%;
+}

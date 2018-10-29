@@ -13,5 +13,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
         ICollection<DetailByTeam> ListDetailByTeam(int teamId, string codeUser);
         Votation InsertVotation(InsertVotation insertVotation);
         Votation UpdateVotation(UpdateVotation updateVotation);
+        ICollection<Suggestions> ListSuggestionsForUser(string codeUser);
     }
 }

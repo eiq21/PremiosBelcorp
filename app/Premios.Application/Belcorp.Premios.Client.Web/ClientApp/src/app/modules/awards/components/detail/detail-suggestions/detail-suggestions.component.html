@@ -1,24 +1,17 @@
 <div class="Related">
   <h2 class="SecTitle text--lg" id="glow">Más historias fuera de serie</h2>
-  <div class="RelatedContainer">
-    <div class="Preview"></div>
-    <div class="Info">
-      <h3 class="ThirdTitle lh-title">Nombre de la historia y una linea más 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  ...</p>
-    </div>
+  <div *ngFor="let iter of listSuggestion" class="RelatedContainer">
+      <a class="tileLink" (click)="goToOtherVideo(iter.TeamId)">
+        <div class="Preview">
+          <img class="preview__img" src="../../../../assets/img/{{iter.ValueUrl}}" />
+        </div>
+      </a>
+      <div class="Info">
+        <a class="tileLink" (click)="goToOtherVideo(iter.TeamId)">
+          <h3 class="ThirdTitle lh-title">{{iter.Name}}</h3>
+          <p>{{iter.Description}}</p>
+        </a>
+      </div>
   </div>
-  <div class="RelatedContainer">
-    <div class="Preview"></div>
-    <div class="Info">
-      <h3 class="ThirdTitle lh-title">Nombre de la historia y una linea más 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  ...</p>
-    </div>
-  </div>
-  <div class="RelatedContainer">
-    <div class="Preview"></div>
-    <div class="Info">
-      <h3 class="ThirdTitle lh-title">Nombre de la historia y una linea más 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  ...</p>
-    </div>
-  </div>
+
 </div>

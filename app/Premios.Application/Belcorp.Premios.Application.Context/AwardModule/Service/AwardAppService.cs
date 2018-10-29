@@ -215,5 +215,30 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             return objVotation;
 
         }
+
+        public ICollection<Suggestions> ListSuggestionsForUser(string codeUser)
+        {
+            int? activeCampaign = this.GetActiveCampaign();
+
+            var query = (from e in _unitOfWork.DbContext.Equipo
+                         join eu in _unitOfWork.DbContext.EquipoUrl on e.EquipoId equals eu.EquipoId
+                         join v in _unitOfWork.DbContext.Votacion
+                               on eu.EquipoId equals v.EquipoId
+                         into vl
+                         from vlj in vl.DefaultIfEmpty()
+                         where e.CampaniaId == activeCampaign.Value && 
+                         eu.TipoUrlId == 10 && e.Activo == true && e.Eliminado == false && vlj.CodUsuario != codeUser
+                         select new Suggestions()
+                         {
+                             TeamId = e.EquipoId,
+                             Name = e.Nombre,
+                             Description = e.Descripcion,
+                             ValueUrl = eu.ValorUrl
+                         });
+
+            var lstSuggestions = query.OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+
+            return lstSuggestions;
+        }
     }
 }

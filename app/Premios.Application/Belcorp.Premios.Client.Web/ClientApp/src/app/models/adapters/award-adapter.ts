@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Tiles, CampaignUrl, Detail, Votation } from "../dtos/index";
+import { Tiles, CampaignUrl, Detail, Votation, Suggestion } from "../dtos/index";
 import { TileViewModel, BannerViewModel, DetailViewModel } from "../../modules/awards/viewmodels/index";
 import { VotationViewModel } from "../../modules/awards/viewmodels/votation-view-model";
+import { SuggestionsViewModel } from "../../modules/awards/viewmodels/suggestions-view-model";
 
 @Injectable()
 export class AwardAdapter {
@@ -81,6 +82,25 @@ export class AwardAdapter {
     votationVM.push(vot); 
 
     return votationVM;
+  }
+
+  SuggestionsToSuggestionsViewModel(suggestions: Suggestion[]): SuggestionsViewModel[] {
+
+    let suggestionsVM: SuggestionsViewModel[] = new Array<SuggestionsViewModel>();
+
+    suggestions.forEach(function (s) {
+
+      let suggest: SuggestionsViewModel = new SuggestionsViewModel();
+
+        suggest.TeamId = s.TeamId,
+        suggest.Description = s.Description,
+        suggest.Name = s.Name,
+        suggest.ValueUrl = s.ValueUrl
+
+        suggestionsVM.push(suggest);
+    });
+
+    return suggestionsVM;
   }
 
 

@@ -2268,7 +2268,7 @@ p
 }
 
 .pbVimeoItem__inner {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   margin-left: -6.5px;
   margin-right: -6.5px;
@@ -2295,7 +2295,7 @@ body {
   }
 }
 
-@supports (grid-template-areas: "header") {
+/*@supports (grid-template-areas: "header") {*/
   .pbVimeoItem__inner {
     display: grid;
     grid-gap: 13px;
@@ -2324,7 +2324,7 @@ body {
     width: 100%;
     margin: 0;
   }
-}
+
 
 @media screen and (min-width: 0) and (max-width: 639px) {
   .pbVimeoItem__inner {
@@ -2391,6 +2391,8 @@ body {
   margin-bottom: 0.625rem;
 }
 
+/*******TILE********/
+
 .tile {
   position: relative;
   display: inline-block;
@@ -2402,7 +2404,7 @@ body {
   font-size: 1rem;
   cursor: pointer;
   transition: 450ms all;
-  transform-origin: center center;
+  transform-origin: center left;
 }
 
 .tile a {
@@ -2636,6 +2638,8 @@ body {
   opacity: 1;
   transition: 450ms opacity;
 }
+
+/****FIN_TILES********/
 
 .fullscreen-bg {
   position: fixed;

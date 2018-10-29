@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { DetailViewModel } from '../../viewmodels';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SuggestionsViewModel } from '../../viewmodels/suggestions-view-model';
 
 
 @Component({
@@ -12,14 +13,19 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit, OnDestroy {
+   
 
   private _route: ActivatedRoute; 
   public TeamId: number;
   public listDetail: DetailViewModel[];
   public objDetail: DetailViewModel;
+  public listSuggestion: SuggestionsViewModel[];
+    navigationSubscription: any;
+  public interval: any;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private router: Router,
     private awardService: AwardService,
     private awardAdapter: AwardAdapter,
     private authUserService: AuthUserService,
@@ -30,20 +36,26 @@ export class DetailComponent implements OnInit, OnDestroy {
 
     this.route.params.subscribe(params => this.TeamId = params['id']);
 
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationEnd) {
+        clearInterval(this.interval);
+        this.initializeDetail();
+      }
+    });
 
   }
 
   ngOnInit() {
-
-
-    this.spinner.show();
+  }
+  
+  initializeDetail() { 
     this.listDetailByTeam();
-   
+    this.listSuggestions();
   }
 
   listDetailByTeam() { 
     let _self = this;
-
+    this.spinner.show();
     let userLogged = this.authUserService.getLoggedInUser().Username;
 
     this.awardService.ListDetailByTeam(this.TeamId, userLogged).subscribe(detail => {
@@ -57,6 +69,17 @@ export class DetailComponent implements OnInit, OnDestroy {
     }, error => this.ErrorHandler(error, _self));
   }
 
+  listSuggestions() {
+    let _self = this;
+    this.spinner.show();
+    let userLogged = this.authUserService.getLoggedInUser().Username;
+
+    this.awardService.ListSuggestions(userLogged).subscribe(Suggestions => {
+      this.listSuggestion = this.awardAdapter.SuggestionsToSuggestionsViewModel(Suggestions);
+
+      this.spinner.hide();
+    }, error => this.ErrorHandler(error, _self));
+  }
 
 
   ErrorHandler(error, _self) {
@@ -64,7 +87,10 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
+    clearInterval(this.interval);
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
 
 }

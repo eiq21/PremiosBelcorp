@@ -4,7 +4,7 @@
     <div class="Video">
       <div class="VideoTitleWrap">
           <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
-          <div class="RateVote">
+          <div id="RateVote" class="RateVote" #rateVote>
             <i class="fa fa-star" [ngClass]="{
                  'RateStarVote' : isPrint(1,objDetail.Vote),
                  'RateStarNoVote' : !isPrint(1,objDetail.Vote)                  
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <detail-suggestions></detail-suggestions>
+    <detail-suggestions [listSuggestion]="listSuggestion"></detail-suggestions>
   </article>
 </section>
 <div class="Hide" id="responsiveImg">
@@ -88,11 +88,11 @@
           <a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a>
     </div>-->
     <div class="rating">
-      <input type="radio" name="star" id="star5" (click)="calificarVideo($event, 5, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star5"></label>
-      <input type="radio" name="star" id="star4" (click)="calificarVideo($event, 4, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star4"></label>
-      <input type="radio" name="star" id="star3" (click)="calificarVideo($event, 3, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star3"></label>
-      <input type="radio" name="star" id="star2" (click)="calificarVideo($event, 2, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star2"></label>
-      <input type="radio" name="star" id="star1" (click)="calificarVideo($event, 1, objDetail.TeamId, objDetail.Vote, objDetail.VotationId)" /><label for="star1"></label>
+      <input type="radio" class="RateAction" name="star" id="star5" (click)="calificarVideo($event, 5, objDetail.TeamId, objDetail.VotationId)" /><label for="star5"></label>
+      <input type="radio" class="RateAction" name="star" id="star4" (click)="calificarVideo($event, 4, objDetail.TeamId, objDetail.VotationId)" /><label for="star4"></label>
+      <input type="radio" class="RateAction" name="star" id="star3" (click)="calificarVideo($event, 3, objDetail.TeamId, objDetail.VotationId)" /><label for="star3"></label>
+      <input type="radio" class="RateAction" name="star" id="star2" (click)="calificarVideo($event, 2, objDetail.TeamId, objDetail.VotationId)" /><label for="star2"></label>
+      <input type="radio" class="RateAction" name="star" id="star1" (click)="calificarVideo($event, 1, objDetail.TeamId, objDetail.VotationId)" /><label for="star1"></label>
     </div>
     <div class="RateText">
       Califica el video!

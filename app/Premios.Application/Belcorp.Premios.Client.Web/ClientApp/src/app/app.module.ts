@@ -23,7 +23,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload' }),
     FormsModule,
     CoreModule.forRoot()
   ],

@@ -32,7 +32,8 @@ namespace Belcorp.Premios.API.Controllers
                 CampaignUrl = _awardAppService.ListBannersByCampaign()
             });
         }
-      
+
+        [EnableCors("CorsPolicy")]
         [HttpPost]
         public IActionResult ListTiles()
         {
@@ -85,6 +86,16 @@ namespace Belcorp.Premios.API.Controllers
             return Ok(new UpdateVotationResponse
             {
                 Votation = _awardAppService.UpdateVotation(updateVotation)
+            });
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost]
+        public IActionResult ListSuggestionsForUser([FromBody]ListSuggetionsRequest ListSuggetionsRequest)
+        {
+            return Ok(new ListSuggestionsResponse
+            {
+                Suggestions = _awardAppService.ListSuggestionsForUser(ListSuggetionsRequest.CodeUser)
             });
         }
     }

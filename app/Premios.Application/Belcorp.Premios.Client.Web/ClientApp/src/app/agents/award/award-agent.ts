@@ -1,4 +1,4 @@
-import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest } from "./request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
@@ -72,6 +72,16 @@ export class AwardAgent {
     postParameters.RequestParameter = updateVotationRequest;
 
     return this.networkManager.Post(postParameters) as Observable<UpdateVotationResponse>;
+
+  }
+
+  ListSuggestions(listSuggetionsRequest: ListSuggestionsRequest): Observable<ListSuggestionsResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.ListSuggetions;
+    postParameters.RequestParameter = listSuggetionsRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<ListSuggestionsResponse>;
 
   }
 

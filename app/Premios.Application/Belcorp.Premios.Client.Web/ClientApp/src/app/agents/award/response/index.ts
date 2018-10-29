@@ -3,3 +3,4 @@ export * from "./list-banners-response";
 export * from "./list-detail-response";
 export * from "./insert-votation-response";
 export * from "./update-votation-response";
+export * from "./list-suggetions-response";

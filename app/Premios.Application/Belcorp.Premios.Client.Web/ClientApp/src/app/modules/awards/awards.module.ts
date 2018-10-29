@@ -38,7 +38,8 @@ const routes: Routes = [
         path: '',
         component: DetailComponent
       }
-    ]
+    ],
+    runGuardsAndResolvers: 'always'
   },
   { path: '**', redirectTo: '/awards', pathMatch: 'full' }
 ];
