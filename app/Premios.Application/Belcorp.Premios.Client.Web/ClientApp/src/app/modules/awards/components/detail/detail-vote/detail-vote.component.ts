@@ -61,10 +61,15 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
   initializeViewVideo() {
 
-    
+    if (this.player) {
+      this.player.destroy();
+    }
 
     setTimeout(() => {
+
       this.spinner.show();
+
+      this.printStars(this.objDetail.Vote);
 
       this.videoDetalle();
 
@@ -144,15 +149,13 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     vimeoTagID = vimeoWrapper.getAttribute('id');
     //vimeoID = vimeoWrapper.getAttribute('data-vimeo-id')
 
-    if (this.player) {
-      this.player.destroy();
-    }
+    
 
       this.player = new Player(vimeoTagID, {
         id: this.objDetail.ValueUrl,
         muted: false,
         autoplay: true
-    })
+      })
 
     this.player.play();
 
@@ -235,7 +238,6 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
 
     clearInterval(this.interval); 
-    //debugger;
 
     if (this.navigationSubscription) { 
       this.navigationSubscription.unsubscribe();
