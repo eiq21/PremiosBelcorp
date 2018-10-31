@@ -223,8 +223,8 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     var star1 = iStars[0] as HTMLElement;
     var star2 = iStars[1] as HTMLElement;
     var star3 = iStars[2] as HTMLElement;
-    var star4 = iStars[3] as HTMLElement;
-    var star5 = iStars[4] as HTMLElement;
+    var star4 = iStars[3] as HTMLElement; 
+    var star5 = iStars[4] as HTMLElement; 
 
     this.isPrint(1, vote) ? star1.setAttribute("class", "RateStarVote fa fa-star") : star1.setAttribute("class", "RateStarNoVote fa fa-star");
     this.isPrint(2, vote) ? star2.setAttribute("class", "RateStarVote fa fa-star") : star2.setAttribute("class", "RateStarNoVote fa fa-star");

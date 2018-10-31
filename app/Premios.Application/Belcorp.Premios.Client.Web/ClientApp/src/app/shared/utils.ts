@@ -159,6 +159,6 @@ export class Constants {
     static readonly BANNER_INICIO = 1;
     static readonly BANNER_INFORMACIONPREMIOS = 2;
     static readonly BANNER_GANADORESANTERIORES = 3;
-    static readonly BANNER_MOVIL = 4;
+    static readonly BANNER_MOVIL = 5;
   }
 }

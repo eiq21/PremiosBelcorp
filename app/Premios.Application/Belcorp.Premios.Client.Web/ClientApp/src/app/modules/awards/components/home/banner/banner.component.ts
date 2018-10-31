@@ -57,7 +57,7 @@ export class BannerComponent implements OnInit {
         let bannerMovil = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_MOVIL);
 
         this.vimeoVideo();  
-        this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl);
+        this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl); 
 
         this.imageMovil = "../../../../../../assets/img/" + bannerMovil[0].ValueUrl;
         this.imageIP = "../../../../../../assets/img/" + bannerIP[0].ValueUrl;
