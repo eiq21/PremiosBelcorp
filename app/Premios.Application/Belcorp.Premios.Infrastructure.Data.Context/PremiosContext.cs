@@ -55,6 +55,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         {
             string userName = _principal.Identity.Name;
             DateTime now = DateTime.Now;
+            //now = new DateTime(2018, 6, 6);
+
 
             foreach (EntityEntry entry in ChangeTracker.Entries())
             {
@@ -80,13 +82,15 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
                 }
                 else if (entry.State == EntityState.Modified) // If the entity was updated
                 {
+                    entry.Property("FechaCreacion").IsModified = false;
+                    entry.Property("UsuarioCreacion").IsModified = false;
                     if (entry.Properties.Where(p => p.Metadata.Name.ToLower() == "UsuarioModificacion".ToLower()).Any())
                     {
                         entry.Property("UsuarioModificacion").CurrentValue = userName;
                     }
                     if (entry.Properties.Where(p => p.Metadata.Name.ToLower() == "FechaModificacion".ToLower()).Any())
                     {
-                        //entry.Property("FechaModificacion").CurrentValue = now;
+                        entry.Property("FechaModificacion").CurrentValue = now;
                     }
                 }
             }
