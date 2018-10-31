@@ -86,7 +86,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
                     }
                     if (entry.Properties.Where(p => p.Metadata.Name.ToLower() == "FechaModificacion".ToLower()).Any())
                     {
-                        entry.Property("FechaModificacion").CurrentValue = now;
+                        //entry.Property("FechaModificacion").CurrentValue = now;
                     }
                 }
             }
