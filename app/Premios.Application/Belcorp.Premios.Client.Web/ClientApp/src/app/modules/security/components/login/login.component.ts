@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.snackbar.open(result, 'Close', {
-            duration: 20000,
+            duration: 3000,
           });
 
           this.loading = false;
