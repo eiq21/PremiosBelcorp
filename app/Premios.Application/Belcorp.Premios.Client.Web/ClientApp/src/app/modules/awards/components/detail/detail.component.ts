@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { DetailViewModel } from '../../viewmodels';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { SuggestionsViewModel } from '../../viewmodels/suggestions-view-model';
 
 
@@ -22,14 +21,14 @@ export class DetailComponent implements OnInit, OnDestroy {
   public listSuggestion: SuggestionsViewModel[];
     navigationSubscription: any;
   public interval: any;
+  public loading = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private awardService: AwardService,
     private awardAdapter: AwardAdapter,
-    private authUserService: AuthUserService,
-    private spinner: NgxSpinnerService
+    private authUserService: AuthUserService
   ) {
 
     this._route = route;
@@ -55,7 +54,7 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   listDetailByTeam() { 
     let _self = this;
-    this.spinner.show();
+    this.loading = true;
     let userLogged = this.authUserService.getLoggedInUser().Username;
 
     this.awardService.ListDetailByTeam(this.TeamId, userLogged).subscribe(detail => {
@@ -65,19 +64,19 @@ export class DetailComponent implements OnInit, OnDestroy {
 
       console.log(this.objDetail);
 
-      this.spinner.hide();
+      this.loading = false;
     }, error => this.ErrorHandler(error, _self));
   }
 
   listSuggestions() {
     let _self = this;
-    this.spinner.show();
+    this.loading = true;
     let userLogged = this.authUserService.getLoggedInUser().Username;
 
     this.awardService.ListSuggestions(userLogged).subscribe(Suggestions => {
       this.listSuggestion = this.awardAdapter.SuggestionsToSuggestionsViewModel(Suggestions);
 
-      this.spinner.hide();
+      this.loading = false;
     }, error => this.ErrorHandler(error, _self));
   }
 

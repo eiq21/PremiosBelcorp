@@ -5,7 +5,7 @@ import { AwardService } from '../../../../../services';
 import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
 import { BannerViewModel } from '../../../../../modules/awards/viewmodels/index';
 import { Constants } from '../../../../../shared/utils';
-import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'prem-banner',
@@ -17,17 +17,15 @@ export class BannerComponent implements OnInit {
   public listBanners: BannerViewModel[];
   public imageIP: string;
   public imageMovil: string;
+  @Input() loading = false;
 
-  private spinner: NgxSpinnerService;
   private awardAdapter: AwardAdapter;
   private awardService: AwardService;
 
   constructor(
-    spinner: NgxSpinnerService,
     awardAdapter: AwardAdapter,
     awardService: AwardService
   ) {
-    this.spinner = spinner;
     this.awardAdapter = awardAdapter;
     this.awardService = awardService;
   }
@@ -46,7 +44,7 @@ export class BannerComponent implements OnInit {
   {
     let _self = this;
 
-    this.spinner.show();
+    this.loading = true;
 
     this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
 
@@ -64,7 +62,7 @@ export class BannerComponent implements OnInit {
 
     }, error => this.ErrorHandler(error, _self));
 
-    this.spinner.hide();
+    this.loading = false;
     
   }
 
@@ -166,7 +164,7 @@ export class BannerComponent implements OnInit {
               break;
           }
         })
-        console.log('Clic en boton ' + move.steps)
+        //console.log('Clic en boton ' + move.steps)
 
         vol.style.display = 'block'
       }

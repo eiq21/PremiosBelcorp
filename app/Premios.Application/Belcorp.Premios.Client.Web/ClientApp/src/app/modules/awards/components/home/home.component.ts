@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { AwardService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { BannerViewModel, TileViewModel } from '../../viewmodels';
@@ -16,13 +15,13 @@ export class HomeComponent implements OnInit {
   private _route: ActivatedRoute;
   public listTiles: TileViewModel[];
   public Rows: number[] = new Array<number>();
+  public loading = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private awardService: AwardService,
-    private awardAdapter: AwardAdapter,
-    private spinner: NgxSpinnerService
+    private awardAdapter: AwardAdapter
   ) {
 
 
@@ -41,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   listTilesForActiveCampaign() {
     let _self = this;
-
+    this.loading = true;
     this.awardService.ListTiles().subscribe(tiles => {
       this.listTiles = this.awardAdapter.TilesToTilesViewModel(tiles);
 
@@ -57,6 +56,8 @@ export class HomeComponent implements OnInit {
         }
 
       }
+
+      this.loading = false;
 
     }, error => this.ErrorHandler(error, _self));
 

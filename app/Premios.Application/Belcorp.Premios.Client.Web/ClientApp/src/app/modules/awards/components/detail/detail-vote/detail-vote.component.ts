@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import Player from '@vimeo/player';
 import { DetailViewModel, VotationViewModel, SuggestionsViewModel } from '../../../viewmodels';
-import { NgxSpinnerService } from 'ngx-spinner';
 import * as basicLightbox from 'basiclightbox'
 import { AwardService, AuthUserService } from '../../../../../services';
 import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
@@ -17,10 +16,9 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   @Input() objDetail: DetailViewModel;
   @Input() listDetail: DetailViewModel[];
   @Input() listSuggestion: SuggestionsViewModel[];
-  
+  @Input() loading = false;
 
   private listVotation: VotationViewModel[];
-  private spinner: NgxSpinnerService;
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
   private authUserService: AuthUserService;
@@ -33,12 +31,10 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    spinner: NgxSpinnerService,
     awardService: AwardService,
     awardAdapter: AwardAdapter,
     authUserService: AuthUserService
   ) {
-    this.spinner = spinner;
     this.awardAdapter = awardAdapter;
     this.awardService = awardService;
     this.authUserService = authUserService;
@@ -67,7 +63,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
 
-      this.spinner.show();
+      this.loading = true;
 
       this.printStars(this.objDetail.Vote);
 
@@ -163,7 +159,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
         modal.show() 
     })
 
-    this.spinner.hide();
+    this.loading = false;
 
   }
 
@@ -178,7 +174,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
     this.modalPublic.close(); 
 
-    this.spinner.show();
+    this.loading = true;
 
     if (votationId == null) {
 
@@ -187,7 +183,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
         this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);
         this.printStars(vote);
 
-        this.spinner.hide(); 
+        this.loading = false;
 
       }, error => this.ErrorHandler(error, _self));
 
@@ -198,7 +194,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
         this.listVotation = this.awardAdapter.VotationToVotationViewModel(votation);
         this.printStars(vote);
 
-        this.spinner.hide(); 
+        this.loading = false;
 
       }, error => this.ErrorHandler(error, _self));
     }   

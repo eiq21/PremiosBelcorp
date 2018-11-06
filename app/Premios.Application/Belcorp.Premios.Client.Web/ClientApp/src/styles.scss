@@ -1,7 +1,8 @@
 @charset "UTF-8";
-
+@import '~@angular/material/theming';
 @import 'app/shared/styles/_vars.scss';
 @import 'font-belcorp.scss';
+@import 'custom-palette-belcorp.scss';
 
 // Definalos en true o false (sin escribir !default) antes de importar ed-grid
 $cssCore: false; // como trabajaré en Sass no quiero que compile tooodo el CSS
@@ -18,6 +19,33 @@ $breakpoints: ( s:0, m:640px, l:1024px, xl:1440px, xxl:1756px ) !default;
 
 @import "../node_modules/basiclightbox/src/styles/main";
 
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+$iron-app-primary: mat-palette($md-purple);
+$iron-app-accent: mat-palette($md-green);
+
+// The warn palette is optional (defaults to purple light).
+$iron-app-warn: mat-palette($md-yellow);
+
+// Especifica el color de textos e iconos
+$iron-app-icon: mat-palette($md-bluedark);
+$iron-app-text: mat-palette($md-dark);
+
+// Create the theme object (a Sass map containing all of the palettes).
+//$iron-app-theme: mat-light-theme($iron-app-primary, $iron-app-accent, $iron-app-warn);
+$iron-app-theme: mat-light-theme($iron-app-primary, $iron-app-accent);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($iron-app-theme);
+
 
 .VimeoPlayerVideo iframe {
   position: absolute;
@@ -29,19 +57,6 @@ $breakpoints: ( s:0, m:640px, l:1024px, xl:1440px, xxl:1756px ) !default;
 }
 
 
-
-.loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .Vimeo-wrapper iframe {
   position: absolute;
@@ -57,4 +72,19 @@ $breakpoints: ( s:0, m:640px, l:1024px, xl:1440px, xxl:1756px ) !default;
   top: 0;
   width: 100%;
   object-fit: cover;
+}
+
+
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
