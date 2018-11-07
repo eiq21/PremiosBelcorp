@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   public buildForm() {
     this.loginForm = this.form.group({ 
       username: ['', [Validators.required, CustomValidators.validateCharacters]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
 
     this.loginForm.valueChanges.subscribe((data) => {
@@ -60,11 +60,11 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(result => {
         if (result == "") {
           this.router.navigateByUrl(Constants.Routes.HOME);
-
+          this.loading = false;
         }
         else {
           this.snackbar.open(result, 'Close', {
-            duration: 3000,
+            duration: 3000
           });
 
           this.loading = false;
@@ -75,8 +75,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.formErrors = this.FormService.validateForm(this.loginForm, this.formErrors, false);
     }
+
   }
-
-
 
 }

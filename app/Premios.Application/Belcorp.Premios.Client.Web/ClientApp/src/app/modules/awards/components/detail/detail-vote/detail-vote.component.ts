@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Renderer2 } from '@angular/core';
 import Player from '@vimeo/player';
 import { DetailViewModel, VotationViewModel, SuggestionsViewModel } from '../../../viewmodels';
 import * as basicLightbox from 'basiclightbox'
@@ -28,6 +28,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   public TeamId: any;
   public player: any;
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -52,6 +53,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     if (this.modalPublic) { this.modalPublic.close(); }
   }
 
@@ -130,34 +132,45 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     if (!this.modalPublic) {
 
       modal = basicLightbox
-        .create(document.querySelector('#template'), {
-          closable: true,
-          onShow: (instance) => { this.modalPublic = instance; },
-          onClose: (instance) => { }
-        }
-      )
+          .create(document.querySelector('#template'), {
+            closable: true,
+            onShow: (instance) => { this.modalPublic = instance; },
+            onClose: (instance) => { }
+          }
+        );
+
     } else {
       modal = this.modalPublic;
     }
 
     let vimeoTagID, vimeoID, action
-
     vimeoTagID = vimeoWrapper.getAttribute('id');
-    //vimeoID = vimeoWrapper.getAttribute('data-vimeo-id')
-
     
-
-      this.player = new Player(vimeoTagID, {
-        id: this.objDetail.ValueUrl,
-        muted: false,
-        autoplay: true
-      })
+    this.player = new Player(vimeoTagID, {
+      id: this.objDetail.ValueUrl,
+      muted: false,
+      autoplay: true
+    });
 
     this.player.play();
 
-      this.player.on('ended', function (data) {
-        modal.show() 
-    })
+    this.player.on('ended', function (data) {
+
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      }
+      else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      }
+
+
+      modal.show();
+      //this.toggleFullscreen();
+      //this.player.destroy();
+    });
 
     this.loading = false;
 
@@ -173,7 +186,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     let teamID = teamId;
 
     this.modalPublic.close(); 
-
+    
     this.loading = true;
 
     if (votationId == null) {
@@ -244,6 +257,72 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
-  
+  //toggleFullscreen() {
+  //  var fullscreenChange = null;
+  //  // other vars …
+
+  //  // Check for fullscreen support
+  //  if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+
+  //    // If there's currently an element fullscreen, exit fullscreen
+  //    if (document.exitFullscreen) {
+  //      document.exitFullscreen(); 
+  //    }
+  //    else if (document.mozCancelFullScreen) {
+  //      document.mozCancelFullScreen();
+  //    } else if (document.webkitExitFullscreen) {
+  //      document.webkitExitFullscreen();
+  //    } else if (document.msExitFullscreen) {
+  //      document.msExitFullscreen();
+  //    }
+
+  //    // Do stuff when the video exits fullscreen mode
+  //    // …
+  //  } else {
+      
+  //    // Otherwise, enter fullscreen
+  //    // `videoWrapper` is just a `div` element wrapping the video
+  //    if (document.getElementById("videoDetalle").requestFullscreen) {
+  //      document.getElementById("videoDetalle").requestFullscreen();
+  //    } else if (document.getElementById("videoDetalle").mozRequestFullScreen) {
+  //      document.getElementById("videoDetalle").mozRequestFullScreen();
+  //    } else if (document.getElementById("videoDetalle").webkitRequestFullscreen) {
+  //      document.getElementById("videoDetalle").webkitRequestFullscreen();
+  //    } else if (document.getElementById("videoDetalle").msRequestFullscreen) {
+  //      document.getElementById("videoDetalle").msRequestFullscreen();
+  //    }
+
+  //    // Do stuff when the video enters fullscreen mode
+  //    // …
+  //  }
+
+  //  fullscreenChange = function () {
+
+  //    // Do something on fullscreen change event
+  //    // …
+  //  };
+
+  //  document.onfullscreenchange = function () {
+  //    if (!document.fullscreenElement) {
+  //      fullscreenChange();
+  //    }
+  //  };
+  //  document.onwebkitfullscreenchange = function () {
+  //    if (!document.webkitFullscreenElement) {
+  //      fullscreenChange();
+  //    }
+  //  };
+  //  document.onmozfullscreenchange = function () {
+  //    if (!document.mozFullScreenElement) {
+  //      fullscreenChange();
+  //    }
+  //  };
+  //  document.onmsfullscreenchange = function () {
+  //    if (!document.msFullscreenElement) {
+  //      fullscreenChange();
+  //    }
+  //  };
+
+  //}
 
 }
