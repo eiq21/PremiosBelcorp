@@ -11,7 +11,18 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   templateUrl: './detail-vote.component.html',
   styleUrls: ['./detail-vote.component.scss']
 })
-export class DetailVoteComponent implements OnInit, OnDestroy {
+
+
+//interface Document {
+//  exitFullscreen: () => void;
+//  mozCancelFullScreen: () => void;
+//  webkitExitFullscreen: () => void;
+//  fullscreenElement: () => void;
+//  mozFullScreenElement: () => void;
+//  webkitFullscreenElement: () => void;
+//}
+
+export class DetailVoteComponent implements OnInit, OnDestroy, Document {
    
   @Input() objDetail: DetailViewModel;
   @Input() listDetail: DetailViewModel[];
@@ -51,6 +62,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
 
   }
+
 
   ngOnInit() {
 
@@ -159,9 +171,9 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       }
-      else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      }
+      //else if (document.mozCancelFullScreen) {
+      //  document.mozCancelFullScreen(); 
+      //}
       else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
