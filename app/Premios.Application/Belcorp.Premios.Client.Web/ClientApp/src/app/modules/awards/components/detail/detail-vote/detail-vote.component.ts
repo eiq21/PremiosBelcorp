@@ -22,7 +22,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 //  webkitFullscreenElement: () => void;
 //}
 
-export class DetailVoteComponent implements OnInit, OnDestroy, Document {
+export class DetailVoteComponent implements OnInit, OnDestroy {
    
   @Input() objDetail: DetailViewModel;
   @Input() listDetail: DetailViewModel[];
@@ -171,17 +171,15 @@ export class DetailVoteComponent implements OnInit, OnDestroy, Document {
       if (document.exitFullscreen) {
         document.exitFullscreen();
       }
-      //else if (document.mozCancelFullScreen) {
-      //  document.mozCancelFullScreen(); 
-      //}
+      else if (document['mozCancelFullScreen']) { 
+        document['mozCancelFullScreen']();
+      }
       else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
 
-
       modal.show();
-      //this.toggleFullscreen();
-      //this.player.destroy();
+
     });
 
     this.loading = false;
