@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Entity\Belcorp.Premios.Infrastructure.Data.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseerModule\Request\" />
+  </ItemGroup>
+
 </Project>

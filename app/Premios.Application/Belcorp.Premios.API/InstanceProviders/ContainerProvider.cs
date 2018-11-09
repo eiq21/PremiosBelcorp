@@ -2,6 +2,7 @@
 using Belcorp.Premios.Application.Context.AuthenticationModule.Service;
 using Belcorp.Premios.Application.Context.AwardModule.Service;
 using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
+using Belcorp.Premios.Application.Context.UserModule.Service;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Domain.Context.SecurityModule;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +28,8 @@ namespace Belcorp.Premios.API.InstanceProviders
             services.AddTransient<IAuthenticationAppService, AuthenticationAppService>();
             services.AddTransient<ICampaignAppService, CampaignAppService>();
             services.AddTransient<IAwardAppService, AwardAppService>();
-            services.AddTransient<ICampaignAdapter, CampaignAdapter>();            
+            services.AddTransient<ICampaignAdapter, CampaignAdapter>();
+            services.AddTransient<IUserExternalModule, UserExternalModule>();
 
             services.AddScoped<ApiExceptionFilter>();
         }
