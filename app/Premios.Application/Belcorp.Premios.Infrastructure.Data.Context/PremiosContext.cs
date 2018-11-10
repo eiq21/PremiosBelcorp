@@ -32,6 +32,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             modelBuilder.ApplyConfiguration(new EquipoConfiguration());
             modelBuilder.ApplyConfiguration(new EquipoUrlConfiguration());
             modelBuilder.ApplyConfiguration(new VotacionConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioExternoConfiguration());
 
             #endregion
 
@@ -44,6 +45,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         public virtual DbSet<Equipo> Equipo { get; set; }
         public virtual DbSet<EquipoUrl> EquipoUrl { get; set; }
         public virtual DbSet<Votacion> Votacion { get; set; }
+        public virtual DbSet<UsuarioExterno> UsuarioExterno { get; set; }
 
         public override int SaveChanges()
         {
@@ -55,8 +57,6 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         {
             string userName = _principal.Identity.Name;
             DateTime now = DateTime.Now;
-            //now = new DateTime(2018, 6, 6);
-
 
             foreach (EntityEntry entry in ChangeTracker.Entries())
             {

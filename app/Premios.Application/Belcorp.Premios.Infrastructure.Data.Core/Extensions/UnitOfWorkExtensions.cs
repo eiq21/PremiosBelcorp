@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 using System.Data.SqlClient;
+using System.ComponentModel;
 
 namespace Belcorp.Premios.Infrastructure.Data.Core.Extensions
 {
@@ -52,6 +53,40 @@ namespace Belcorp.Premios.Infrastructure.Data.Core.Extensions
 
             return queryResult;
         }
+
+        public static void ExecuteSqlNonQuery(this IUnitOfWork unitOfWork, string procedureName, Object parameters)
+        {
+            dynamic context = unitOfWork.GetType().GetField("_context", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(unitOfWork);
+
+            DatabaseFacade database = context.Database;
+
+            IDbCommand cmd = database.GetDbConnection().CreateCommand();
+            cmd.CommandText = procedureName;
+            cmd.CommandType = CommandType.StoredProcedure;
+            object[] sqlParameters = GetParametersSqlQuery(parameters);
+
+            if (sqlParameters.Any())
+            {
+                foreach (object sqlParameter in sqlParameters)
+                {
+                    cmd.Parameters.Add(sqlParameter);
+                }
+            }
+
+            
+            if (cmd.Connection.State.HasFlag(ConnectionState.Closed))
+                cmd.Connection.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
 
         private static object[] GetParametersSqlQuery(Object parameters)
         {
@@ -130,5 +165,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Core.Extensions
 
             return ConvertTo<T>(rows);
         }
+
+        
     }
 }

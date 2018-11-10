@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Agents\Belcorp.Premios.Infrastructure.Agents.csproj" />
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.CrossCutting.DTO\Belcorp.Premios.Infrastructure.CrossCutting.DTO.csproj" />
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Context\Belcorp.Premios.Infrastructure.Data.Context.csproj" />
+    <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Core\Belcorp.Premios.Infrastructure.Data.Core.csproj" />
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Data.Entity\Belcorp.Premios.Infrastructure.Data.Entity.csproj" />
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Transport\Belcorp.Premios.Infrastructure.Transport.csproj" />
   </ItemGroup>
