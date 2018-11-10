@@ -6,13 +6,14 @@ import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
 import { BannerViewModel } from '../../../../../modules/awards/viewmodels/index';
 import { Constants } from '../../../../../shared/utils';
 
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'prem-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss']
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent implements OnInit { 
 
   public listBanners: BannerViewModel[];
   public imageIP: string;
@@ -23,6 +24,8 @@ export class BannerComponent implements OnInit {
   private awardService: AwardService;
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     awardAdapter: AwardAdapter,
     awardService: AwardService
   ) {
@@ -38,6 +41,10 @@ export class BannerComponent implements OnInit {
 
   ngAfterViewInit() {
   
+  }
+
+  navigateToAdmin() {
+    this.router.navigate(['/admin/']);
   }
 
   getBannersByActiveCampaign()

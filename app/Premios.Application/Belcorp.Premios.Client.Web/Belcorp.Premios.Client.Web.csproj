@@ -72,6 +72,8 @@
     <None Remove="ClientApp\src\app\models\dtos\votation.ts" />
     <None Remove="ClientApp\src\app\models\models\configuration.model.ts" />
     <None Remove="ClientApp\src\app\models\models\user.model.ts" />
+    <None Remove="ClientApp\src\app\modules\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\modules\admin\containers\manager.ts" />
     <None Remove="ClientApp\src\app\modules\awards\awards.module.ts" />
     <None Remove="ClientApp\src\app\modules\awards\components\home\body\body.component.ts" />
     <None Remove="ClientApp\src\app\modules\awards\viewmodels\banner-view-model.ts" />
@@ -108,10 +110,11 @@
     <Folder Include="ClientApp\src\app\modules\awards\components\home\banner\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-vote\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-suggestions\" />
+    <Folder Include="ClientApp\src\app\modules\awards\components\home\menu-list\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\home\tiles\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\home\tile\" />
     <Folder Include="ClientApp\src\app\modules\core\viewmodels\" />
-    <Folder Include="ClientApp\src\app\modules\maintenance\" />
+    <Folder Include="ClientApp\src\app\modules\admin\viewmodels\" />
     <Folder Include="ClientApp\src\app\modules\security\components\login\" />
     <Folder Include="ClientApp\src\assets\fonts\" />
     <Folder Include="ClientApp\src\assets\img\" />
@@ -154,6 +157,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\tiles.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\configuration.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\models\user.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\admin\admin.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\modules\admin\containers\manager.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\components\home\body\body.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\containers\manager.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\modules\awards\awards.module.ts" />

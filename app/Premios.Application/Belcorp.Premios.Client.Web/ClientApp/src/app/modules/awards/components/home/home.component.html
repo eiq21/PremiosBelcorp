@@ -1,16 +1,11 @@
-<premios-body [Rows]="Rows" [listTiles]="listTiles">
-</premios-body>
+<div class="pb_container" (click)="containerMenu($event)">
+  <main class="pb_main">
+    <premios-body [Rows]="Rows" [listTiles]="listTiles">
+    </premios-body>
+  </main>
+  <menu-list></menu-list>
+ </div>
 
-<footer class="Bye">
-  <p> <a href="mailto:name@email.com">Dudas: consultas@alcorreo.com</a></p>
-</footer>
-
-<!--<ngx-spinner bdColor="rgba(0,0,0,0.1)"
-             size="medium"
-             color="#FF0025"
-             type="ball-spin-clockwise">
-  <p style="font-size: 20px; color: #FF0025">Cargando...</p>
-</ngx-spinner>-->
-<div class="loading-shade" *ngIf="loading">
-  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
-</div>
+  <div class="loading-shade" *ngIf="loading">
+    <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+  </div>

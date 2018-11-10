@@ -15,11 +15,11 @@ export const routes: Routes = [
       loadChildren: './modules/security/security.module#SecurityModule',
       canActivateChild: [SecurityGuardService],
       runGuardsAndResolvers: 'always'
+    },
+    {
+      path: 'admin',  
+      loadChildren: './modules/admin/admin.module#AdminModule', 
+      canActivateChild: [SecurityGuardService],
+      runGuardsAndResolvers: 'always'
     }
-  //{
-  //  path: 'maintenance',
-  //  loadChildren: './modules/maintenance/maintenance.module#MaintenanceModule',
-  //  canActivateChild: [SecurityGuardService],
-  //  runGuardsAndResolvers: 'always'
-  //}
 ];

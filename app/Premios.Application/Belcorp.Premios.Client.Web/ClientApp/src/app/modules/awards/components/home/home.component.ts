@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { AwardService } from '../../../../services';
+import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { BannerViewModel, TileViewModel } from '../../viewmodels';
 
@@ -23,22 +23,41 @@ export class HomeComponent implements OnInit {
     private awardService: AwardService,
     private awardAdapter: AwardAdapter
   ) {
-
-
-
   }
 
   ngOnInit() {
-
-
-    this.listTilesForActiveCampaign();
-
+    this.listTilesForActiveCampaign();    
   }
 
- 
+
+  containerMenu(event: Event) {
+
+    let main = document.querySelector('.pb_main');
+
+    if (this.isShowingSidebar() && main.contains(event.srcElement)) {
+      event.preventDefault();
+      this.hideSidebar();
+    }
+  }
 
 
-  listTilesForActiveCampaign() {
+  hideSidebar() {
+    this.getContainer().classList.remove('show-sidebar');
+  }
+
+  isShowingSidebar() {
+    return this.getContainer().classList.contains('show-sidebar');
+  }
+
+  getContainer(): HTMLElement {
+    let container: HTMLElement = null;
+    container = document.querySelector('.pb_container');
+
+    return container;
+  }
+
+
+  listTilesForActiveCampaign() { 
     let _self = this;
     this.loading = true;
     this.awardService.ListTiles().subscribe(tiles => {
@@ -47,11 +66,11 @@ export class HomeComponent implements OnInit {
       var prenumRows = (this.listTiles.length) / 6;
       var numRows = Math.ceil(prenumRows);
 
-      if (numRows <= 1) {
+      if (numRows <= 1) { 
         this.Rows.push(1);
       } else {
 
-        for (var _i = 0; _i < numRows; _i++) {
+        for (var _i = 0; _i < numRows; _i++) { 
           this.Rows[_i] = _i;
         }
 

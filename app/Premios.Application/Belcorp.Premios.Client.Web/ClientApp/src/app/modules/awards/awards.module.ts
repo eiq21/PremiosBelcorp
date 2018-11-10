@@ -16,6 +16,7 @@ import { DetailSuggestionsComponent } from './components/detail/detail-suggestio
 import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './components/home/home.component';
+import { MenuListComponent } from './components/home/menu-list/menu-list.component';
 
 
 
@@ -68,7 +69,8 @@ const routes: Routes = [
     DetailSuggestionsComponent,
     DetailVoteComponent,
     AwardsManagerComponent,
-    HomeComponent 
+    HomeComponent,
+    MenuListComponent 
   ], 
   entryComponents: [
 
