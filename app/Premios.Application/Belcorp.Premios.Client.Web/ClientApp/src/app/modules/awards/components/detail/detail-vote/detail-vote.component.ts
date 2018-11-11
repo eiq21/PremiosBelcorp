@@ -12,16 +12,6 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./detail-vote.component.scss']
 })
 
-
-//interface Document {
-//  exitFullscreen: () => void;
-//  mozCancelFullScreen: () => void;
-//  webkitExitFullscreen: () => void;
-//  fullscreenElement: () => void;
-//  mozFullScreenElement: () => void;
-//  webkitFullscreenElement: () => void;
-//}
-
 export class DetailVoteComponent implements OnInit, OnDestroy {
    
   @Input() objDetail: DetailViewModel;
@@ -261,78 +251,13 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     if (this.navigationSubscription) { 
       this.navigationSubscription.unsubscribe();
     }
+
   }
 
   ErrorHandler(error, _self) {
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
-  //toggleFullscreen() {
-  //  var fullscreenChange = null;
-  //  // other vars …
 
-  //  // Check for fullscreen support
-  //  if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-
-  //    // If there's currently an element fullscreen, exit fullscreen
-  //    if (document.exitFullscreen) {
-  //      document.exitFullscreen(); 
-  //    }
-  //    else if (document.mozCancelFullScreen) {
-  //      document.mozCancelFullScreen();
-  //    } else if (document.webkitExitFullscreen) {
-  //      document.webkitExitFullscreen();
-  //    } else if (document.msExitFullscreen) {
-  //      document.msExitFullscreen();
-  //    }
-
-  //    // Do stuff when the video exits fullscreen mode
-  //    // …
-  //  } else {
-      
-  //    // Otherwise, enter fullscreen
-  //    // `videoWrapper` is just a `div` element wrapping the video
-  //    if (document.getElementById("videoDetalle").requestFullscreen) {
-  //      document.getElementById("videoDetalle").requestFullscreen();
-  //    } else if (document.getElementById("videoDetalle").mozRequestFullScreen) {
-  //      document.getElementById("videoDetalle").mozRequestFullScreen();
-  //    } else if (document.getElementById("videoDetalle").webkitRequestFullscreen) {
-  //      document.getElementById("videoDetalle").webkitRequestFullscreen();
-  //    } else if (document.getElementById("videoDetalle").msRequestFullscreen) {
-  //      document.getElementById("videoDetalle").msRequestFullscreen();
-  //    }
-
-  //    // Do stuff when the video enters fullscreen mode
-  //    // …
-  //  }
-
-  //  fullscreenChange = function () {
-
-  //    // Do something on fullscreen change event
-  //    // …
-  //  };
-
-  //  document.onfullscreenchange = function () {
-  //    if (!document.fullscreenElement) {
-  //      fullscreenChange();
-  //    }
-  //  };
-  //  document.onwebkitfullscreenchange = function () {
-  //    if (!document.webkitFullscreenElement) {
-  //      fullscreenChange();
-  //    }
-  //  };
-  //  document.onmozfullscreenchange = function () {
-  //    if (!document.mozFullScreenElement) {
-  //      fullscreenChange();
-  //    }
-  //  };
-  //  document.onmsfullscreenchange = function () {
-  //    if (!document.msFullscreenElement) {
-  //      fullscreenChange();
-  //    }
-  //  };
-
-  //}
 
 }

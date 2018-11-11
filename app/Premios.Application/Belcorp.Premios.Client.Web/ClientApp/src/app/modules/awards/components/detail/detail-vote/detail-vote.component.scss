@@ -376,7 +376,7 @@ body {
   transition: all .3s ease-out;
 }
 
-.bar [data-tabby-active] {
+.barTab [data-tabby-active] {
   border-top: 4px solid red;
 }
 
@@ -388,15 +388,15 @@ body {
   font-family: 'Museo Sans Light';
 }
 
-.bar [data-tabby-active] {
+.barTab [data-tabby-active] {
   padding-top: 15px;
 }
 
-.bar li, .barTitle {
+.barTab li, .barTitle {
   display: inline;
 }
 
-.bar li:first-child {
+.barTab li:first-child {
   margin-right: 30px;
 }
 

@@ -2,30 +2,39 @@ import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
 import { MaterialModule } from '../../shared/material';
 import { NetworkManager } from '../../agents/networkmanager';
 import { AwardService, FormService } from '../../services/';
 import { SecurityAgent } from '../../agents/security/security-agent';
-import { SecurityManagerComponent } from './containers/manager';
+import { AdminManagerComponent } from './containers/manager';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { AwardAgent } from '../../agents/award/award-agent';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { UploadFileComponent } from './components/shared/upload-file/upload-file.component';
+import { LoadMainComponent } from './components/load-main/load-main.component';
 
 
 const routes: Routes = [
-
   {
-    path: 'login', component: SecurityManagerComponent,
+    path: '', component: AdminManagerComponent,
     children: [
       {
-        outlet: 'security-manager',
+        outlet: 'admin-manager',
         path: '',
-        component: LoginComponent
+        component: LoadMainComponent
       }
     ]
   },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' }
+  {
+    path: 'admin', component: AdminManagerComponent,
+    children: [
+      { 
+        outlet: 'admin-manager',
+        path: '',
+        component: LoadMainComponent
+      } 
+    ]
+  },
+  { path: '**', redirectTo: '/admin', pathMatch: 'full' }
 ];
 
 
@@ -35,8 +44,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule,
-    NgxSpinnerModule
+    ReactiveFormsModule
   ],
   providers: [
     NetworkManager,
@@ -47,11 +55,12 @@ const routes: Routes = [
     FormService
   ],
   declarations: [
-    LoginComponent,
-    SecurityManagerComponent
+    AdminManagerComponent,
+    UploadFileComponent,
+    LoadMainComponent
   ]
 })
-export class SecurityModule implements OnInit {
+export class AdminModule implements OnInit {
 
   constructor() {
 

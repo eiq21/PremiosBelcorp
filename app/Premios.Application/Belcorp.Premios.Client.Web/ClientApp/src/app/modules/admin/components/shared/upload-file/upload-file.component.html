@@ -1,0 +1,12 @@
+<div>
+  <input style="display: none"
+         type="file" (change)="onFileChanged.emit($event)"
+         accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
+         #fileInput>
+  <button mat-raised-button class="button-circle" color="primary"
+          matTooltip="Adjuntar excel de carga"
+          [matTooltipPosition]="position.value"
+          (click)="fileInput.click()">
+    <i class="material-icons">attach_file</i>
+  </button>
+</div>
