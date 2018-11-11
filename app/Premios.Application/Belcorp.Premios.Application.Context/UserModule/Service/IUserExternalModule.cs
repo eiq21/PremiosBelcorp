@@ -8,6 +8,7 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
     public interface IUserExternalModule
     {
         bool UploadUserExternal(string dataExternal, bool eliminaAnterior, string usuario, ref string mensaje);
-        bool GetUserExternal(string nroDocumento);
+        bool ChangePassword(string nroDocumento, string claveActual, string claveNueva, ref string mensaje);
+        bool ChangePasswordAdmin(string nroDocumento, string claveNueva, ref string mensaje);
     }
 }
