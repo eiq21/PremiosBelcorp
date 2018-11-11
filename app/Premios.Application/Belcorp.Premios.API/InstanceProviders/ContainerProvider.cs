@@ -5,6 +5,7 @@ using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
 using Belcorp.Premios.Application.Context.UserModule.Service;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Domain.Context.SecurityModule;
+using Belcorp.Premios.Infrastructure.Agents.LDAP;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,9 @@ namespace Belcorp.Premios.API.InstanceProviders
             services.AddTransient<IAwardAppService, AwardAppService>();
             services.AddTransient<ICampaignAdapter, CampaignAdapter>();
             services.AddTransient<IUserExternalModule, UserExternalModule>();
-
+            services.AddTransient<ISecurityService, SecurityService>();
+            services.AddTransient<ILDAPAgent, LDAPAgent>();
+            
             services.AddScoped<ApiExceptionFilter>();
         }
     }

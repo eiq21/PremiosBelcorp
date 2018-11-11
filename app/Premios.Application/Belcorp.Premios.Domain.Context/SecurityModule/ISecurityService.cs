@@ -7,5 +7,6 @@ namespace Belcorp.Premios.Domain.Context.SecurityModule
     public interface ISecurityService
     {
         bool IsAdministrator(string username);
+
     }
 }

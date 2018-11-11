@@ -24,6 +24,11 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
             _userExternalRepository = _unitOfWork.GetRepository<UserExternal>();
         }
 
+        public bool GetUserExternal(string nroDocumento)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool UploadUserExternal(string dataExternal, bool eliminaAnterior, string usuario, ref string mensaje)
         {
             bool response = false;
