@@ -10,6 +10,12 @@ using System.Linq;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Infrastructure.Data.Entity.Domain;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
+using Microsoft.AspNetCore.Http;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Response;
+using Belcorp.Premios.Infrastructure.CrossCutting.Extensions;
+using Belcorp.Premios.Infrastructure.Data.Core.Extensions;
 
 namespace Belcorp.Premios.Application.Context.AwardModule.Service
 {
@@ -21,14 +27,17 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
         private readonly IRepository<TypeUrl> _typeUrlRepository;
         private readonly ICampaignAdapter _campaignAdapter;
         //private readonly ICampaignAdapter _campaignAdapter;
+        private readonly IClosedXMLAgent _closedXMLAgent;
 
         public AwardAppService(
-            IUnitOfWork<PremiosContext> unitOfWork
+            IUnitOfWork<PremiosContext> unitOfWork,
+            IClosedXMLAgent closedXMLAgent
         ) {
             _unitOfWork = unitOfWork;
             _campaignRepository = _unitOfWork.GetRepository<Campaign>();
             _campaignUrlRepository = _unitOfWork.GetRepository<CampaignUrl>();
             _typeUrlRepository = _unitOfWork.GetRepository<TypeUrl>();
+            _closedXMLAgent = closedXMLAgent;
         }
 
         private int? GetActiveCampaign()
@@ -239,6 +248,56 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             var lstSuggestions = query.OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 
             return lstSuggestions;
+        }
+
+        public bool ImportCampaign(IFormFile file, string userName)
+        {
+            ImportCampaignResponse importCampaignResponse = new ImportCampaignResponse();
+            var importFile = new ImportCampaignRequest()
+            {
+                file = file
+            };
+
+            importCampaignResponse = _closedXMLAgent.ImportCampaign(importFile, userName);
+
+            importCampaignResponse.CampaignUrls.ForEach(x => {
+               x.TipoUrlId = _unitOfWork.DbContext.TipoUrl.Where(t => t.Secuencial == x.TipoUrlId).FirstOrDefault().TipoUrlId;
+            });
+
+            UploadCampaign uucp = new UploadCampaign()
+            {
+                DataCampania = importCampaignResponse.Campaigns.ToTable(),
+                DataCampaniaUrls = importCampaignResponse.CampaignUrls.ToTable()
+            };
+
+            _unitOfWork.ExecuteSqlNonQuery("usp_CargaCampaniasUrls", uucp);
+            return true;
+
+        }
+
+        public bool ImportTeams(IFormFile file, string userName)
+        {
+            ImportTeamResponse importTeamResponse = new ImportTeamResponse();
+            var importFile = new ImportTeamRequest()
+            {
+                file = file
+            };
+
+            importTeamResponse = _closedXMLAgent.ImportTeam(importFile, userName);
+
+            importTeamResponse.TeamUrls.ForEach(x => {
+                x.TipoUrlId = _unitOfWork.DbContext.TipoUrl.Where(t => t.Secuencial == x.TipoUrlId).FirstOrDefault().TipoUrlId;
+            });
+
+            UploadTeam uut = new UploadTeam()
+            {
+                DataEquipo = importTeamResponse.Teams.ToTable(),
+                DataEquiposUrls = importTeamResponse.TeamUrls.ToTable()
+            };
+
+            _unitOfWork.ExecuteSqlNonQuery("usp_CargaEquipoUrls", uut);
+            return true;
+
         }
     }
 }

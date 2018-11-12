@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request
 {
-    public class ImportCampaignRequest
+    public class ImportTeamRequest
     {
         public IFormFile file { get; set; }
     }

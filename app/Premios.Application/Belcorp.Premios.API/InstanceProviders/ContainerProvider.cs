@@ -5,6 +5,7 @@ using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
 using Belcorp.Premios.Application.Context.UserModule.Service;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Domain.Context.SecurityModule;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
 using Belcorp.Premios.Infrastructure.Agents.LDAP;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -33,7 +34,8 @@ namespace Belcorp.Premios.API.InstanceProviders
             services.AddTransient<IUserExternalModule, UserExternalModule>();
             services.AddTransient<ISecurityService, SecurityService>();
             services.AddTransient<ILDAPAgent, LDAPAgent>();
-            
+            services.AddTransient<IClosedXMLAgent, ClosedXMLAgent>();
+
             services.AddScoped<ApiExceptionFilter>();
         }
     }

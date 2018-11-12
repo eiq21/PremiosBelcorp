@@ -19,7 +19,7 @@
                     <span class="txtDesMatPanel">Presionar para cargar campañas y URL's</span>
                   </mat-panel-description>
               </mat-expansion-panel-header>
-              <div><upload-file (change)="onFileChanged($event)"></upload-file></div>
+              <div><upload-file (change)="onFileChanged($event, 'c')"></upload-file></div>
         </mat-expansion-panel>
         <mat-expansion-panel>
               <mat-expansion-panel-header>
@@ -30,7 +30,7 @@
                     <span class="txtDesMatPanel">Presionar para cargar equipos y URL's</span>
                   </mat-panel-description>
               </mat-expansion-panel-header>
-              <div><upload-file (change)="onFileChanged($event)"></upload-file></div>
+              <div><upload-file (change)="onFileChanged($event, 'e')"></upload-file></div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">

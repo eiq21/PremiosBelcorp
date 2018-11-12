@@ -15,6 +15,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Entity.Domain
         public int TipoUrlId { get; set; }
         public string Nombre { get; set; }
         public bool Activo { get; set; }
+        public int Secuencial { get; set; }
         public string UsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public string UsuarioModificacion { get; set; }

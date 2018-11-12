@@ -1,4 +1,4 @@
-import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse, UpdloadCampaignResponse, UpdloadTeamResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest } from "./request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
@@ -83,6 +83,30 @@ export class AwardAgent {
 
     return this.networkManager.Post(postParameters) as Observable<ListSuggestionsResponse>;
 
+  }
+
+  UploadCampaign(uploadCampaignRequest: UploadCampaignRequest): Observable<UpdloadCampaignResponse> {
+
+    let pathOperation = this.awardUrl + PathOperation.UploadCampaign;
+
+    const formData = new FormData();
+
+    formData.append('file', uploadCampaignRequest.File);
+    formData.append('removePrevious', uploadCampaignRequest.removePrevious);
+
+    return this.networkManager.PostFile(pathOperation, formData) as Observable<UpdloadCampaignResponse>;
+  }
+
+
+  UploadTeam(uploadTeamRequest: UploadTeamRequest): Observable<UpdloadTeamResponse> {
+
+    let pathOperation = this.awardUrl + PathOperation.UploadCampaign;
+
+    const formData = new FormData();
+
+    formData.append('file', uploadTeamRequest.File);
+
+    return this.networkManager.PostFile(pathOperation, formData) as Observable<UpdloadTeamResponse>;
   }
 
 }

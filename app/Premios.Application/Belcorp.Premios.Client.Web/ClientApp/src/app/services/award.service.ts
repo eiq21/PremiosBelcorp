@@ -6,7 +6,7 @@ import { Tiles, CampaignUrl, Detail, Votation, Suggestion } from "../models/dtos
 //import {  } from "../agents/protocol/request";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest } from "../agents/award/request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest } from "../agents/award/request";
 
 
 @Injectable()
@@ -71,5 +71,23 @@ export class AwardService {
 
   }
 
+  UploadCampaign(file: File): Observable<boolean> {
+
+    let uploadFileRequest: UploadCampaignRequest = new UploadCampaignRequest();
+    uploadFileRequest.File = file;
+    uploadFileRequest.removePrevious = "false";
+
+    return this.awardsAgent.UploadCampaign(uploadFileRequest)
+      .pipe(map((uploadCampaginResponse) => uploadCampaginResponse.result));
+  }
+
+  UploadTeam(file: File): Observable<boolean> {
+
+    let uploadFileRequest: UploadTeamRequest = new UploadTeamRequest();
+    uploadFileRequest.File = file;
+
+    return this.awardsAgent.UploadTeam(uploadFileRequest)
+      .pipe(map((uploadTeamResponse) => uploadTeamResponse.result));
+  }
 
 }

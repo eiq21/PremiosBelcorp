@@ -4,7 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Belcorp.Premios.Application.Context.AwardModule.Service;
 using Belcorp.Premios.Application.Context.UserModule.Service;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +16,12 @@ namespace Belcorp.Premios.API.Controllers
     public class UploadController : BaseController
     {
         private IUserExternalModule _userExternalModule;
+        private readonly IAwardAppService _awardAppService;
 
-        public UploadController(IUserExternalModule userExternalModule)
+        public UploadController(IUserExternalModule userExternalModule, IAwardAppService awardAppService)
         {
             this._userExternalModule = userExternalModule;
+            this._awardAppService = awardAppService;
         }
 
 
@@ -71,14 +76,51 @@ namespace Belcorp.Premios.API.Controllers
             {
                 return BadRequest("Debe adjuntar un archivo excel (XLSX | XLS)");
             }
-
+            
             var caller = User as ClaimsPrincipal;
+            
             if (!caller.HasClaim("admin", "True"))
             {
                 return BadRequest("Usuario no tiene permiso de carga");
             }
 
-            
+            var result = _awardAppService.ImportCampaign(file, caller.Identity.Name);
+
+            return Ok(new
+            {
+                result = result
+                //,string.Empty
+            });
+        }
+
+
+        [HttpPost]
+        public IActionResult UploadUrlsTeam(IFormFile file)
+        {
+            if (file == null || file.Length <= 0)
+            {
+                return BadRequest("Debe adjuntar el archivo");
+            }
+
+            if (file.ContentType != "application/vnd.ms-excel" && file.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            {
+                return BadRequest("Debe adjuntar un archivo excel (XLSX | XLS)");
+            }
+
+            var caller = User as ClaimsPrincipal;
+
+            if (!caller.HasClaim("admin", "True"))
+            {
+                return BadRequest("Usuario no tiene permiso de carga");
+            }
+
+            var result = _awardAppService.ImportTeams(file, caller.Identity.Name);
+
+            return Ok(new
+            {
+                result = result
+                //,string.Empty
+            });
         }
     }
 }
