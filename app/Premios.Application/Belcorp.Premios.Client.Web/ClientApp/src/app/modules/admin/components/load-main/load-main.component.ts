@@ -8,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class LoadMainComponent implements OnInit {
 
   panelOpenState = false;
+  public isLoading = false;
+
+  selectedFile: File;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
   }
 
 }

@@ -38,7 +38,7 @@ namespace Belcorp.Premios.API.Controllers
             {
                 return BadRequest("Usuario no tiene permiso de carga");
             }
-            
+
             Stream sm = file.OpenReadStream();
             //FileStream ms = new FileStream(file.OpenReadStream());
             string archivo = "";
@@ -47,7 +47,7 @@ namespace Belcorp.Premios.API.Controllers
                 archivo = sr.ReadToEnd();
             }
 
-            
+
 
             string mensaje = "";
             bool resp = _userExternalModule.UploadUserExternal(archivo, removePrevious, User.Identity.Name, ref mensaje);
@@ -59,5 +59,26 @@ namespace Belcorp.Premios.API.Controllers
             });
         }
 
+        [HttpPost]
+        public IActionResult UploadCampaign(IFormFile file, bool removePrevious = false)
+        {
+            if (file == null || file.Length <= 0)
+            {
+                return BadRequest("Debe adjuntar el archivo");
+            }
+
+            if (file.ContentType != "application/vnd.ms-excel" && file.ContentType != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            {
+                return BadRequest("Debe adjuntar un archivo excel (XLSX | XLS)");
+            }
+
+            var caller = User as ClaimsPrincipal;
+            if (!caller.HasClaim("admin", "True"))
+            {
+                return BadRequest("Usuario no tiene permiso de carga");
+            }
+
+            
+        }
     }
 }
