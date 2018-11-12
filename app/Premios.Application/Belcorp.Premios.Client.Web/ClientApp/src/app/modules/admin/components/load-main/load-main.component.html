@@ -19,18 +19,32 @@
                     <span class="txtDesMatPanel">Presionar para cargar campañas y URL's</span>
                   </mat-panel-description>
               </mat-expansion-panel-header>
-              <div><upload-file (change)="onFileChanged($event, 'c')"></upload-file></div>
+              <div class="row marginLR-30">
+                <div>
+                  <upload-file (change)="onFileChanged($event)"></upload-file>
+                </div>
+                <div>
+                  <button mat-raised-button color="link" class="marginLR-10" (click)="UploadCampaign()" [disabled]="loading">Subir</button>
+                </div>
+              </div>
         </mat-expansion-panel>
         <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <span class="txtCabMatPanel">Carga de Equipos</span>
-                </mat-panel-title>
-                  <mat-panel-description>
-                    <span class="txtDesMatPanel">Presionar para cargar equipos y URL's</span>
-                  </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div><upload-file (change)="onFileChanged($event, 'e')"></upload-file></div>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Equipos</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar equipos y URL's</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <upload-file (change)="onFileChanged($event)"></upload-file>
+            </div>
+            <div>
+              <button mat-raised-button color="link" class="marginLR-10" (click)="UploadTeam()" [disabled]="loading">Subir</button>
+            </div>
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">

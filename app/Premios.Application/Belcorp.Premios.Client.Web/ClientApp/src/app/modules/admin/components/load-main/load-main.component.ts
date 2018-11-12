@@ -32,12 +32,8 @@ export class LoadMainComponent implements OnInit {
   ngOnInit() {
   }
 
-  onFileChanged(event, source) {
+  onFileChanged(event) {
     this.selectedFile = event.target.files[0];
-
-    if (source == 'c') { this.UploadCampaign() }
-    if (source == 'e') { this.UploadTeam() }
-
   }
 
   UploadCampaign() {

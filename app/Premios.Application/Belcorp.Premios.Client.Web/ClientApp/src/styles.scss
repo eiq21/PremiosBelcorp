@@ -322,3 +322,18 @@ $iron-app-theme: mat-light-theme($iron-app-primary, $iron-app-accent);
   line-height: 55px;
   text-decoration: none;
 }
+
+.marginLR-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.marginLR-30 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
