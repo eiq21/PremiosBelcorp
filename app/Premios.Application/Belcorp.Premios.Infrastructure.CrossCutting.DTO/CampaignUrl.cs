@@ -9,6 +9,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public int CampaignUrlId { get; set; }
         public int CampaignId { get; set; }
         public int TypeUrlId { get; set; }
+        public int Sequential { get; set; }
         public string ValueUrl { get; set; }
         public string Description { get; set; }
         public bool Actived { get; set; }

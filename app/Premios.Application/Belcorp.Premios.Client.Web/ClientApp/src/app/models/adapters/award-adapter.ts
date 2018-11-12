@@ -38,6 +38,7 @@ export class AwardAdapter {
       let banner: BannerViewModel = new BannerViewModel();
       banner.CampaignId = p.CampaignId,
         banner.TypeUrlId = p.TypeUrlId,
+        banner.Sequential = p.Sequential,
         banner.ValueUrl = p.ValueUrl,
         banner.Description = p.Description
 

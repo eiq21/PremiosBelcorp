@@ -122,7 +122,7 @@
     <Folder Include="ClientApp\src\app\modules\admin\viewmodels\" />
     <Folder Include="ClientApp\src\app\modules\security\components\login\" />
     <Folder Include="ClientApp\src\assets\fonts\" />
-    <Folder Include="ClientApp\src\assets\img\" />
+    <Folder Include="ClientApp\src\assets\img\carga\" />
   </ItemGroup>
 
   <ItemGroup>

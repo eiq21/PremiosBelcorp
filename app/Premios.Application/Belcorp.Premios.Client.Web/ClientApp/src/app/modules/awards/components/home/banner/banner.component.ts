@@ -56,20 +56,20 @@ export class BannerComponent implements OnInit {
     this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
 
       this.listBanners = this.awardAdapter.BannersToBannersViewModel(CampaignUrl);
-        let bannerInicio = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INICIO);
-        let bannerIP = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
-        let bannerGA = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
-        let bannerMovil = this.listBanners.filter(b => b.TypeUrlId == Constants.TiposUrl.BANNER_MOVIL);
+      let bannerInicio = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_INICIO);
+      let bannerIP = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
+      let bannerGA = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
+      let bannerMovil = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_MOVIL);
 
         this.vimeoVideo();  
         this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl); 
 
-        this.imageMovil = "../../../../../../assets/img/" + bannerMovil[0].ValueUrl;
-        this.imageIP = "../../../../../../assets/img/" + bannerIP[0].ValueUrl;
+      this.imageMovil = "../../../../../../assets/img/carga/" + bannerMovil[0].ValueUrl;
+      this.imageIP = "../../../../../../assets/img/carga/" + bannerIP[0].ValueUrl;
 
     }, error => this.ErrorHandler(error, _self));
 
-    this.loading = false;
+    this.loading = false;  
     
   }
 

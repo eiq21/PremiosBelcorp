@@ -4,7 +4,7 @@
         <div class="tile" *ngFor="let iter of listTiles | slice:0:6; let i = index" id="insPreview-{{iter.TeamId}}" (mouseenter)="ViewVideo($event, iter.VideoPreviewValueUrl)" (mouseleave)="UnloadVideo($event)">
            <div class="inserCont" id="insertVimeoPreview{{iter.TeamId}}">         </div>
            <div class="tileMedia">
-             <img class="tile__img" src="../../../../assets/img/{{iter.ImageValueUrl}}" id="history-{{i}}" />
+             <img class="tile__img" src="../../../../assets/img/carga/{{iter.ImageValueUrl}}" id="history-{{i}}" />
            </div>
            <a class="tileLink" [routerLink]="['/awards/detail/', iter.TeamId]">
              <div class="tile__details">
@@ -23,7 +23,7 @@
      <div class="tile" *ngFor="let iter of listTiles | slice:6:12; let i = index" id="insPreview-{{iter.TeamId}}" (mouseenter)="ViewVideo($event, iter.VideoPreviewValueUrl)" (mouseleave)="UnloadVideo($event)">
         <div class="inserCont" id="insertVimeoPreview{{iter.TeamId}}">         </div>
         <div class="tileMedia">
-          <img class="tile__img" src="../../../../assets/img/{{iter.ImageValueUrl}}" id="history-{{i}}" />
+          <img class="tile__img" src="../../../../assets/img/carga/{{iter.ImageValueUrl}}" id="history-{{i}}" />
         </div>
         <a class="tileLink" [routerLink]="['/awards/detail/', iter.TeamId]">
           <div class="tile__details">
@@ -42,7 +42,7 @@
      <div class="tile" *ngFor="let iter of listTiles | slice:12:18; let i = index" id="insPreview-{{iter.TeamId}}" (mouseenter)="ViewVideo($event, iter.VideoPreviewValueUrl)" (mouseleave)="UnloadVideo($event)">
         <div class="inserCont" id="insertVimeoPreview{{iter.TeamId}}">         </div>
         <div class="tileMedia">
-          <img class="tile__img" src="../../../../assets/img/{{iter.ImageValueUrl}}" id="history-{{i}}" />
+          <img class="tile__img" src="../../../../assets/img/carga/{{iter.ImageValueUrl}}" id="history-{{i}}" />
         </div>
         <a class="tileLink" [routerLink]="['/awards/detail/', iter.TeamId]">
           <div class="tile__details">
@@ -61,7 +61,7 @@
      <div class="tile" *ngFor="let iter of listTiles | slice:18:24; let i = index" id="insPreview-{{iter.TeamId}}" (mouseenter)="ViewVideo($event, iter.VideoPreviewValueUrl)" (mouseleave)="UnloadVideo($event)">
         <div class="inserCont" id="insertVimeoPreview{{iter.TeamId}}">         </div>
         <div class="tileMedia">
-          <img class="tile__img" src="../../../../assets/img/{{iter.ImageValueUrl}}" id="history-{{i}}" />
+          <img class="tile__img" src="../../../../assets/img/carga/{{iter.ImageValueUrl}}" id="history-{{i}}" />
         </div>
         <a class="tileLink" [routerLink]="['/awards/detail/', iter.TeamId]">
           <div class="tile__details">

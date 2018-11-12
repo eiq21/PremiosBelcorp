@@ -61,6 +61,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                          {
                              CampaignUrlId = cu.CampaniaUrlId,
                              TypeUrlId = cu.TipoUrlId,
+                             Sequential = t.Secuencial,
                              ValueUrl = cu.ValorUrl,
                              Description = cu.Descripcion
                          });

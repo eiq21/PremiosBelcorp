@@ -51,6 +51,10 @@ export class LoadMainComponent implements OnInit {
         this.snackbar.open("La campaña se cargó correctamente", 'Close', {
           duration: 3000
         });
+      } else {
+        this.snackbar.open("Ocurrió un error al subir el archivo", 'Close', {
+          duration: 3000
+        });
       }
       this.loading = false;
 
@@ -64,10 +68,14 @@ export class LoadMainComponent implements OnInit {
     this.loading = true;
     this.awardService.UploadTeam(this.selectedFile).subscribe(UploadFilesResult => {
 
-      if (UploadFilesResult[0].Status) { 
+      if (UploadFilesResult[0].Status) {
         this.snackbar.open("Los equipos y su información se cargaron correctamente", 'Close', {
           duration: 3000
-        }); 
+        });
+      } else {
+          this.snackbar.open("Ocurrió un error al subir el archivo", 'Close', {
+            duration: 3000
+          });
       }
 
 
