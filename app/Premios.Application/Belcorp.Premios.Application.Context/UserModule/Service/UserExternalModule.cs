@@ -24,6 +24,46 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
             _userExternalRepository = _unitOfWork.GetRepository<UserExternal>();
         }
 
+        public bool ChangePassword(string nroDocumento, string claveActual, string claveNueva, ref string mensaje)
+        {
+            bool response = false;
+
+            UsuarioExterno ue = _unitOfWork.DbContext.UsuarioExterno.FirstOrDefault(t => t.NroDocumento == nroDocumento);
+            if (ue == null || ue.UsuarioExternoId <= 0)
+            {
+                mensaje = "No se encontro el usuario";
+                return response;
+            }
+            if (EncryptHelper.Decrypt(ue.Clave) != claveActual)
+            {
+                mensaje = "La clave no coincide";
+                return response;
+            }
+
+            ue.Clave = EncryptHelper.EncryptToByte(claveNueva);
+            _unitOfWork.DbContext.SaveChanges();
+            
+
+            return true;
+        }
+
+        public bool ChangePasswordAdmin(string nroDocumento, string claveNueva, ref string mensaje)
+        {
+            bool response = false;
+
+            UsuarioExterno ue = _unitOfWork.DbContext.UsuarioExterno.FirstOrDefault(t => t.NroDocumento == nroDocumento);
+            if (ue == null || ue.UsuarioExternoId <= 0)
+            {
+                mensaje = "No se encontro el usuario";
+                return response;
+            }
+
+            ue.Clave = EncryptHelper.EncryptToByte(claveNueva);
+            _unitOfWork.DbContext.SaveChanges();
+
+            return true;
+        }
+
         public bool UploadUserExternal(string dataExternal, bool eliminaAnterior, string usuario, ref string mensaje)
         {
             bool response = false;

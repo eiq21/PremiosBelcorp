@@ -20,6 +20,13 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             
         }
 
+        public PremiosContext(DbContextOptions<PremiosContext> options) : base(options)
+        {
+            _principal = null; 
+
+        }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.EnableAutoHistory(null);
@@ -55,6 +62,11 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
 
         private void AuditEntities()
         {
+            if (_principal == null)
+            {
+                return;
+            }
+          
             string userName = _principal.Identity.Name;
             DateTime now = DateTime.Now;
 
