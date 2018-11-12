@@ -70,13 +70,13 @@ export class NetworkManager {
 
     let _self = this;
 
-    return Observable.create(observer => {
+    return Observable.create(observer => { 
 
       this.httpClient.post(`${pathOperation}`, formData, options)
         .subscribe((data) => {
 
           try {
-            let response: BaseResponse = <BaseResponse>data;
+            let response: BaseResponse = <BaseResponse>data; 
             if (response.StateResponse.HasError) {
               observer.error(response);
             } else {

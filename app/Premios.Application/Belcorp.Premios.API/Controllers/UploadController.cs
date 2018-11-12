@@ -8,6 +8,8 @@ using Belcorp.Premios.Application.Context.AwardModule.Service;
 using Belcorp.Premios.Application.Context.UserModule.Service;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
+using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
+using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -86,10 +88,16 @@ namespace Belcorp.Premios.API.Controllers
 
             var result = _awardAppService.ImportCampaign(file, caller.Identity.Name);
 
-            return Ok(new
+            var fileResult = new UploadFileResult {
+                Status = result
+            };
+
+            var lstFileResult = new List<UploadFileResult>();
+            lstFileResult.Add(fileResult);
+
+            return Ok(new UploadFileResponse()
             {
-                result = result
-                //,string.Empty
+                UploadFilesResult = lstFileResult
             });
         }
 
@@ -116,10 +124,18 @@ namespace Belcorp.Premios.API.Controllers
 
             var result = _awardAppService.ImportTeams(file, caller.Identity.Name);
 
-            return Ok(new
+
+            var fileResult = new UploadFileResult
             {
-                result = result
-                //,string.Empty
+                Status = result
+            };
+
+            var lstFileResult = new List<UploadFileResult>();
+            lstFileResult.Add(fileResult);
+
+            return Ok(new UploadFileResponse()
+            {
+                UploadFilesResult = lstFileResult
             });
         }
     }

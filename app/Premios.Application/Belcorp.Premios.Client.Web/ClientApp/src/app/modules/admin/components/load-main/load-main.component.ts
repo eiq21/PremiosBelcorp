@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { AwardService, AuthUserService } from '../../../../services';
 import { MatSnackBar } from '@angular/material';
+import { UploadFileResult } from '../../../../models/dtos';
 
 @Component({
   selector: 'load-main',
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 export class LoadMainComponent implements OnInit {
 
   panelOpenState = false;
-  public isLoading = false;
+  public loading = false;
   private authUserService: AuthUserService;
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
@@ -41,34 +42,36 @@ export class LoadMainComponent implements OnInit {
 
   UploadCampaign() {
     let _self = this;
-    this.isLoading = true;
-    this.awardService.UploadCampaign(this.selectedFile).subscribe(result => {
+    this.loading = true; 
+    this.awardService.UploadCampaign(this.selectedFile).subscribe(UploadFilesResult => {
 
-      if (result) {
+      //var result = UploadFilesResult as UploadFileResult[];
+
+      if (UploadFilesResult[0].Status) { 
         this.snackbar.open("La campaña se cargó correctamente", 'Close', {
           duration: 3000
         });
       }
-      this.isLoading = false;
+      this.loading = false;
 
-    }, error => this.ErrorHandler(error, _self));
+    }, error => this.ErrorHandler(error, _self)); 
 
     
   }
 
   UploadTeam() {
-    let _self = this;
-    this.isLoading = true;
-    this.awardService.UploadTeam(this.selectedFile).subscribe(result => {
+    let _self = this; 
+    this.loading = true;
+    this.awardService.UploadTeam(this.selectedFile).subscribe(UploadFilesResult => {
 
-      if (result) {
+      if (UploadFilesResult[0].Status) { 
         this.snackbar.open("Los equipos y su información se cargaron correctamente", 'Close', {
           duration: 3000
         }); 
       }
 
 
-      this.isLoading = false;
+      this.loading = false;
     }, error => this.ErrorHandler(error, _self));
   }
 

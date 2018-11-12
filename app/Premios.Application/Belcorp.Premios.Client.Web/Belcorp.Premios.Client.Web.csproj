@@ -73,6 +73,7 @@
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\suggestion.ts" />
     <None Remove="ClientApp\src\app\models\dtos\Tiles.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\uploadfileresult.ts" />
     <None Remove="ClientApp\src\app\models\dtos\votation.ts" />
     <None Remove="ClientApp\src\app\models\models\configuration.model.ts" />
     <None Remove="ClientApp\src\app\models\models\user.model.ts" />
@@ -157,6 +158,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\security-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adapters\award-adapter.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\uploadfileresult.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\campaignurl.ts" />
@@ -202,9 +204,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ClientApp\src\app\agents\award\response\insert-votation-response.js">
-      <DependentUpon>insert-votation-response.ts</DependentUpon>
-    </None>
     <None Update="ClientApp\src\app\agents\award\response\insert-votation-response.js.map">
       <DependentUpon>insert-votation-response.js</DependentUpon>
     </None>

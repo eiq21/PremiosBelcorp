@@ -100,7 +100,7 @@ export class AwardAgent {
 
   UploadTeam(uploadTeamRequest: UploadTeamRequest): Observable<UpdloadTeamResponse> {
 
-    let pathOperation = this.awardUrl + PathOperation.UploadCampaign;
+    let pathOperation = this.awardUrl + PathOperation.UploadTeam;
 
     const formData = new FormData();
 
