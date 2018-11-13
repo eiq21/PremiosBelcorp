@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
       this.authenticationService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).subscribe(result => {
         if (result == "") {
           this.router.navigateByUrl(Constants.Routes.HOME);
-          this.loading = false;
+          this.loading = false;  
         }
         else {
           this.snackbar.open(result, 'Close', {

@@ -9,7 +9,8 @@ export class UserModel {
   }
 
   public Username: string;
-  public isSuperAdmin: boolean;
+  public isAdmin: boolean;
+  public isExternal: boolean;
   //public GrantedAccesses: GrantedAccess[];
   //public Processes: Process[];
 }

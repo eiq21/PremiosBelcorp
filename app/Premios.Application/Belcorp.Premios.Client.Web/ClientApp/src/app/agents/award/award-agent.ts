@@ -1,4 +1,4 @@
-import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse, UpdloadCampaignResponse, UpdloadTeamResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse, UpdloadCampaignResponse, UpdloadTeamResponse, GetDetailResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -6,18 +6,20 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest } from "./request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest, GetDetailRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
 
   private awardUrl: string;  
+  private userUrl: string;
 
   constructor(private networkManager: NetworkManager, 
     storageService: StorageService,
     configurationService: ConfigurationService) { 
 
     this.awardUrl = storageService.retrieve(Constants.SistemaUrl.AWARD_URL);
+    this.userUrl = storageService.retrieve(Constants.SistemaUrl.AWARD_URL);
 
     if (configurationService.isReady)
       this.awardUrl = configurationService.awardUrl;
@@ -107,6 +109,16 @@ export class AwardAgent {
     formData.append('file', uploadTeamRequest.File);
 
     return this.networkManager.PostFile(pathOperation, formData) as Observable<UpdloadTeamResponse>;
+  }
+
+  GetUserDetail(getDetailRequest: GetDetailRequest): Observable<GetDetailResponse> {
+    let postParameters: PostParameters = new PostParameters();
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.GetUserDetail;
+    postParameters.RequestParameter = getDetailRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<GetDetailResponse>;
+
   }
 
 }

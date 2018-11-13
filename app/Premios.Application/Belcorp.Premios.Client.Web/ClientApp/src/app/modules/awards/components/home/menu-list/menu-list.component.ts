@@ -11,6 +11,8 @@ import { Constants } from '../../../../../shared/utils';
 export class MenuListComponent implements OnInit {
 
   public userName = null;
+  public isAdmin = null;
+  public isExternal = null;
 
   constructor(
     private authUserService: AuthUserService,
@@ -20,6 +22,8 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit() {
     this.userName = this.authUserService.getLoggedInUser().Username;
+    this.isAdmin = this.authUserService.isAdmin();
+    this.isExternal = this.authUserService.isExternal();
   }
 
 

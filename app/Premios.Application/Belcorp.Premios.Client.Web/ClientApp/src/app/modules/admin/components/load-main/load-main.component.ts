@@ -74,7 +74,6 @@ export class LoadMainComponent implements OnInit {
           });
       }
 
-
       this.loading = false;
     }, error => this.ErrorHandler(error, _self));
   }

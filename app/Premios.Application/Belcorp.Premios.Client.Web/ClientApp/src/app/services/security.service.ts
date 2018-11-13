@@ -24,4 +24,5 @@ export class SecurityService {
       .pipe(map((validateResponse) => validateResponse.access_token));
   }
 
+
 }

@@ -4,4 +4,5 @@ export * from "./update-votation-request";
 export * from "./list-suggetions-request";
 export * from "./upload-campaign-request";
 export * from "./upload-team-request";
+export * from "./get-detail-request";
 

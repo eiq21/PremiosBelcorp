@@ -14,9 +14,13 @@ export class AuthUserService {
     return (this.storageService.retrieve("usertoken")) ? true : false;
   }
 
-  //isSuperAdmin(): boolean {
-  //  return this.storageService.retrieve("user") && this.storageService.retrieve("user").isSuperAdmin;
-  //}
+  isAdmin(): boolean {
+    return this.storageService.retrieve("user") && this.storageService.retrieve("user").isAdmin;
+  }
+
+  isExternal(): boolean {
+    return this.storageService.retrieve("user") && this.storageService.retrieve("user").isExternal;
+  }
 
   getLoggedInUser(): UserModel {
     return this.storageService.retrieve("user");
