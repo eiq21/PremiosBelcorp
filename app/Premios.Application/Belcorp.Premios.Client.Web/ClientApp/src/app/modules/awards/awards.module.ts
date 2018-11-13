@@ -82,7 +82,7 @@ export class AwardsModule implements OnInit  {
 
    
 
-  ngOnInit() { 
+  ngOnInit() {  
 
   }
 

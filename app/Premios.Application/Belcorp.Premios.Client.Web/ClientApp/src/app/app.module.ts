@@ -14,7 +14,6 @@ import { CustomRouterStateSerializer } from './shared/utils';
 import { SecurityAgent } from './agents/security/security-agent';
 import { NetworkManager } from './agents/networkmanager/index';
 import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({

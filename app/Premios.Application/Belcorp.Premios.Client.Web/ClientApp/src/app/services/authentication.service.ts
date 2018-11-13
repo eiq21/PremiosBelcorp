@@ -18,9 +18,9 @@ export class AuthenticationService {
     private router: Router,
     private securityService: SecurityService,
     private storageService: StorageService,
-    private authUserService: AuthUserService,
-    private awardService: AwardService
+    private authUserService: AuthUserService
   ) {
+ 
   }
 
   login(username: string, password: string): Observable<string> {
@@ -29,11 +29,11 @@ export class AuthenticationService {
       this.securityService.ConnectToken(username, password).subscribe(token => {
         if (token) {
             this.authUserService.setUserToken(token);
-            this.awardService.GetUserDetail(username).subscribe(userDetail => {
-                let loggedInUser = new UserModel();
+          this.securityService.GetUserDetail(username).subscribe(userDetail => {
+                let loggedInUser = new UserModel();  
                 loggedInUser.Username = userDetail.Name;
                 loggedInUser.isAdmin = userDetail.IsAdministrator;
-                loggedInUser.isExternal = userDetail.IsExternal;
+                loggedInUser.isExternal = userDetail.IsExternal; 
 
                 this.authUserService.setLoggedInUser(loggedInUser);
                 observer.next(""); 
@@ -43,7 +43,7 @@ export class AuthenticationService {
           observer.next(Constants.MensajeSistema.USUARIO_PASSWORD_INCORRECTOS);
         }
       }, error => {
-        observer.next(error); 
+        observer.next(error);  
       });
     });
   }

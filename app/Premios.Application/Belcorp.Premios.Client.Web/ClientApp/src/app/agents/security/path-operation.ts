@@ -1,3 +1,4 @@
 export enum PathOperation {
-  ConnectToken = "connect/token"
+  ConnectToken = "connect/token",
+  GetUserDetail = "user/GetUserDetail"
 }

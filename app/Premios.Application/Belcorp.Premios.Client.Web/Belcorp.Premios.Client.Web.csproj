@@ -62,10 +62,8 @@
     <None Remove="ClientApp\src\app\agents\networkmanager\post-parameters.ts" />
     <None Remove="ClientApp\src\app\agents\security\path-operation.ts" />
     <None Remove="ClientApp\src\app\agents\security\request\connect-token-request.ts" />
-    <None Remove="ClientApp\src\app\agents\security\request\get-detail-request.ts" />
     <None Remove="ClientApp\src\app\agents\security\request\index.ts" />
     <None Remove="ClientApp\src\app\agents\security\response\connect-token-response.ts" />
-    <None Remove="ClientApp\src\app\agents\security\response\get-detail-response.ts" />
     <None Remove="ClientApp\src\app\agents\security\response\index.ts" />
     <None Remove="ClientApp\src\app\agents\security\security-agent.ts" />
     <None Remove="ClientApp\src\app\index.ts" />
@@ -155,10 +153,10 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\networkmanager\post-parameters.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\connect-token-request.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\get-detail-request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\get-detail-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\connect-token-response.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\get-detail-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\get-detail-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\security-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />

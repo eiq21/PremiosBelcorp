@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Response;
 using Belcorp.Premios.Infrastructure.CrossCutting.Extensions;
 using Belcorp.Premios.Infrastructure.Data.Core.Extensions;
+using Belcorp.Premios.Infrastructure.CrossCutting.Enums;
 
 namespace Belcorp.Premios.Application.Context.AwardModule.Service
 {
@@ -74,14 +75,15 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
         public ICollection<Tiles> ListTiles()
         {
             int? activeCampaign = this.GetActiveCampaign();
-            int[] typesUrl = new int[] { 6, 7 };
+            int[] typesUrl = new int[] { (int)Enums.TiposUrl.VideoBaldosa, (int)Enums.TiposUrl.FotoBaldosa };
             List<Tiles> lstTiles = new List<Tiles>();
             //List<int> lstTeamsUsed = new List<int>();
             Tiles objTile = null;
 
             var resultBase = (from e in _unitOfWork.DbContext.Equipo
                          join eq in _unitOfWork.DbContext.EquipoUrl on e.EquipoId equals eq.EquipoId
-                         where typesUrl.Contains(eq.TipoUrlId) && e.CampaniaId == activeCampaign.Value
+                         join t in _unitOfWork.DbContext.TipoUrl on eq.TipoUrlId equals t.TipoUrlId
+                         where typesUrl.Contains(t.Secuencial) && e.CampaniaId == activeCampaign.Value
                          select new
                          {
                              //TeamUrlId = eq.EquipoUrlId,
@@ -89,7 +91,8 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                              TypeUrlId = eq.TipoUrlId,
                              Name = e.Nombre,
                              Description = e.Descripcion,
-                             ValueUrl = eq.ValorUrl
+                             ValueUrl = eq.ValorUrl,
+                             Sequential = t.Secuencial
                          }).ToList();
             //GroupBy(x => x.TeamId).SelectMany(t => t).OrderBy(x => Guid.NewGuid()).ThenBy(x => x.TeamId);
             //
@@ -103,13 +106,14 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                 {
                     objTile.TeamId = tile.TeamId;
                     objTile.TypeUrlId = tile.TypeUrlId;
+                    objTile.Sequential = tile.Sequential;
                     objTile.Name = tile.Name;
-                    objTile.Description = tile.Name;
-                    if (tile.TypeUrlId == 6) {
+                    objTile.Description = tile.Description;
+                    if (tile.Sequential == (int)Enums.TiposUrl.VideoBaldosa) {
                         objTile.VideoPreviewValueUrl = tile.ValueUrl;
                     }
 
-                    if (tile.TypeUrlId == 7) {
+                    if (tile.Sequential == (int)Enums.TiposUrl.FotoBaldosa) {
                         objTile.ImageValueUrl = tile.ValueUrl;
                     }
 
@@ -118,12 +122,12 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                 else
                 {
                     var obj = t.FirstOrDefault();
-                    if (tile.TypeUrlId == 6)
+                    if (tile.Sequential == (int)Enums.TiposUrl.VideoBaldosa)
                     {
                         obj.VideoPreviewValueUrl = tile.ValueUrl;
                     }
 
-                    if (tile.TypeUrlId == 7)
+                    if (tile.Sequential == (int)Enums.TiposUrl.FotoBaldosa)
                     {
                         obj.ImageValueUrl = tile.ValueUrl;
                     }
@@ -142,12 +146,13 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
 
             var query = (from e in _unitOfWork.DbContext.Equipo
                          join eu in _unitOfWork.DbContext.EquipoUrl on e.EquipoId equals eu.EquipoId
+                         join t in _unitOfWork.DbContext.TipoUrl on eu.TipoUrlId equals t.TipoUrlId
                          join v in _unitOfWork.DbContext.Votacion.Where(x => x.CodUsuario == codeUser)
                                on eu.EquipoId equals v.EquipoId
                          into vl
                          from vlj in vl.DefaultIfEmpty()
                          where e.CampaniaId == activeCampaign.Value &&
-                               eu.TipoUrlId == 9 && e.Activo == true && e.Eliminado == false
+                               t.Secuencial == (int)Enums.TiposUrl.VideoHistoria && e.Activo == true && e.Eliminado == false
                                && e.EquipoId == teamId
                         select new DetailByTeam()
                          {

@@ -34,13 +34,14 @@ export class BannerComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.getBannersByActiveCampaign()
-    
+        
   }
 
   ngAfterViewInit() {
-  
+
+    setTimeout(() => {
+      this.getBannersByActiveCampaign();
+    }, 3000);
   }
 
   navigateToAdmin() {

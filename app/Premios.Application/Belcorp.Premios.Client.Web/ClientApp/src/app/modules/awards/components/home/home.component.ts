@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  listTilesForActiveCampaign() { 
+  listTilesForActiveCampaign() {  
     let _self = this;
     this.loading = true;
     this.awardService.ListTiles().subscribe(tiles => {

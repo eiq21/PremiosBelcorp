@@ -6,7 +6,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.Enums
 {
     public class Enums
     {
-        enum TiposUrl
+        public enum TiposUrl
         {
             BannerInicio = 1,
             BannerInformacionPremios = 2,

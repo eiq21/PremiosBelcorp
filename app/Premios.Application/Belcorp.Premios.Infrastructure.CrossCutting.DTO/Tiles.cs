@@ -9,9 +9,11 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public int TeamUrlId { get; set; }
         public int TeamId { get; set; } 
         public int TypeUrlId { get; set; }
+        public int Sequential { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string VideoPreviewValueUrl { get; set; }
         public string ImageValueUrl { get; set; }
+
     }
 }
