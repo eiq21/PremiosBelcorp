@@ -11,7 +11,7 @@ import { TileViewModel, BannerViewModel } from '../../../../../modules/awards/vi
 export class BodyComponent implements OnInit, OnDestroy { 
 
   @Input() listTiles: TileViewModel[];
-  @Input() Rows: number[] = new Array<number>();
+  @Input() numTiles: number[];
 
 
   constructor(

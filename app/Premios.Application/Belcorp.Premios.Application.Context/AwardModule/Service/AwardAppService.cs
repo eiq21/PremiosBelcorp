@@ -57,7 +57,8 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             var query = (from cu in _unitOfWork.DbContext.CampaniaUrl
                          join c in _unitOfWork.DbContext.Campania on cu.CampaniaId equals c.CampaniaId
                          join t in _unitOfWork.DbContext.TipoUrl on cu.TipoUrlId equals t.TipoUrlId
-                         where cu.CampaniaId == activeCampaign.Value
+                         where cu.CampaniaId == activeCampaign.Value && c.Activo == true && c.Eliminado == false &&
+                               cu.Activo == true && cu.Eliminado == false
                          select new CampaignUrl()
                          {
                              CampaignUrlId = cu.CampaniaUrlId,

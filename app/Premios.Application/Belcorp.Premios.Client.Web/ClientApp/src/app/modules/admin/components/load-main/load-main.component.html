@@ -11,22 +11,22 @@
     <div class="accLoaders">
       <mat-accordion>
         <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <span class="txtCabMatPanel">Carga de Campañas</span>
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    <span class="txtDesMatPanel">Presionar para cargar campañas y URL's</span>
-                  </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div class="row marginLR-30">
-                <div>
-                  <upload-file (change)="onFileChanged($event)"></upload-file>
-                </div>
-                <div>
-                  <button mat-raised-button color="link" class="marginLR-10" (click)="UploadCampaign()" [disabled]="loading">Subir</button>
-                </div>
-              </div>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Campañas</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar campañas y URL's</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <upload-file (change)="onFileChanged($event)"></upload-file>
+            </div>
+            <div>
+              <button mat-raised-button color="link" class="marginLR-10" (click)="UploadCampaign()" [disabled]="loading">Subir</button>
+            </div>
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -46,17 +46,32 @@
             </div>
           </div>
         </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Imagenes</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar imagenes al servidor</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <button mat-raised-button color="link" class="marginLR-10" [disabled]="loading">Subir</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <span class="txtCabMatPanel">Reportes</span>
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    <span class="txtDesMatPanel">Generar reportes</span>
-                  </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div>Aquí se generaran reportes</div>
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Reportes</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Generar reportes</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div>Aquí se generaran reportes</div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

@@ -10,7 +10,7 @@ import { TileViewModel } from '../../../../../modules/awards/viewmodels/index';
 export class TilesComponent implements OnInit { 
 
   @Input() listTiles: TileViewModel[]; 
-  @Input() Rows: number[]; 
+  @Input() numTiles: number; 
 
   constructor(
   ) {

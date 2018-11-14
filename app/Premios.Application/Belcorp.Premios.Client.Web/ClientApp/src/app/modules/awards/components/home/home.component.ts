@@ -14,8 +14,9 @@ export class HomeComponent implements OnInit {
 
   private _route: ActivatedRoute;
   public listTiles: TileViewModel[];
-  public Rows: number[] = new Array<number>();
+  public numTiles: number;
   public loading = false;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   getContainer(): HTMLElement {
     let container: HTMLElement = null;
-    container = document.querySelector('.pb_container');
+    container = document.querySelector('.pb_container'); 
 
     return container;
   }
@@ -63,19 +64,7 @@ export class HomeComponent implements OnInit {
     this.awardService.ListTiles().subscribe(tiles => {
       this.listTiles = this.awardAdapter.TilesToTilesViewModel(tiles);
 
-      var prenumRows = (this.listTiles.length) / 6;
-      var numRows = Math.ceil(prenumRows);
-
-      if (numRows <= 1) { 
-        this.Rows.push(1);
-      } else {
-
-        for (var _i = 0; _i < numRows; _i++) { 
-          this.Rows[_i] = _i;
-        }
-
-      }
-
+      this.numTiles = this.listTiles.length;
       this.loading = false;
 
     }, error => this.ErrorHandler(error, _self));
