@@ -57,8 +57,22 @@
           </mat-expansion-panel-header>
           <div class="row marginLR-30">
             <div>
-              <button mat-raised-button color="link" class="marginLR-10" [disabled]="loading">Subir</button>
+              <upload-image (change)="onImagesChanged($event)"></upload-image>
             </div>
+            <div>
+              <button mat-raised-button color="link" (click)="UploadImages()" class="marginLR-10" [disabled]="loading">Subir</button>
+            </div>
+            <div>
+              <section class="example-section">
+                <mat-progress-bar class="example-margin"
+                                  [color]="color"
+                                  [mode]="mode"
+                                  [value]="value"
+                                  [bufferValue]="bufferValue">
+                </mat-progress-bar>
+              </section>
+            </div>
+
           </div>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true"

@@ -10,8 +10,10 @@ using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
 using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
 using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Response;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace Belcorp.Premios.API.Controllers
 {
@@ -19,11 +21,17 @@ namespace Belcorp.Premios.API.Controllers
     {
         private IUserExternalModule _userExternalModule;
         private readonly IAwardAppService _awardAppService;
+        //private readonly IHostingEnvironment _environment;
+        public IConfiguration _configuration { get; }
 
-        public UploadController(IUserExternalModule userExternalModule, IAwardAppService awardAppService)
+
+        public UploadController(IUserExternalModule userExternalModule, IAwardAppService awardAppService, IConfiguration configuration)
+            //, IHostingEnvironment environment)
         {
             this._userExternalModule = userExternalModule;
             this._awardAppService = awardAppService;
+            _configuration = configuration;
+            // _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
 
 
@@ -132,6 +140,46 @@ namespace Belcorp.Premios.API.Controllers
 
             var lstFileResult = new List<UploadFileResult>();
             lstFileResult.Add(fileResult);
+
+            return Ok(new UploadFileResponse()
+            {
+                UploadFilesResult = lstFileResult
+            });
+        }
+
+        
+
+        [HttpPost]
+        public IActionResult PostImage(IFormFile file)
+        {
+            var rootPath = _configuration["UploadImages:AssetImagesFolder"];
+            var extensionFile = Path.GetExtension(file.FileName);
+            string[] imagesExtension = new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".tiff" };
+            string mess = string.Empty;
+            bool st = false;
+
+            if (file.Length > 0 && imagesExtension.Contains(extensionFile))
+            {
+                using (var fileStream = new FileStream(Path.Combine(rootPath, file.FileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                    mess = "Carga exitosa";
+                    st = true;
+                }
+
+            } else {
+                mess = "Formato incorrecto, porfavor debe subir una imagen con cualquiera de las extensiones validas: JPG, JPEG, PNG, BMP, TIFF";
+            }
+
+            var fileResult = new UploadFileResult
+            {
+                Status = st,
+                Message = mess               
+            };
+
+            var lstFileResult = new List<UploadFileResult>();
+            lstFileResult.Add(fileResult);
+
 
             return Ok(new UploadFileResponse()
             {

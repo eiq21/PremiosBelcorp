@@ -2669,10 +2669,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .fullscreen-bg {
-    background: url("../../../../../../assets/img/carga/bg01.jpg") center center/cover no-repeat;
-  }
-
   .fullscreen-bg__video {
     display: none;
   }
@@ -2716,7 +2712,6 @@ body {
 }
 
 .bgResp {
-  background-image: url("../../../../../../assets/img/carga/top-resp.jpg");
   background-size: cover;
 }
 
@@ -2782,7 +2777,6 @@ body {
 
 .pbInfo {
   height: 87vh;
-  background: url("../../../../../../assets/img/carga/bg01.jpg");
   background-size: cover;
 }
 

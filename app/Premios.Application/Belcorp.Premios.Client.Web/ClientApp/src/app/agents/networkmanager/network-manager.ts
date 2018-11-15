@@ -40,9 +40,6 @@ export class NetworkManager {
     var parameters = postParameters.RequestParameter || null;
     let _self = this;
 
-    console.log("aqui va:");
-    console.log(parameters);
-
     return Observable.create(observer => {     
 
       this.httpClient.post(`${postParameters.PathOperation}`, JSON.stringify(parameters), options)
@@ -63,6 +60,7 @@ export class NetworkManager {
         }, error => this.ErrorHandler(error, _self));
     });
   }
+
 
   PostFile(pathOperation: string, formData: FormData): Observable<BaseResponse> {
     const headers = new HttpHeaders({ 'Accept': 'application/json' });

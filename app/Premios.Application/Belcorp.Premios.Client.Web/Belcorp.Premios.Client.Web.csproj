@@ -44,6 +44,7 @@
     <None Remove="ClientApp\src\app\agents\award\request\list-suggetions-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\update-votation-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\upload-campaign-request.ts" />
+    <None Remove="ClientApp\src\app\agents\award\request\upload-image-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\upload-team-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\index.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\insert-votation-response.ts" />
@@ -53,6 +54,7 @@
     <None Remove="ClientApp\src\app\agents\award\response\list-tiles-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\update-votation-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\upload-campaign-response.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\upload-image-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\upload-team-response.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response-dto.ts" />
     <None Remove="ClientApp\src\app\agents\core\base-response.ts" />
@@ -130,6 +132,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\award-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\upload-image-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\upload-team-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\upload-campaign-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\list-suggetions-request.ts" />
@@ -139,6 +142,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-suggetions-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\upload-campaign-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\upload-image-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\upload-team-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\update-votation-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\insert-votation-response.ts" />

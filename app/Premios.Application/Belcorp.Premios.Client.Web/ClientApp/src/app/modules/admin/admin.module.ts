@@ -11,6 +11,7 @@ import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { UploadFileComponent } from './components/shared/upload-file/upload-file.component';
 import { LoadMainComponent } from './components/load-main/load-main.component';
+import { UploadImageComponent } from './components/shared/upload-image/upload-image.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
   declarations: [
     AdminManagerComponent,
     UploadFileComponent,
+    UploadImageComponent,
     LoadMainComponent
   ]
 })

@@ -6,7 +6,8 @@ import { Tiles, CampaignUrl, Detail, Votation, Suggestion, UploadFileResult } fr
 //import {  } from "../agents/protocol/request";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest } from "../agents/award/request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest, UploadImageRequest } from "../agents/award/request";
+
 
 
 @Injectable()
@@ -90,6 +91,13 @@ export class AwardService {
       .pipe(map((uploadTeamResponse) => uploadTeamResponse.UploadFilesResult));
   }
 
+  UploadImage(file: File): Observable<UploadFileResult[]> {
 
+    let uploadImageRequest: UploadImageRequest = new UploadImageRequest();
+    uploadImageRequest.File = file;
+
+    return this.awardsAgent.UploadImage(uploadImageRequest)
+      .pipe(map((uploadTeamResponse) => uploadTeamResponse.UploadFilesResult));
+  }
 
 }

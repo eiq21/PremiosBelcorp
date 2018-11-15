@@ -1,4 +1,4 @@
-import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse, UpdloadCampaignResponse, UpdloadTeamResponse } from "./response";
+import { ListTilesResponse, ListBannersResponse, ListDetailResponse, InsertVotationResponse, UpdateVotationResponse, ListSuggestionsResponse, UpdloadCampaignResponse, UpdloadTeamResponse, UpdloadImageResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
-import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest } from "./request";
+import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest, UploadImageRequest } from "./request";
 
 @Injectable()
 export class AwardAgent { 
@@ -112,5 +112,15 @@ export class AwardAgent {
   }
 
 
+  UploadImage(uploadImageRequest: UploadImageRequest): Observable<UpdloadImageResponse> {
+
+    let pathOperation = this.awardUrl + PathOperation.UploadImages;
+
+    const formData = new FormData();
+
+    formData.append('file', uploadImageRequest.File);
+
+    return this.networkManager.PostFile(pathOperation, formData) as Observable<UpdloadImageResponse>;
+  }
 
 }

@@ -83,8 +83,6 @@ export class TileComponent implements OnInit {
 
     
   }
-
-
   
 
   ngOnDestroy() {

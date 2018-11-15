@@ -43,7 +43,6 @@ namespace Belcorp.Premios.API
          
             services.ConfigureDI();
             services.AddOptions();
-
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder.AllowAnyOrigin()

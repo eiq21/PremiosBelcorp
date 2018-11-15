@@ -6,4 +6,5 @@ export * from "./update-votation-response";
 export * from "./list-suggetions-response";
 export * from "./upload-campaign-response";
 export * from "./upload-team-response";
+export * from "./upload-image-response";
 

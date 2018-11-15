@@ -6,5 +6,6 @@ export enum PathOperation {
   UpdateVotation = "award/UpdateVotation",
   ListSuggetions = "award/ListSuggestionsForUser",
   UploadCampaign = "upload/UploadCampaign",
-  UploadTeam = "upload/UploadUrlsTeam"
+  UploadTeam = "upload/UploadUrlsTeam",
+  UploadImages = "upload/PostImage"
 }
