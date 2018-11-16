@@ -125,12 +125,14 @@ export class BannerComponent implements OnInit {
     if (document.querySelector('div.pb')) {
       vimeoPlayer = new Player('insertPlayerOnInitSlide', { 
         id: bannerInicio,
-        background: true 
+        background: true,
+        loop: true
       })
 
       vimeoPlayertwo = new Player('insertPlayerOnLastSlide', {
         id: bannerGanadoresAnteriores,
-        background: false
+        background: false,
+        loop: true
       })
 
       /**
@@ -207,7 +209,7 @@ export class BannerComponent implements OnInit {
 
       }
 
-      console.log(move)
+      //console.log(move)
 
     })
 
