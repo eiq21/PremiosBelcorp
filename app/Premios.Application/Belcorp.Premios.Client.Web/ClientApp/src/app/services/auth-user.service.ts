@@ -34,6 +34,7 @@ export class AuthUserService {
     return this.storageService.retrieve("usertoken");
   }
 
+  
   setUserToken(token: string) {
     this.storageService.store('usertoken', token);
   }

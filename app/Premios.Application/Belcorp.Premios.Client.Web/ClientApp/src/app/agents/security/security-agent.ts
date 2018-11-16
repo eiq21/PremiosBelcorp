@@ -1,6 +1,6 @@
-import { ConnectTokenRequest, GetDetailRequest } from "./request";
+import { ConnectTokenRequest, GetDetailRequest, ChangePasswordRequest } from "./request";
 //import { ValidateUserResponse, ListUsersByPageResponse, ListSystemProfileResponse, ListUsersLDAPResponse, ListGrantedAccessesByUsernameResponse, InsertUserResponse, GetUserByUsernameResponse, GetUserByIdResponse, DeleteUserResponse, UpdateUserResponse, ListUsersBySystemProfileResponse, ListUserGrantedAccessesByUsernameResponse, ConnectTokenResponse, DeleteSystemProfileResponse, ListSystemProfilesByPageResponse, ListGrantedAccessesResponse, InsertSystemProfileResponse, UpdateSystemProfileResponse, GetSystemProfileByPerfilIdResponse } from "./response";
-import { ConnectTokenResponse, GetDetailResponse } from "./response";
+import { ConnectTokenResponse, GetDetailResponse, ChangePasswordResponse } from "./response";
 import { NetworkManager, PostParameters } from "../networkmanager";
 import { PathOperation } from "./path-operation";
 import { Observable } from "rxjs";
@@ -52,6 +52,16 @@ export class SecurityAgent {
     postParameters.RequestParameter = getDetailRequest;  
 
     return this.networkManager.Post(postParameters) as Observable<GetDetailResponse>;
+
+  }
+
+  ChangePassword(changePasswordRequest: ChangePasswordRequest): Observable<ChangePasswordResponse> {
+    let postParameters: PostParameters = new PostParameters(); 
+
+    postParameters.PathOperation = this.awardUrl + PathOperation.ChangePassword;
+    postParameters.RequestParameter = changePasswordRequest;
+
+    return this.networkManager.Post(postParameters) as Observable<ChangePasswordResponse>;
 
   }
 

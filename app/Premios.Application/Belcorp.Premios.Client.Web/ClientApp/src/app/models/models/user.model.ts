@@ -11,6 +11,7 @@ export class UserModel {
   public Username: string;
   public isAdmin: boolean;
   public isExternal: boolean;
+  public CodeUser: string;
   //public GrantedAccesses: GrantedAccess[];
   //public Processes: Process[];
 }

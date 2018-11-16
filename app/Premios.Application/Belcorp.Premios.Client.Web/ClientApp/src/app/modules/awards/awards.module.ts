@@ -7,7 +7,7 @@ import { BodyComponent } from '././components/home/body/body.component';
 import { TileComponent } from '././components/home/tile/tile.component';
 import { TilesComponent } from '././components/home/tiles/tiles.component';
 import { BannerComponent } from '././components/home/banner/banner.component';
-import { AwardService } from '../../services';
+import { AwardService, FormService, SecurityService } from '../../services';
 import { AwardAgent } from '../../agents/award/award-agent';
 import { AwardAdapter } from '../../models/adapters/award-adapter';
 import { DetailComponent } from './components/detail/detail.component';
@@ -17,6 +17,8 @@ import { DetailVoteComponent } from './components/detail/detail-vote/detail-vote
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './components/home/home.component';
 import { MenuListComponent } from './components/home/menu-list/menu-list.component';
+import { PasswordChangeComponent } from './components/home/shared/password-change/password-change.component';
+import { SecurityAgent } from '../../agents/security/security-agent';
 
 
 
@@ -52,13 +54,15 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule,
-    NgxSpinnerModule
+    ReactiveFormsModule
   ],
   providers: [
     AwardService,
     AwardAgent,
-    AwardAdapter
+    AwardAdapter, 
+    FormService,
+    SecurityAgent,
+    SecurityService
   ],
   declarations: [ 
     BodyComponent,
@@ -70,10 +74,11 @@ const routes: Routes = [
     DetailVoteComponent,
     AwardsManagerComponent,
     HomeComponent,
-    MenuListComponent 
+    MenuListComponent,
+    PasswordChangeComponent
   ], 
   entryComponents: [
-
+    PasswordChangeComponent
   ],
   exports: [
   ]

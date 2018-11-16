@@ -34,7 +34,7 @@ export class AuthenticationService {
                 loggedInUser.Username = userDetail.Name;
                 loggedInUser.isAdmin = userDetail.IsAdministrator;
                 loggedInUser.isExternal = userDetail.IsExternal; 
-
+                loggedInUser.CodeUser = username;
                 this.authUserService.setLoggedInUser(loggedInUser);
                 observer.next(""); 
             });

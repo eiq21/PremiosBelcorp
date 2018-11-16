@@ -63,14 +63,17 @@
     <None Remove="ClientApp\src\app\agents\networkmanager\network-manager.ts" />
     <None Remove="ClientApp\src\app\agents\networkmanager\post-parameters.ts" />
     <None Remove="ClientApp\src\app\agents\security\path-operation.ts" />
+    <None Remove="ClientApp\src\app\agents\security\request\change-password-request.ts" />
     <None Remove="ClientApp\src\app\agents\security\request\connect-token-request.ts" />
     <None Remove="ClientApp\src\app\agents\security\request\index.ts" />
+    <None Remove="ClientApp\src\app\agents\security\response\change-password-response.ts" />
     <None Remove="ClientApp\src\app\agents\security\response\connect-token-response.ts" />
     <None Remove="ClientApp\src\app\agents\security\response\index.ts" />
     <None Remove="ClientApp\src\app\agents\security\security-agent.ts" />
     <None Remove="ClientApp\src\app\index.ts" />
     <None Remove="ClientApp\src\app\models\adapters\award-adapter.ts" />
     <None Remove="ClientApp\src\app\models\dtos\campaignurl.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\changepassword.ts" />
     <None Remove="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\suggestion.ts" />
@@ -119,6 +122,7 @@
     <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-vote\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\detail\detail-suggestions\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\home\menu-list\" />
+    <Folder Include="ClientApp\src\app\modules\awards\components\home\shared\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\home\tiles\" />
     <Folder Include="ClientApp\src\app\modules\awards\components\home\tile\" />
     <Folder Include="ClientApp\src\app\modules\core\viewmodels\" />
@@ -157,9 +161,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\networkmanager\post-parameters.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\path-operation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\connect-token-request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\change-password-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\get-detail-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\request\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\connect-token-response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\change-password-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\get-detail-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\response\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\security-agent.ts" />
@@ -170,6 +176,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\campaignurl.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\suggestion.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\changepassword.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\userdetail.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\votation.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\tiles.ts" />
