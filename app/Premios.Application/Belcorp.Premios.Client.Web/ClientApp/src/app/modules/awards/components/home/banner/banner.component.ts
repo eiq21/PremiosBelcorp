@@ -56,17 +56,19 @@ export class BannerComponent implements OnInit {
 
     this.awardService.ListBannersByActiveCampaign().subscribe(CampaignUrl => {
 
-      this.listBanners = this.awardAdapter.BannersToBannersViewModel(CampaignUrl);
+      this.listBanners = this.awardAdapter.BannersToBannersViewModel(CampaignUrl); 
       let bannerInicio = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_INICIO);
       let bannerIP = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_INFORMACIONPREMIOS);
       let bannerGA = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_GANADORESANTERIORES);
       let bannerMovil = this.listBanners.filter(b => b.Sequential == Constants.TiposUrl.BANNER_MOVIL);
 
-        this.vimeoVideo();  
-        this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl); 
+        this.vimeoVideo();    
+        this.tabs(bannerInicio[0].ValueUrl, bannerGA[0].ValueUrl);  
 
-      this.imageMovil = "../../../../../../assets/img/carga/" + bannerMovil[0].ValueUrl;
-      this.imageIP = "../../../../../../assets/img/carga/" + bannerIP[0].ValueUrl;
+      this.imageMovil = "../../../../../assets/img/carga/" + bannerMovil[0].ValueUrl.replace(/ /g, '%20');
+      this.imageIP = "../../../../../assets/img/carga/" + bannerIP[0].ValueUrl.replace(/ /g, '%20');
+
+      console.log(this.imageIP);
 
     }, error => this.ErrorHandler(error, _self));
 
@@ -90,7 +92,8 @@ export class BannerComponent implements OnInit {
       player[index] = new Player(vimeoTagID, {
         id: vimeoID,
         muted: false,
-        autoplay: true
+        autoplay: true,
+        loop: true
       })
 
       player[index].getVideoTitle().then(function (title) {

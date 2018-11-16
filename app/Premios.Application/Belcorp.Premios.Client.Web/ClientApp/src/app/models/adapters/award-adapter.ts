@@ -21,7 +21,7 @@ export class AwardAdapter {
         tile.TypeUrlId = t.TypeUrlId,
         tile.Description = t.Description,
         tile.Name = t.Name,
-        tile.ImageValueUrl = t.ImageValueUrl,
+        tile.ImageValueUrl = t.ImageValueUrl.replace(/ /g, '%20'),
         tile.VideoPreviewValueUrl = t.VideoPreviewValueUrl
 
       tilesVM.push(tile);

@@ -153,7 +153,7 @@ namespace Belcorp.Premios.API.Controllers
         public IActionResult PostImage(IFormFile file)
         {
             var rootPath = _configuration["UploadImages:AssetImagesFolder"];
-            var extensionFile = Path.GetExtension(file.FileName);
+            var extensionFile = Path.GetExtension(file.FileName).ToLower();
             string[] imagesExtension = new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".tiff" };
             string mess = string.Empty;
             bool st = false;

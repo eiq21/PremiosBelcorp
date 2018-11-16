@@ -53,7 +53,8 @@ export class TileComponent implements OnInit {
 
         this.vimeoPlayer = new Player(idInsertVideo, {
           id: videoCode,
-          background: true
+          background: true,
+          loop: true
         })
 
         show(cont, 'block')
