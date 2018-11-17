@@ -3,6 +3,7 @@ using Belcorp.Premios.Infrastructure.Data.Entity.Domain;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Belcorp.Premios.Application.Context.AwardModule.Service
@@ -17,5 +18,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
         ICollection<Suggestions> ListSuggestionsForUser(string codeUser);
         bool ImportCampaign(IFormFile file, string userName);
         bool ImportTeams(IFormFile file, string userName);
+        CustomFile RankingReport(string templateRoot);
     }
 }

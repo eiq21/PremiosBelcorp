@@ -6,9 +6,11 @@ using Belcorp.Premios.Infrastructure.Transport.MaintenanceModule.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Belcorp.Premios.API.Controllers
@@ -17,10 +19,12 @@ namespace Belcorp.Premios.API.Controllers
     public class AwardController : BaseController
     {
         private readonly IAwardAppService _awardAppService;
+        public IConfiguration _configuration { get; }
 
-        public AwardController(IAwardAppService awardAppService)
+        public AwardController(IAwardAppService awardAppService, IConfiguration configuration)
         {
             _awardAppService = awardAppService;
+            _configuration = configuration;
         }
 
         [EnableCors("CorsPolicy")]
@@ -96,6 +100,24 @@ namespace Belcorp.Premios.API.Controllers
             return Ok(new ListSuggestionsResponse
             {
                 Suggestions = _awardAppService.ListSuggestionsForUser(ListSuggetionsRequest.CodeUser)
+            });
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpPost]
+        public IActionResult GetRankingReport()
+        {
+            var caller = User as ClaimsPrincipal;
+            if (!caller.HasClaim("admin", "True"))
+            {
+                return BadRequest("Usuario no tiene permiso de generar el reporte");
+            }
+
+            var templateRoot = _configuration["RankingReportTemplate:Template"];
+
+            return Ok(new ExportRankingResponse
+            {
+                ExcelFile = _awardAppService.RankingReport(templateRoot)
             });
         }
     }

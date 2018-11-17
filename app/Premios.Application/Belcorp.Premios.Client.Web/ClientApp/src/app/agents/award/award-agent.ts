@@ -7,6 +7,7 @@ import { Constants } from "../../shared/utils";
 import { ConfigurationService } from "../../services/configuration.service";
 import { StorageService } from "../../services/storage.service"; 
 import { ListDetailRequest, InsertVotationRequest, UpdateVotationRequest, ListSuggestionsRequest, UploadCampaignRequest, UploadTeamRequest, UploadImageRequest } from "./request";
+import { ExportRankingReportResponse } from "./response/export-rankingreport-response";
 
 @Injectable()
 export class AwardAgent { 
@@ -123,4 +124,11 @@ export class AwardAgent {
     return this.networkManager.PostFile(pathOperation, formData) as Observable<UpdloadImageResponse>;
   }
 
+  GetRankingReport(): Observable<ExportRankingReportResponse> {
+
+    let postParameters: PostParameters = new PostParameters();
+    postParameters.PathOperation = this.awardUrl + PathOperation.GetRankingReport; 
+
+    return this.networkManager.Post(postParameters) as Observable<ExportRankingReportResponse>;
+  } 
 }

@@ -62,6 +62,7 @@ export class NetworkManager {
   }
 
 
+
   PostFile(pathOperation: string, formData: FormData): Observable<BaseResponse> {
     const headers = new HttpHeaders({ 'Accept': 'application/json' });
     const options = { headers: headers };
@@ -75,6 +76,34 @@ export class NetworkManager {
 
           try {
             let response: BaseResponse = <BaseResponse>data; 
+            if (response.StateResponse.HasError) {
+              observer.error(response);
+            } else {
+              observer.next(data);
+            }
+          } catch (e) {
+            observer.error(e); 
+          } finally {
+            observer.complete();
+          }
+        }, error => this.ErrorHandler(error, _self));
+    });
+  }
+
+  PostExcel(postParameters: PostParameters): Observable<Blob> {
+
+    const headers = new HttpHeaders({ 'content-type': 'multipart/form-data' });
+    const options = { headers: headers };
+    var parameters = postParameters.RequestParameter || null;
+    let _self = this;
+
+    return Observable.create(observer => {
+
+      this.httpClient.post(postParameters.PathOperation, null, options)
+        .subscribe((data) => {
+
+          try {
+            let response: BaseResponse = <BaseResponse>data;
             if (response.StateResponse.HasError) {
               observer.error(response);
             } else {

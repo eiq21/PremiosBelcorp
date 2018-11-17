@@ -6,3 +6,4 @@ export * from "./suggestion";
 export * from "./uploadfileresult";
 export * from "./userdetail";
 export * from "./changepassword";
+export * from "./custom-file";

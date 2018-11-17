@@ -1,10 +1,12 @@
 ﻿using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Response;
 using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
+using Belcorp.Premios.Infrastructure.CrossCutting.Extensions;
 using global::ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Security.Claims;
 using System.Text;
 
@@ -190,5 +192,29 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
                 TeamUrls = lstTeamUrls
             };
         }
+
+        public ExportRankingReportResponse ExportRankingReport(ExportRankingReportRequest exportRankingReportRequest, string templateRoot) {
+
+            var dtRankingReport = exportRankingReportRequest.rankingReports.ToTable();
+            var wkReport = new XLWorkbook(templateRoot);
+            var exportRankingReportResponse = new ExportRankingReportResponse();
+
+            wkReport.Worksheet(1).Cell(6, 1).InsertData(dtRankingReport);
+
+            MemoryStream oMemoryStream = new MemoryStream();
+            wkReport.SaveAs(oMemoryStream);
+
+            CustomFile excelFile = new CustomFile();
+            excelFile.FileName = "Reporte historias PB.xlsx";
+            excelFile.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            excelFile.FileContents = oMemoryStream.ToArray();
+
+            return new ExportRankingReportResponse()
+            {
+                ExcelFile = excelFile
+            };
+
+        }
+
     }
 }

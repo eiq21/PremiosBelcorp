@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatProgressBarModule, MatSnackBar } from '@angular/material';
+import { MatProgressBarModule, MatSnackBar, TooltipPosition } from '@angular/material';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { AuthUserService, AwardService } from '../../../../services';
+import { FormControl } from '@angular/forms';
+import { Functions } from '../../../../shared/utils';
 
 @Component({
   selector: 'load-main',
@@ -22,6 +24,9 @@ export class LoadMainComponent implements OnInit {
   mode = 'determinate';
   value = 0;
   bufferValue = 100;
+
+  positionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  position = new FormControl(this.positionOptions[3]);
 
   constructor(
     awardService: AwardService,
@@ -124,7 +129,7 @@ export class LoadMainComponent implements OnInit {
           duration: 3000
         });
       }
-      else {
+      else {  
       
         this.snackbar.open("Ocurrió un error al intentar subir algunas imagenes, no deben pesar más de 1.5 MB", 'Close', {
           duration: 10000
@@ -132,31 +137,24 @@ export class LoadMainComponent implements OnInit {
       
       }
     }, 5000);
+  }
 
+  GetReportRanking() {
 
+    let _self = this;
 
+    this.loading = true;
 
-
-    //this.awardService.UploadTeam(this.selectedImages).subscribe(UploadFilesResult => {
-    //
-    //  if (UploadFilesResult[0].Status) {
-    //    this.snackbar.open("Los equipos y su información se cargaron correctamente", 'Close', {
-    //      duration: 3000
-    //    });
-    //  } else {
-    //    this.snackbar.open("Ocurrió un error al subir el archivo", 'Close', {
-    //      duration: 3000
-    //    });
-    //  }
-    //
-    //  this.loading = false;
-    //}, error => this.ErrorHandler(error, _self));
+    this.awardService.GetRankingReport().subscribe(excelFile => {
+      Functions.FileFromByteArray(excelFile.FileName, excelFile.ContentType, Functions.base64ToArrayBuffer(excelFile.FileContents));
+      this.loading = false;
+    }, error => this.ErrorHandler(error, _self));
 
   }
 
   ErrorHandler(error, _self) {
     this.snackbar.open(error.StateResponse.MensajeError, 'Close', {
-      duration: 3000
+      duration: 10000
     });
     //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }

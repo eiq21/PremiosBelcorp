@@ -46,6 +46,7 @@
     <None Remove="ClientApp\src\app\agents\award\request\upload-campaign-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\upload-image-request.ts" />
     <None Remove="ClientApp\src\app\agents\award\request\upload-team-request.ts" />
+    <None Remove="ClientApp\src\app\agents\award\response\export-rankingreport-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\index.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\insert-votation-response.ts" />
     <None Remove="ClientApp\src\app\agents\award\response\list-banners-response.ts" />
@@ -74,6 +75,7 @@
     <None Remove="ClientApp\src\app\models\adapters\award-adapter.ts" />
     <None Remove="ClientApp\src\app\models\dtos\campaignurl.ts" />
     <None Remove="ClientApp\src\app\models\dtos\changepassword.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\custom-file.ts" />
     <None Remove="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <None Remove="ClientApp\src\app\models\dtos\index.ts" />
     <None Remove="ClientApp\src\app\models\dtos\suggestion.ts" />
@@ -143,6 +145,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\update-votation-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\insert-votation-request.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\request\list-detail-request.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\export-rankingreport-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\list-suggetions-response.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\agents\award\response\upload-campaign-response.ts" />
@@ -171,6 +174,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\agents\security\security-agent.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\adapters\award-adapter.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\dtos\custom-file.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\uploadfileresult.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\detailbyteam.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\dtos\index.ts" />

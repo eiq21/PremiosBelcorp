@@ -10,5 +10,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
     {
         ImportCampaignResponse ImportCampaign(ImportCampaignRequest importCampaignRequest, string userName);
         ImportTeamResponse ImportTeam(ImportTeamRequest importTeamRequest, string userName);
+        ExportRankingReportResponse ExportRankingReport(ExportRankingReportRequest exportRankingReportRequest, string templateRoot);
     }
 }

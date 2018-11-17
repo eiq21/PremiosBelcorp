@@ -22,7 +22,10 @@ namespace Belcorp.Premios.Infrastructure.Data.Core.Extensions
             IDbCommand cmd = database.GetDbConnection().CreateCommand();
             cmd.CommandText = procedureName;
             cmd.CommandType = CommandType.StoredProcedure;
-            object[] sqlParameters = GetParametersSqlQuery(parameters);
+            object[] sqlParameters = { };
+            if (parameters != null) {
+                 sqlParameters = GetParametersSqlQuery(parameters);
+            }
 
             if (sqlParameters.Any())
             {

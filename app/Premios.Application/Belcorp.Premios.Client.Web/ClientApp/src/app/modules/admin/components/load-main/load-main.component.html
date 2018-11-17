@@ -75,8 +75,7 @@
 
           </div>
         </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
+        <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="txtCabMatPanel">Reportes</span>
@@ -85,7 +84,15 @@
               <span class="txtDesMatPanel">Generar reportes</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div>Aquí se generaran reportes</div>
+          <div class="row marginLR-30">
+            <div>
+              <button mat-raised-button class="button-circle" color="primary"
+                      matTooltip="Descargar Reporte Historias"
+                      [matTooltipPosition]="position.value"
+                      (click)="GetReportRanking()"><i class="material-icons">save_alt</i></button>
+              
+            </div>
+          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

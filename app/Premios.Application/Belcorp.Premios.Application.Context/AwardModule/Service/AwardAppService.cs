@@ -17,6 +17,7 @@ using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Response;
 using Belcorp.Premios.Infrastructure.CrossCutting.Extensions;
 using Belcorp.Premios.Infrastructure.Data.Core.Extensions;
 using Belcorp.Premios.Infrastructure.CrossCutting.Enums;
+using System.IO;
 
 namespace Belcorp.Premios.Application.Context.AwardModule.Service
 {
@@ -304,6 +305,21 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
 
             _unitOfWork.ExecuteSqlNonQuery("usp_CargaEquipoUrls", uut);
             return true;
+
+        }
+
+        public CustomFile RankingReport(string templateRoot) {
+
+            var lstRankingReport = _unitOfWork.ExecuteSqlQuery<RankingReport>("usp_ObtenerRanking", null);
+
+            ExportRankingReportRequest exportRankingReportRequest = new ExportRankingReportRequest()
+            {
+                rankingReports = lstRankingReport.ToList()
+            };
+
+            var exportRankingResponse = _closedXMLAgent.ExportRankingReport(exportRankingReportRequest, templateRoot);
+
+            return exportRankingResponse.ExcelFile;
 
         }
     }
