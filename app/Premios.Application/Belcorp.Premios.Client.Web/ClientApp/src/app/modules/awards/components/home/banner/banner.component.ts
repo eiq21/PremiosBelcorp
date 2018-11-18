@@ -7,6 +7,9 @@ import { BannerViewModel } from '../../../../../modules/awards/viewmodels/index'
 import { Constants } from '../../../../../shared/utils';
 
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { MessageboxDialogComponent } from '../../../../core/components/messagebox/messagebox-dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'prem-banner',
@@ -24,6 +27,8 @@ export class BannerComponent implements OnInit {
   private awardService: AwardService;
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     private route: ActivatedRoute,
     private router: Router,
     awardAdapter: AwardAdapter,
@@ -203,8 +208,6 @@ export class BannerComponent implements OnInit {
           }
         })
 
-        console.log('Clic en boton ' + move.steps)
-
         vol.style.display = 'none'
 
       }
@@ -266,8 +269,24 @@ export class BannerComponent implements OnInit {
 
   }
 
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
+
   ErrorHandler(error, _self) {
-    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   } 
 
 

@@ -4,37 +4,12 @@
     <div class="Video">
       <div class="VideoTitleWrap">
           <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
-          <div id="RateVote" class="RateVote" #rateVote>
-            <!--<i class="fa fa-star" [ngClass]="{
-                 'RateStarVote' : isPrint(1,objDetail.Vote),
-                 'RateStarNoVote' : !isPrint(1,objDetail.Vote)                  
-               }"></i>
-            <i class="fa fa-star" [ngClass]="{
-                 'RateStarVote' : isPrint(2, objDetail.Vote),
-                 'RateStarNoVote' : !isPrint(2, objDetail.Vote)
-               }"></i>
-            <i class="fa fa-star" [ngClass]="{
-                 'RateStarVote' : isPrint(3, objDetail.Vote),
-                 'RateStarNoVote' : !isPrint(3, objDetail.Vote)
-               }"></i>
-            <i class="fa fa-star" [ngClass]="{
-                 'RateStarVote' : isPrint(4, objDetail.Vote),
-                 'RateStarNoVote' : !isPrint(4, objDetail.Vote)
-               }"></i>
-            <i class="fa fa-star" [ngClass]="{
-                 'RateStarVote' : isPrint(5, objDetail.Vote), 
-                 'RateStarNoVote' : !isPrint(5, objDetail.Vote)
-               }"></i>-->
+          <div id="RateVote" class="RateVote" (click)="mostrarAdvertencia(objDetail.VotationId)" #rateVote>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
-            <!--<a class="RateAction--vote" href="#" data-action-vote="1"><i class="RateAction--vote fa fa-star"></i></a>
-      <a class="RateAction--vote" href="#" data-action-vote="2"><i class="RateAction--vote fa fa-star"></i></a>
-      <a class="RateAction--vote" href="#" data-action-vote="3"><i class="RateAction--vote fa fa-star"></i></a>
-      <a class="RateAction--vote" href="#" data-action-vote="4"><i class="RateAction--vote fa fa-star"></i></a>
-      <a class="RateAction--vote" href="#" data-action-vote="5"><i class="RateAction--vote fa fa-star"></i></a>-->
           </div>
       </div>
       <div class="VideoVimeo">

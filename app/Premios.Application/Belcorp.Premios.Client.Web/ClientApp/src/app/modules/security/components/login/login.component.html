@@ -15,7 +15,7 @@
         <input id="password" name="password" class="pbInput" formControlName="password" type="password"
                placeholder="Contraseña:" autocomplete="off" (keyup)="$event.keyCode == 13 && Login()" [ngClass]="{ 'is-invalid': formErrors.password }">
         <div *ngIf="formErrors.password" class="invalid-feedback">
-          <div>Usuario es requerido</div>
+          <div>Usuario es requerido</div> 
         </div>
         <br />
         <button class="pbSend fbForm-send" [disabled]="loading" value="Ingresar" (click)="Login()">Ingresar</button>
@@ -23,7 +23,7 @@
     </form>
 
     <div class="pbByeTitle">
-      <p>¿Dudas? Escribenos a ccorporativa@belcorp.biz</p>
+      <p>¿Dudas? Escríbenos a ccorporativa@belcorp.biz</p>
     </div>
   </div>
 </div>

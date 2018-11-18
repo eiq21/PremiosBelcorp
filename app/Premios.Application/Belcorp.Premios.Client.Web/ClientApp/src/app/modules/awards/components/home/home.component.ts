@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { BannerViewModel, TileViewModel } from '../../viewmodels';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material';
+import { MessageboxDialogComponent } from '../../../core/components/messagebox/messagebox-dialog.component';
 
 @Component({
   selector: 'prem-home',
@@ -19,6 +22,8 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     private route: ActivatedRoute,
     private router: Router,
     private awardService: AwardService,
@@ -71,9 +76,25 @@ export class HomeComponent implements OnInit {
 
   }
 
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
+
 
   ErrorHandler(error, _self) {
-    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
 }

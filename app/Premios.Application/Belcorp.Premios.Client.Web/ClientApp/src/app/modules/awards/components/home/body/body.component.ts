@@ -13,7 +13,7 @@ export class BodyComponent implements OnInit, OnDestroy {
   @Input() listTiles: TileViewModel[];
   @Input() numTiles: number[];
 
-
+   
   constructor(
   ) {
   }

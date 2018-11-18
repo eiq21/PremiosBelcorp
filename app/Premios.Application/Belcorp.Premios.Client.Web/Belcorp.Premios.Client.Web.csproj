@@ -116,6 +116,7 @@
     <None Remove="ClientApp\src\app\shared\custom-controls\custom-form-validators.ts" />
     <None Remove="ClientApp\src\app\shared\material\index.ts" />
     <None Remove="ClientApp\src\app\shared\material\material.module.ts" />
+    <None Remove="ClientApp\src\app\shared\messagebox\messagebox.module.ts" />
     <None Remove="ClientApp\src\app\shared\utils.ts" />
   </ItemGroup>
 
@@ -219,6 +220,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\custom-controls\custom-form-validators.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\material\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\material\material.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\messagebox\messagebox.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\utils.ts" />
   </ItemGroup>
 
