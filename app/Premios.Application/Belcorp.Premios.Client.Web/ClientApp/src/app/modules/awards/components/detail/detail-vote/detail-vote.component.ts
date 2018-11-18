@@ -5,6 +5,9 @@ import * as basicLightbox from 'basiclightbox'
 import { AwardService, AuthUserService } from '../../../../../services';
 import { AwardAdapter } from '../../../../../models/adapters/award-adapter';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { MessageboxDialogComponent } from '../../../../core/components/messagebox/messagebox-dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'detail-vote',
@@ -31,6 +34,8 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     private route: ActivatedRoute,
     private router: Router,
     awardService: AwardService,
@@ -244,6 +249,12 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
   }
 
+  mostrarAdvertencia(votationId) {
+    if (votationId == null || votationId == 0) { 
+      this.openMessagebox('Premios Belcorp', "Para calificar este video debes finalizarlo, ¡pero tranquilo! Solo dura 1 minuto ;)", '2');
+    }
+  }
+
   ngOnDestroy() {
 
     clearInterval(this.interval); 
@@ -254,8 +265,24 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
   }
 
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true, 
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+         buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
+
   ErrorHandler(error, _self) {
-    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
 

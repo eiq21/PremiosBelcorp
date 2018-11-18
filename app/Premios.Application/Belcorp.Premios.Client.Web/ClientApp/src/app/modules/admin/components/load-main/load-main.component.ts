@@ -18,7 +18,7 @@ export class LoadMainComponent implements OnInit {
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
   selectedFile: File;
-  selectedImages: File[];
+  selectedImages: File[]; 
 
   color = 'primary';
   mode = 'determinate';

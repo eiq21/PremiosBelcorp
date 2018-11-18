@@ -253,7 +253,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                              ValueUrl = eu.ValorUrl
                          });
 
-            var lstSuggestions = query.OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+            var lstSuggestions = query.Distinct().OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 
             return lstSuggestions;
         }

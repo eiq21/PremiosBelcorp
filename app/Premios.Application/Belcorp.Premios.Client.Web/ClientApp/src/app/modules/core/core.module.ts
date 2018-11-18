@@ -7,6 +7,7 @@ import { ViewportComponent } from './components/viewport';
 //import { ViewportComponent } from './components/viewport';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AuthenticationService, AuthUserService, StorageService, ConfigurationService, SecurityGuardService } from '../../services/index';
+import { MaterialModule } from '../../shared/material';
 //import { MessageAgent } from '../../agents/message/message-agent';
 //import { ReportAgent } from '../../agents/report/report-agent';
 //import { NavtoolbarComponent } from './components/navtoolbar/navtoolbar.component';
@@ -20,7 +21,7 @@ export const COMPONENTS = [
 
 @NgModule({
   //imports: [CommonModule, RouterModule, MaterialModule],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, MaterialModule],
   declarations: COMPONENTS,
   exports: COMPONENTS,
   providers: [
@@ -36,11 +37,11 @@ export const COMPONENTS = [
     //ReportAgent
   ]
 })
-export class CoreModule {
+export class CoreModule { 
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import it in the AppModule only');
-    }
+    } 
   }
 
   static forRoot() {

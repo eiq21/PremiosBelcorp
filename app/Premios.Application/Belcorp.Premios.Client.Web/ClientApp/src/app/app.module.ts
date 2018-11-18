@@ -14,6 +14,8 @@ import { CustomRouterStateSerializer } from './shared/utils';
 import { SecurityAgent } from './agents/security/security-agent';
 import { NetworkManager } from './agents/networkmanager/index';
 import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
+import { MessageBoxModule } from './shared/messagebox/messagebox.module';
+import { MessageboxDialogComponent } from './modules/core/components/messagebox/messagebox-dialog.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
     HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation: 'reload' }),
     FormsModule,
-    CoreModule.forRoot()
+    MessageBoxModule,
+    CoreModule.forRoot() 
   ],
   providers: [
     { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
@@ -32,6 +35,9 @@ import { AuthInterceptor } from './agents/networkmanager/auth-interceptor';
     SecurityService,
     SecurityAgent,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
+  entryComponents: [
+    MessageboxDialogComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -4,7 +4,9 @@ import { AwardService, AuthUserService } from '../../../../services';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { DetailViewModel } from '../../viewmodels';
 import { SuggestionsViewModel } from '../../viewmodels/suggestions-view-model';
-
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material';
+import { MessageboxDialogComponent } from '../../../core/components/messagebox/messagebox-dialog.component';
 
 @Component({
   selector: 'app-detail',
@@ -24,6 +26,8 @@ export class DetailComponent implements OnInit, OnDestroy {
   public loading = false;
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     private route: ActivatedRoute,
     private router: Router,
     private awardService: AwardService,
@@ -80,9 +84,25 @@ export class DetailComponent implements OnInit, OnDestroy {
     }, error => this.ErrorHandler(error, _self));
   }
 
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
+
 
   ErrorHandler(error, _self) {
-    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
   ngOnDestroy() {

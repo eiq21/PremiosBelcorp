@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   Authenticated: boolean = false;
   subscription: Subscription;
 
-  constructor(
+  constructor( 
     private configurationService: ConfigurationService,
     private authenticationService: AuthenticationService
   ) {
