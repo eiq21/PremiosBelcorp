@@ -140,6 +140,7 @@ export class Constants {
     static readonly ERROR_INESPERADO_CONTACTE_ADMINISTRADOR_SISTEMAS = "Error Inesperado, contacte al administrador de sistemas";
     static readonly USUARIO_PASSWORD_INCORRECTOS = "Usuario y/o password incorrectos";
     static readonly CONFIGURACION_INCORRECTA_IDENTITY_SERVER = "La configuración con el servidor de identidad es incorrecta";
+    static readonly NAVEGADOR_INCORRECTO = "¡Oops! Para poder disfrutar las historias debes ingresar desde Google Chrome. ¡Allá nos vemos!";
   }
 
   

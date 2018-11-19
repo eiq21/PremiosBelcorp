@@ -26,7 +26,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
   private awardService: AwardService;
   private awardAdapter: AwardAdapter;
   private authUserService: AuthUserService;
-  private modalPublic: any;
+  public modalPublic: any;
   navigationSubscription: any;
   public interval: any;
   public TeamId: any;
@@ -141,14 +141,16 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
       modal = basicLightbox
           .create(document.querySelector('#template'), {
             closable: true,
-            onShow: (instance) => { this.modalPublic = instance; },
+            onShow: (instance) => { this.modalPublic = instance; console.log(instance) },
             onClose: (instance) => { }
           }
         );
-
+      
     } else {
       modal = this.modalPublic;
     }
+
+    
 
     let vimeoTagID, vimeoID, action
     vimeoTagID = vimeoWrapper.getAttribute('id');
@@ -167,13 +169,15 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
         document.exitFullscreen();
       }
       else if (document['mozCancelFullScreen']) { 
-        document['mozCancelFullScreen']();
+        document['mozCancelFullScreen'](); 
       }
       else if (document.webkitCancelFullScreen) {
         document.webkitCancelFullScreen();
       }
 
+     // this.desPrintStars(modal.element());
       modal.show();
+      //
 
     });
 
@@ -190,7 +194,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     let vote = calificate;
     let teamID = teamId;
 
-    this.modalPublic.close(); 
+    this.modalPublic.close();
     
     this.loading = true;
 
@@ -230,13 +234,30 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
   }
 
+  //desPrintStars(instance) {
+
+  //  var iStars = Array.from(document.getElementById("ratingVoteStars").children);
+  //  var star1 = iStars[0] as HTMLElement;
+  //  var star2 = iStars[1] as HTMLElement;
+  //  var star3 = iStars[2] as HTMLElement;
+  //  var star4 = iStars[3] as HTMLElement;
+  //  var star5 = iStars[4] as HTMLElement; 
+
+  //  star1.setAttribute("style", "color: #0c3558;");
+  //  star2.setAttribute("style", "color: #0c3558;");
+  //  star3.setAttribute("style", "color: #0c3558;");
+  //  star4.setAttribute("style", "color: #0c3558;");
+  //  star5.setAttribute("style", "color: #0c3558;");
+
+  //}
+
   printStars(vote) {
 
-    var iStars = Array.from(document.getElementById("RateVote").children);
+    var iStars = Array.from(document.getElementById("RateVote").children); 
 
     var star1 = iStars[0] as HTMLElement;
     var star2 = iStars[1] as HTMLElement;
-    var star3 = iStars[2] as HTMLElement;
+    var star3 = iStars[2] as HTMLElement;   
     var star4 = iStars[3] as HTMLElement; 
     var star5 = iStars[4] as HTMLElement; 
 

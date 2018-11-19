@@ -36,10 +36,13 @@
     "aspnet-prerendering": "^3.0.1",
     "basiclightbox": "^5.0.1",
     "bootstrap": "^3.3.7",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
     "ed-grid": "2.5.10",
+    "intl": "^1.2.5",
     "ngx-spinner": "^6.1.2",
     "rxjs": "^6.3.3",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

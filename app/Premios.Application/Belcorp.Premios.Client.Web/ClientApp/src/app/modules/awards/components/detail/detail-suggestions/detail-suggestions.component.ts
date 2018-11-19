@@ -12,6 +12,7 @@ export class DetailSuggestionsComponent implements OnInit, OnDestroy {
   @Input() listSuggestion: SuggestionsViewModel[]; 
   private _route: ActivatedRoute;
   public interval: any;
+  @Input() modalPublic: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +26,8 @@ export class DetailSuggestionsComponent implements OnInit, OnDestroy {
 
   goToOtherVideo(teamId) {
 
+   //this.modalPublic.close();   
     this.router.navigate(['/awards/detail/', teamId]);
-
 
   }
   

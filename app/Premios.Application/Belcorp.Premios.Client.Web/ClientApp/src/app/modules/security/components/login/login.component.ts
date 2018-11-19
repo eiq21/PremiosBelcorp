@@ -5,7 +5,9 @@ import { FormService, AuthenticationService } from '../../../../services/index';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../../shared/custom-controls/custom-form-validators';
 import { Constants } from '../../../../shared/utils';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { MessageboxDialogComponent } from '../../../core/components/messagebox/messagebox-dialog.component';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     private router: Router,
     public snackbar: MatSnackBar,
     public form: FormBuilder,
@@ -27,6 +31,8 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
     this.LoginVM = new LoginViewModel();
     this.buildForm();
   }
@@ -76,6 +82,26 @@ export class LoginComponent implements OnInit {
       this.formErrors = this.FormService.validateForm(this.loginForm, this.formErrors, false);
     }
 
+  }
+
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
+
+  ErrorHandler(error, _self) {
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
 }

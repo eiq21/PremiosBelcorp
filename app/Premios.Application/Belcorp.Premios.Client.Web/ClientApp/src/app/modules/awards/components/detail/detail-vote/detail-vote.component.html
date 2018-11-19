@@ -3,14 +3,14 @@
   <article class="Temporal">
     <div class="Video">
       <div class="VideoTitleWrap">
-          <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
-          <div id="RateVote" class="RateVote" (click)="mostrarAdvertencia(objDetail.VotationId)" #rateVote>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-          </div>
+        <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
+        <div id="RateVote" class="RateVote" (click)="mostrarAdvertencia(objDetail.VotationId)" #rateVote>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
       </div>
       <div class="VideoVimeo">
         <div class="Vimeo-wrapper" id="videoDetalle"></div>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <detail-suggestions [listSuggestion]="listSuggestion"></detail-suggestions>
+    <detail-suggestions [modalPublic]="modalPublic" [listSuggestion]="listSuggestion"></detail-suggestions>
   </article>
 </section>
 <div class="Hide" id="responsiveImg">
@@ -55,14 +55,7 @@
 </div>
 <div class="Hide" id="template">
   <div class="Rate grCenter" id="ratevideo">
-    <!--<div class="RateAction text--full">
-          <a class="RateAction--vote" href="#" data-action-vote="1"><i class="fa fa-star"></i></a>
-          <a class="RateAction--vote" href="#" data-action-vote="2"><i class="fa fa-star"></i></a>
-          <a class="RateAction--vote" href="#" data-action-vote="3"><i class="fa fa-star"></i></a>
-          <a class="RateAction--vote" href="#" data-action-vote="4"><i class="fa fa-star"></i></a>
-          <a class="RateAction--vote" href="#" data-action-vote="5"><i class="fa fa-star"></i></a>
-    </div>-->
-    <div class="rating">
+    <div id="ratingVoteStars" class="rating">
       <input type="radio" class="RateAction" name="star" id="star5" (click)="calificarVideo($event, 5, objDetail.TeamId, objDetail.VotationId)" /><label for="star5"></label>
       <input type="radio" class="RateAction" name="star" id="star4" (click)="calificarVideo($event, 4, objDetail.TeamId, objDetail.VotationId)" /><label for="star4"></label>
       <input type="radio" class="RateAction" name="star" id="star3" (click)="calificarVideo($event, 3, objDetail.TeamId, objDetail.VotationId)" /><label for="star3"></label>
@@ -75,4 +68,9 @@
   </div>
 </div>
 
+
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>
 

@@ -26,7 +26,6 @@ export class ConfigurationService {
 
     this.loadDevelopment();
 
-
     this.isReady = true;
     this.settingsLoadedSource.next();
     //this.http.get(url).subscribe((result: any) => {
@@ -40,7 +39,7 @@ export class ConfigurationService {
     //});
   }
 
-  loadDevelopment() {
+  loadDevelopment() { 
 
     if (this.identityUrl == null) {
       this.storageService.store(Constants.SistemaUrl.IDENTITY_URL, environment.IdentityUrl);
