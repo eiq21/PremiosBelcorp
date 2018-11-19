@@ -3,7 +3,7 @@ import { Votation } from "../../../models/dtos";
 //import { Tiles } from "../../../model/dtos/Tiles";
 
 export class InsertVotationResponse extends BaseResponse {
-  public Votation: Votation;
+  public Votation: Votation; 
   constructor() {
     super();
     //this.Votation = new Votation();
