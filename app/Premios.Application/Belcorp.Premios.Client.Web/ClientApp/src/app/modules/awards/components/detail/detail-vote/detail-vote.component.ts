@@ -165,8 +165,8 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
 
     this.player.on('ended', function (data) {
 
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
+      if (document.exitFullscreen) { 
+        document.exitFullscreen();  
       }
       else if (document['mozCancelFullScreen']) { 
         document['mozCancelFullScreen'](); 
@@ -175,10 +175,7 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
         document.webkitCancelFullScreen();
       }
 
-     // this.desPrintStars(modal.element());
-      modal.show();
-      //
-
+      modal.show(); 
     });
 
     this.loading = false;
@@ -276,30 +273,29 @@ export class DetailVoteComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title, 
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
+    });
+  }
 
+  ngOnDestroy() {
     clearInterval(this.interval); 
 
     if (this.navigationSubscription) { 
       this.navigationSubscription.unsubscribe();
     }
 
-  }
-
-  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
-    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
-      scrollStrategy: this.overlay.scrollStrategies.noop(),
-      disableClose: true, 
-      data: {
-        messageTitle: title,
-        messageBoxTxt: messageText,
-        messageBoxIcon: imgIcon,
-        messageBoxBtnAceptar: btnAceptar,
-         buttons: [
-          { textButton: 'Aceptar' }
-        ]
-      }
-    });
   }
 
   ErrorHandler(error, _self) {

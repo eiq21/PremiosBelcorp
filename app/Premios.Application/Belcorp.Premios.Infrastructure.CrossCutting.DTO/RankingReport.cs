@@ -9,7 +9,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public string NombreHistoria { get; set; }
         public string URL { get; set; }
         public int NumeroPersonas { get; set; }
-        public int Promedio { get; set; }
-        public int Puntaje { get; set; }
+        public decimal Promedio { get; set; }
+        public decimal Puntaje { get; set; }
     }
 }

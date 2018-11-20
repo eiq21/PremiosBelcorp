@@ -8,7 +8,7 @@
     <form [formGroup]="loginForm" class="form" novalidate>
       <div class="pbForm-wrap">
         <input id="user" name="user" class="pbInput" type="text"
-               formControlName="username" placeholder="Usuario:" autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.username }">
+               formControlName="username" placeholder="Usuario de red:" autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.username }">
         <div *ngIf="formErrors.username" class="invalid-feedback">
           <div>Usuario es requerido</div>
         </div>

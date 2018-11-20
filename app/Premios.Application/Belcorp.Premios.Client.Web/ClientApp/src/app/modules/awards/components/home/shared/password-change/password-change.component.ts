@@ -25,6 +25,7 @@ export class PasswordChangeComponent implements OnInit {
   hide = true;
   hideC = true;
   @Input() loading = false;
+  public notSame: boolean;
 
   constructor(
     private router: Router,
@@ -55,34 +56,45 @@ export class PasswordChangeComponent implements OnInit {
     this.formChangePass = this.form.group({
       oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]] 
-    });
+      confirmPassword: ['', [Validators.required]],
+     }, { validator: this.checkPasswords }
+    );
 
     this.formChangePass.valueChanges.subscribe((data) => {
       this.formErrors = this.FormService.validateForm(this.formChangePass, this.formErrors, true);
     });
   }
 
+  checkPasswords(group: FormGroup) {
+
+    let pass = group.controls.newPassword.value;
+    let confirmPass = group.controls.confirmPassword.value;
+
+    return pass === confirmPass ? null : { notSame: true }
+  }
 
   save() {
     this.FormService.markFormGroupTouched(this.formChangePass);
 
     if (this.formChangePass.valid) {
+
       this.loading = true;
 
-      console.log(this.authUserService.getLoggedInUser().CodeUser);
-
       this.securityService.ChangePassword(this.authUserService.getLoggedInUser().CodeUser, this.formChangePass.get('oldPassword').value, this.formChangePass.get('confirmPassword').value).subscribe(ChangePassword => {
-        //if (ChangePassword[0].Status == true) {
+
+        if (ChangePassword[0].Status == true) {
+
           this.snackbar.open("Se cambió la contraseña con éxito", 'Close', {
             duration: 3000,
           });
           this.loading = false;
           this.formChangePass.reset();
-          this.dialogRef.close();  
-        //} 
+          this.dialogRef.close();
+
+        } 
       }); 
     } else {
+
           this.formErrors = this.FormService.validateForm(this.formChangePass, this.formErrors, false);
     }
 

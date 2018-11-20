@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Belcorp.Premios.Application.Context.AuthenticationModule.Service;
 using Belcorp.Premios.Application.Context.UserModule.Service;
+using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
 using Belcorp.Premios.Infrastructure.Data.Entity.Domain;
 using Belcorp.Premios.Infrastructure.Transport.UseerModule.Request;
 using Belcorp.Premios.Infrastructure.Transport.UseerModule.Response;
@@ -56,10 +57,16 @@ namespace Belcorp.Premios.API.Controllers
 
             bool resp = _userExternalModule.ChangePassword(changePasswordRequest.UserCode, changePasswordRequest.PasswordOld, changePasswordRequest.PasswordNew, ref mensaje);
 
-            return Ok(new ChangePasswordResponse()
+            var lstChangePassword = new List<ChangePassword>();
+            lstChangePassword.Add(new ChangePassword()
             {
                 Status = resp,
                 Message = mensaje
+            });
+
+            return Ok(new ChangePasswordResponse()
+            {
+                ChangePassword = lstChangePassword
             });
         }
 
@@ -78,10 +85,16 @@ namespace Belcorp.Premios.API.Controllers
 
             bool resp = _userExternalModule.ChangePasswordAdmin(changePasswordAdminRequest.UserCode, changePasswordAdminRequest.PasswordNew, ref mensaje);
 
-            return Ok(new ChangePasswordResponse()
+            var lstChangePassword = new List<ChangePassword>();
+            lstChangePassword.Add(new ChangePassword()
             {
                 Status = resp,
                 Message = mensaje
+            });
+
+            return Ok(new ChangePasswordResponse()
+            {
+                ChangePassword = lstChangePassword
             }); 
         }
     }

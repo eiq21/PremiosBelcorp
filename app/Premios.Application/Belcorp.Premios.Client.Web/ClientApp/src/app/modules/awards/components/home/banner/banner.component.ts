@@ -73,7 +73,6 @@ export class BannerComponent implements OnInit {
       this.imageMovil = "../../../../../assets/img/carga/" + bannerMovil[0].ValueUrl.replace(/ /g, '%20');
       this.imageIP = "../../../../../assets/img/carga/" + bannerIP[0].ValueUrl.replace(/ /g, '%20');
 
-      console.log(this.imageIP);
 
     }, error => this.ErrorHandler(error, _self));
 
@@ -103,7 +102,6 @@ export class BannerComponent implements OnInit {
 
       player[index].getVideoTitle().then(function (title) {
         t.innerText = title
-        console.log('title:', title)
       })
 
     })

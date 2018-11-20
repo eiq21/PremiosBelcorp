@@ -66,8 +66,6 @@ export class DetailComponent implements OnInit, OnDestroy {
 
       this.objDetail = this.listDetail[0];
 
-      console.log(this.objDetail);
-
       this.loading = false;
     }, error => this.ErrorHandler(error, _self));
   }

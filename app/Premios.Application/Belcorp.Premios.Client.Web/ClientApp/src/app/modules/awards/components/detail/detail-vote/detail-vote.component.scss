@@ -417,8 +417,9 @@ body {
 
 .rating label {
   display: block;
-  cursor:pointer;
+  cursor: pointer;
   width: 150px;
+  color: #0c3558;
 }
 
 .rating label:before {
@@ -436,7 +437,7 @@ body {
   position: absolute;
   display: block;
   font-size: 7rem;
-  color: #25aae1;
+  color: #0c3558; /*#25aae1;*/
   top: 0;
   opacity: 0;
   transition: .5s;
@@ -444,9 +445,9 @@ body {
 }
 
 .rating label:hover:after,
-.rating label:hover ~ label:after,
-.rating input:checked ~ label:after {
+.rating label:hover ~ label:after {
   opacity: 1;
+  color: #25aae1;
 }
 
 .RateText {

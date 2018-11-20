@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatProgressBarModule, MatSnackBar, TooltipPosition } from '@angular/material';
+import { MatProgressBarModule, MatSnackBar, TooltipPosition, MatDialog } from '@angular/material';
 import { AwardAdapter } from '../../../../models/adapters/award-adapter';
 import { AuthUserService, AwardService } from '../../../../services';
 import { FormControl } from '@angular/forms';
 import { Functions } from '../../../../shared/utils';
+import { Overlay } from '@angular/cdk/overlay';
+import { MessageboxDialogComponent } from '../../../core/components/messagebox/messagebox-dialog.component';
 
 @Component({
   selector: 'load-main',
@@ -29,6 +31,8 @@ export class LoadMainComponent implements OnInit {
   position = new FormControl(this.positionOptions[3]);
 
   constructor(
+    private messagebox: MatDialog,
+    private overlay: Overlay,
     awardService: AwardService,
     awardAdapter: AwardAdapter,
     authUserService: AuthUserService,
@@ -122,7 +126,6 @@ export class LoadMainComponent implements OnInit {
 
       this.loading = false;
 
-      console.log("i = " + i);
 
       if (i == this.selectedImages.length) {
         this.snackbar.open("Se cargaron correctamente todas las imagenes", 'Close', {
@@ -143,7 +146,7 @@ export class LoadMainComponent implements OnInit {
 
     let _self = this;
 
-    this.loading = true;
+    this.loading = true; 
 
     this.awardService.GetRankingReport().subscribe(excelFile => {
       Functions.FileFromByteArray(excelFile.FileName, excelFile.ContentType, Functions.base64ToArrayBuffer(excelFile.FileContents));
@@ -152,11 +155,25 @@ export class LoadMainComponent implements OnInit {
 
   }
 
-  ErrorHandler(error, _self) {
-    this.snackbar.open(error.StateResponse.MensajeError, 'Close', {
-      duration: 10000
+  openMessagebox(title, messageText, imgIcon, btnAceptar = true): void {
+    let messageboxRef = this.messagebox.open(MessageboxDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
+      disableClose: true,
+      data: {
+        messageTitle: title,
+        messageBoxTxt: messageText,
+        messageBoxIcon: imgIcon,
+        messageBoxBtnAceptar: btnAceptar,
+        buttons: [
+          { textButton: 'Aceptar' }
+        ]
+      }
     });
-    //_self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
+  }
+
+
+  ErrorHandler(error, _self) {
+    _self.openMessagebox('Premios Belcorp', error.StateResponse.MensajeError, '3');
   }
 
  

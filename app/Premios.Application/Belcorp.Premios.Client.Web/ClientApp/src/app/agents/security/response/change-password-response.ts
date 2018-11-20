@@ -6,6 +6,7 @@ export class ChangePasswordResponse extends BaseResponse {
 
   constructor() {
     super();
+
     this.ChangePassword = new Array<ChangePassword>();
   } 
 }
