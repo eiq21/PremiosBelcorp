@@ -12,7 +12,8 @@ namespace Belcorp.Premios.API.Controllers
     //[ServiceFilter(typeof(ApiActionFilter))]
     [ServiceFilter(typeof(ApiExceptionFilter))]
     [Route("api/[controller]/[action]")]
-    [EnableCors("AllowAllCORS")]
+    [EnableCors("CorsPolicy")]
+    //[EnableCors("AllowAllCORS")]
     [Authorize]
     public class BaseController : Controller
     {

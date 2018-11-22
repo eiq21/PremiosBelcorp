@@ -6,6 +6,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.LDAP.Respose
 {
     public class ValidateUserResponse
     {
-        public bool isLoginFailed { get; set; }
+        public bool isLoginTrue { get; set; }
     }
 }

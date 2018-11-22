@@ -1,0 +1,16 @@
+[data-tabby-content] {
+  display: none;
+}
+
+[data-tabby-content][data-tabby-active] {
+  display: block;
+}
+
+[data-tabby-bar] {
+  cursor: pointer;
+}
+
+.AccessItemActive {
+  box-shadow: inset 0 -5px 0 0 red;
+  border-radius: 0;
+}

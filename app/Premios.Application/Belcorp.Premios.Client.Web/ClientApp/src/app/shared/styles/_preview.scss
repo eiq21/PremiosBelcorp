@@ -1,0 +1,389 @@
+$duration: 450ms;
+$tileWidth: 14.2vw;
+$tileWidthresp: $tileWidth * 7;
+$tileHeight: ($tileWidth / (2/3));
+$tileHeightresp: ($tileWidthresp / (5/3));
+$iconSize: 35px;
+$growFactor: 1.4; // 1.5 times the original size
+$growFactorResp: 1.2; // 1.5 times the original size
+$moveLeft: -($tileWidth * ($growFactor - 1) / 2);
+$moveRight: $tileWidth * ($growFactor - 1);
+$moveTop: $tileWidthresp * ($growFactorResp - 1);
+$moveBottom: -($tileWidthresp * ($growFactorResp - 1));
+$fullHD: 1920px;
+$tileWidthHD: 15.2vw;
+$tileHeightHD: ($tileWidthHD / (2/2.8));
+$growFactorHD: 1.2;
+$moveRightHD: $tileWidthHD * ($growFactorHD - 1);
+$moveLeftHD: -($tileWidthHD * ($growFactorHD - 1) /2);
+
+.inserCont {
+  top: 0%;
+  left: 0%;
+  overflow: hidden !important;
+  position: absolute;
+}
+
+
+/**
+ * 1600 > 2500
+ * 1600 < 1366 
+ */
+
+
+/**
+ *  TODO : Museo Sans en los botones inferiores.
+ * 
+ */
+
+// body, html{
+//   padding: 0 10px;
+//   margin: 0;
+//   background: #0E0F11;
+//   color: #ecf0f1;
+//   font-family: 'Open Sans', sans-serif;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   width: 100%;
+// }
+// * { box-sizing: border-box }
+
+/* h1, p
+  text-align: center
+
+p
+  width: 100%
+  max-width: 500px
+  margin: auto */
+
+.pbVimeoItem {
+  @include edContainer;
+  @include full;
+  justify-content: center;
+}
+
+.pbVimeoItem__inner {
+  @include grid('.tile', 3 3 6, 13px);
+  transition: $duration transform;
+  margin: 0 0 ($tileHeight / 4) 0;
+
+  @include fromTo(0px, 640px) {
+    margin-left: auto;
+  }
+
+  @include from($fullHD) {
+    grid-gap: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: ($tileHeightHD / 8);
+  }
+
+  &:hover {
+    transform: translate3d($moveLeft, 0, 0);
+
+    @include fromTo(0px, 640px) {
+      transform: none;
+    }
+
+    @include from($fullHD) {
+      transform: translate3d($moveLeftHD, 0, 0);
+    }
+  }
+
+  &:hover .tile {
+    // Fade out every tile
+    opacity: .9;
+    // And then grow the current tile and make it opaque again
+    &:hover {
+      transform: scale($growFactor);
+      opacity: 1;
+
+      @include fromTo(0px, 640px) {
+        transform: none;
+      }
+
+      @include from($fullHD) {
+        transform: scale($growFactorHD);
+      }
+    }
+  }
+
+  & a:link,
+  & a:hover,
+  & a:active,
+  & a:visited {
+    transition: color 150ms;
+    color: #95a5a6;
+    text-decoration: none
+  }
+}
+
+.pbVimeoItem:last-child .pbVimeoItem__inner {
+  margin-bottom: rem(10px)
+}
+
+.tile {
+  position: relative;
+  display: inline-block;
+  width: $tileWidth;
+  overflow: hidden;
+  height: $tileHeight;
+  // margin-right: 10px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: $duration all;
+  transform-origin: center left;
+
+  & a {
+    pointer-events: visible;
+  }
+
+  & * {
+    pointer-events: none;
+  }
+
+  @include fromTo(0px, 640px) {
+    width: $tileWidthresp;
+    height: $tileHeightresp;
+    transform: none;
+  }
+
+  @include from($fullHD) {
+    width: $tileWidthHD;
+    height: $tileHeightHD;
+  }
+
+  &Link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    &:hover {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+  }
+
+  &__img {
+    width: $tileWidth;
+    height: $tileHeight;
+    object-fit: cover;
+
+    @include fromTo(0px, 640px) {
+      width: $tileWidthresp;
+      height: $tileHeightresp;
+    }
+
+    @include from($fullHD) {
+      width: $tileWidthHD;
+      height: $tileHeightHD;
+    }
+  }
+
+  .inserCont {
+    @include fromTo(1366px, 1600px) {
+      width: 15vw;
+      height: $tileHeightHD;
+    }
+
+    @include fromTo(1600px, $fullHD) {
+      width: 18vw;
+      height: 28.28vw;
+    }
+
+    @include from($fullHD) {
+      width: 30vw;
+      height: 60vh;
+    }
+
+    & iframe {
+      margin-top: -150px;
+      top: 0;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 1;
+    transition: $duration opacity;
+    z-index: 20;
+
+    @include fromTo(0px, 640px) {
+      opacity: 1;
+      background: transparent;
+    }
+
+    &:after,
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      opacity: 0;
+    }
+
+    &:after {
+      margin-top: (-($iconSize / 2));
+      margin-left: (-($iconSize / 2));
+      width: $iconSize;
+      height: $iconSize;
+      border: 3px solid #ecf0f1;
+      line-height: $iconSize;
+      text-align: center;
+      border-radius: 100%;
+      background: rgba(114, 114, 114, 0.5);
+      z-index: 1;
+    }
+
+    &:before {
+      content: '▶';
+      color: $alt;
+      left: 0;
+      width: 100%;
+      font-size: 20px;
+      margin-left: 3px;
+      margin-top: -12px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    &__vid:after,
+    &__vid:before {
+      display: none
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 30px;
+    padding: 10px 20px;
+    width: 100%;
+
+    @include fromTo(0px, 640px) {
+      bottom: 50px;
+      display: none;
+    }
+
+    @include from($fullHD) {
+      padding: 4rem 3.1rem;
+    }
+
+    & .Encabezado {
+      width: 100%;
+      margin: auto;
+      color: $text;
+      white-space: normal;
+      opacity: 0;
+      font-size: 1.2rem;
+      // font-size: 1.1rem;
+      @include fromTo(0px, 640px) {
+        font-size: 1.2rem;
+      }
+
+      @include fromTo(l, xl) {
+        font-size: .75rem;
+      }
+
+      @include fromTo(xl, xxl) {
+        font-size: 1.2rem;
+      }
+
+      @include fromTo(xxl, $fullHD) {
+        font-size: 1.2rem;
+      }
+    }
+
+    & .Descripcion {
+      color: $text;
+      opacity: 0;
+      padding-top: .2rem;
+
+      @include fromTo(0px, 640px) {
+        // font-size: var(--text-md);
+        // opacity: 1;
+        //** requierimiento : que no aparezca en moviles */
+        display: none;
+      }
+
+      @include fromTo(l, xl) {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  &:hover ~ .tile {
+    transform: translate3d($moveRight, 0, 0);
+
+    @include fromTo(0px, 640px) {
+      transform: none;
+    }
+
+    @include from($fullHD) {
+      transform: translate3d($moveRightHD, 0, 0);
+    }
+  }
+}
+
+.tile:hover .tile__details,
+.tile:hover .tile__details .Descripcion,
+.tile:hover .tile__details .Encabezado,
+.tile:hover .tile__details:before,
+.tile:hover .tile__details:after {
+  opacity: 1;
+  transition: $duration opacity;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('../../../../../assets/img/bg01.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
+}

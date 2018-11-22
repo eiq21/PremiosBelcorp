@@ -1,0 +1,25 @@
+.Bye {
+  @include edContainer;
+  @include flexColumn;
+  @include crossCenter;
+  color: $heading-gray-color;
+  text-align: center;
+  padding: rem(40px) 0;
+
+  img {
+    width: 10vw;
+
+    @include fromTo(0px, 640px) {
+      width: 35vw;
+    }
+  }
+}
+
+.social {
+  font-size: rem(60px);
+  margin: 0 rem(15px);
+}
+
+.link {
+  font-size: rem(33px);
+}

@@ -1,0 +1,29 @@
+<div class="mask"></div>
+<div class="pbResp bgResp" [ngStyle]="{ 'background-image': 'url(' + this.imageMovil + ')'}"></div>
+<!--<div class="pbResp bgResp"></div>-->
+
+<div class="pb">
+  <div class="pbTop">
+    <div class="VideoControl"><a class="VideoVolumen Up" href="#" data-action-volume="0" id="volume"><i class="fa fa-volume-off"></i></a></div>
+  </div>
+  <div class="pbMain pb__track" data-glide-el="track">
+    <ul class="pb__slides">
+      <li class="pb__slide Awards">
+        <div class="VimeoPlayerVideo">
+          <div id="insertPlayerOnInitSlide"></div> 
+        </div>
+      </li>
+      <li style="width:100%; background-size: cover;"><div class="pb__slide pbInfo" [ngStyle]="{ 'background-image': 'url(' + this.imageIP + ')'}" ></div></li>
+      <li class="pb__slide">
+        <div class="VimeoPlayerVideo">
+          <div id="insertPlayerOnLastSlide"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="pbNav AccessControl" data-glide-el="controls[nav]">
+    <button class="AccessItem" data-glide-dir="=0">Inicio</button>
+    <button class="AccessItem" data-glide-dir="=1">Acerca de Premios Belcorp</button>
+    <button class="AccessItem" data-glide-dir="=2">Ganadores 2017</button>
+  </div>
+</div>

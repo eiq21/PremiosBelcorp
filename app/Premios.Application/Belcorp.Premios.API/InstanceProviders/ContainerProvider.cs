@@ -1,8 +1,12 @@
 ﻿using Belcorp.Premios.API._Code.ExceptionHandling;
 using Belcorp.Premios.Application.Context.AuthenticationModule.Service;
+using Belcorp.Premios.Application.Context.AwardModule.Service;
 using Belcorp.Premios.Application.Context.MaintenanceModule.Service;
+using Belcorp.Premios.Application.Context.UserModule.Service;
 using Belcorp.Premios.Application.Core.Adapters;
 using Belcorp.Premios.Domain.Context.SecurityModule;
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML;
+using Belcorp.Premios.Infrastructure.Agents.LDAP;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -25,9 +29,12 @@ namespace Belcorp.Premios.API.InstanceProviders
         {
             services.AddTransient<IAuthenticationAppService, AuthenticationAppService>();
             services.AddTransient<ICampaignAppService, CampaignAppService>();
-
+            services.AddTransient<IAwardAppService, AwardAppService>();
             services.AddTransient<ICampaignAdapter, CampaignAdapter>();
-            
+            services.AddTransient<IUserExternalModule, UserExternalModule>();
+            services.AddTransient<ISecurityService, SecurityService>();
+            services.AddTransient<ILDAPAgent, LDAPAgent>();
+            services.AddTransient<IClosedXMLAgent, ClosedXMLAgent>();
 
             services.AddScoped<ApiExceptionFilter>();
         }

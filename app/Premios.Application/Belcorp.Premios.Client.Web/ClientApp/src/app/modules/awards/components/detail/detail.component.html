@@ -1,0 +1,19 @@
+<main class="Vote">
+  <div class="VoteBackResp Hide w100 text--right"><a [routerLink]="['/awards/']"><i class="fa fa-close"></i></a></div>
+  <header class="VoteItem">
+    <div class="VoteCont"><a href="index.html"><img src="../../../../../assets/img/logo-premios-belcorp.png"></a></div>
+    <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
+  </header>
+  <div>
+    <detail-vote [objDetail]="objDetail" [listDetail]="listDetail" [listSuggestion]="listSuggestion">
+
+    </detail-vote>
+  </div>
+</main>
+
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>
+
+

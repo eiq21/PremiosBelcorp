@@ -1,9 +1,15 @@
 ﻿using Belcorp.Premios.Domain.Context.SecurityModule;
 using Belcorp.Premios.Infrastructure.Agents.LDAP;
 using Belcorp.Premios.Infrastructure.Agents.LDAP.Request;
+using Belcorp.Premios.Infrastructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Belcorp.Premios.Infrastructure.CrossCutting.Encrypt;
+using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
+using Belcorp.Premios.Infrastructure.Data.Core.Extensions;
 
 namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
 {
@@ -11,31 +17,48 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
     {
         private readonly ILDAPAgent _ldapAgent;
         private readonly ISecurityService _securityService;
+        private readonly IUnitOfWork<PremiosContext> _unitOfWork;
 
         public AuthenticationAppService(
+            IUnitOfWork<PremiosContext> unitOfWork,
             ISecurityService securityService,
             ILDAPAgent ldapAgent)
         {
+            _unitOfWork = unitOfWork;
             _ldapAgent = ldapAgent;
         }
 
-        public bool IsAdministrator(string username)
+        public UserDetailProfile getDetailProfile(string username)
         {
             //throw new NotImplementedException();
-            
-            return true;
+            UserDetailProfile udp = _unitOfWork.ExecuteSqlQuery<UserDetailProfile>("usp_ConsultaDetalleUsuario", new GetUserDetailParameter() { UserName = username } ).FirstOrDefault();
+            return udp;
         }
 
         public bool ValidateUser(string username, string password)
         {
-            // Solo valida si existe en al AD
-            return _ldapAgent.ValidateUser(new ValidateUserRequest
+            bool valid = false;
+
+            var externo = (from x in _unitOfWork.DbContext.UsuarioExterno
+                           where x.NroDocumento == username
+                           && x.Activo && !x.Eliminado
+                           select x).FirstOrDefault();
+
+            if (externo == null || externo.UsuarioExternoId == 0)
             {
-                Username = username,
-                Password = password
-            }).isLoginFailed;
-           
-             
+                valid = _ldapAgent.ValidateUser(new ValidateUserRequest
+                {
+                    Username = username,
+                    Password = password
+                }).isLoginTrue;
+            }
+            else
+            {
+                valid = EncryptHelper.Decrypt(externo.Clave) == password;
+            }
+
+            return valid;
+
         }
     }
 }
