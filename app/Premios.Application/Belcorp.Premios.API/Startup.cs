@@ -43,6 +43,20 @@ namespace Belcorp.Premios.API
          
             services.ConfigureDI();
             services.AddOptions();
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                //builder
+                //    .AllowAnyMethod()
+                //    .AllowAnyHeader()
+                //    .AllowAnyMethod()
+                //        .AllowAnyHeader()
+                //        .AllowCredentials().AllowAnyOrigin();
+                //.WithOrigins(Configuration["ClientSettings:ClientUrl"]);
+            }));
 
             services.AddAuthentication("Bearer")
                .AddIdentityServerAuthentication(options =>
@@ -53,13 +67,7 @@ namespace Belcorp.Premios.API
                    options.ApiName = Constants.IdentityServer.API_RESOURCE_PROTOCOLS;
                });
 
-            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
-            {
-                builder
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .WithOrigins(Configuration["ClientSettings:ClientUrl"]);
-            }));
+           
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
@@ -67,8 +75,7 @@ namespace Belcorp.Premios.API
                 {
                     options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
                 });
-            //services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
-            //services.AddAWSService<IAmazonS3>();
+ 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

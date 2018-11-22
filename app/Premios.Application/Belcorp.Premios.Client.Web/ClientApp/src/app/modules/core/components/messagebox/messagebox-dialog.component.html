@@ -1,0 +1,23 @@
+<div class="messagebox-dialog-body">
+  <h2 mat-dialog-title><strong>{{messageTitle}}</strong> <a (click)="onCloseCancel()" class="messagebox-dialog-title-button-button">X</a></h2>
+  <hr>
+  <mat-dialog-content class="messagebox-dialog-content">
+    <!--cuerpo del mensaje
+    -->
+    <div class="row">
+      <div class="messagebox-dialog-content-isq">
+        <!--<mat-icon svgIcon="thumbs-up"></mat-icon>-->
+        <mat-icon svgIcon="icon"></mat-icon>
+      </div>
+      <div class="messagebox-dialog-content-der">{{messageBoxTxt}}</div>
+    </div>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions class="messagebox-mat-dialog-actions">
+    <!--<div [class.display-none]="(messageBoxButtons == '2')">-->
+    <!--<button mat-raised-button (click)="onClickButton(1)" [class.display-none]="(!button1)"> {{button1.textButton}} </button>-->
+    <button mat-raised-button (click)="onClickButton(1)" class="mat-raised-button mat-primary" [class.display-none]="(!button1)"> {{button1.textButton}} </button>
+    <!--<button mat-raised-button (click)="onClickButton(2)" class="mat-raised-button" [class.display-none]="(!button2)"> {{button2.textButton}} </button>-->
+  </mat-dialog-actions>
+</div>
+

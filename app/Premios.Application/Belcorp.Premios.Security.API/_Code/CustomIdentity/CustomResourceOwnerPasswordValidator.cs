@@ -18,7 +18,7 @@
         {
             if (_authenticationAppService.ValidateUser(context.UserName, context.Password))
             {
-                var user = _authenticationAppService.IsAdministrator(context.UserName);
+                //var user = _authenticationAppService.IsAdministrator(context.UserName);
 
                 context.Result = new GrantValidationResult(context.UserName, OidcConstants.AuthenticationMethods.Password);
             }

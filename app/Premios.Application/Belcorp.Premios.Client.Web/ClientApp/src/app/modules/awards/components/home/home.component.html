@@ -1,0 +1,11 @@
+<div class="pb_container" (click)="containerMenu($event)">
+  <main class="pb_main">
+    <premios-body [numTiles]="numTiles" [listTiles]="listTiles">
+    </premios-body>
+  </main>
+  <menu-list></menu-list>
+ </div>
+
+  <div class="loading-shade" *ngIf="loading">
+    <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+  </div>

@@ -1,0 +1,61 @@
+
+
+
+
+
+// Sección donde se ubica el primer video
+.Awards {
+  // TODO retirar el padding lateral
+  //  margin: rem(-100px);
+  // Alinear los elementos al centro del eje
+  // @include mainDistribute ;
+  // @include flexColumn;
+  &Title {
+    color: $text;
+    font-size: em(45px);
+    font-family: var(--font-primary-bolder-italic);
+  }
+
+  &Desc {
+    color: $text;
+    font-size: em(33px);
+    width: rem(518px); 
+    font-family: var(--font-primary-light);
+  }
+}
+
+
+/*----------------------------
+
+    * Botonera
+
+------------------------------*/
+
+.Access {
+  // ! Definición de Botón
+  &Item {
+    font-family: 'Museo Sans';
+    font-size: 1rem;
+    //Espaciar los items usando de pixeles a rems
+    padding: rem(16px) 0;
+    margin: rem(30px) rem(35px);
+    //Poner texto en mayúsculas
+    color: $text;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    background: none;
+
+    @include fromTo(s, m) {
+      margin: rem(10px);
+    }
+
+    &:hover {
+      // * En mac el efecto shadow debe ir con el radius
+      box-shadow: inset 0 -5px 0 0 red;
+      border-radius: 0;
+      // border: 5px solid $alt;
+    }
+  }
+}

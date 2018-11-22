@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,6 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
     {
         bool ValidateUser(string username, string password);
 
-        bool IsAdministrator(string username);
+        UserDetailProfile getDetailProfile(string username);
     }
 }
