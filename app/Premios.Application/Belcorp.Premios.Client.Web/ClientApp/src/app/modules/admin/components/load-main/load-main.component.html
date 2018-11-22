@@ -1,0 +1,106 @@
+<main class="Vote">
+  <div class="VoteBackResp Hide w100 text--right"><a [routerLink]="['/awards/']"><i class="fa fa-close"></i></a></div>
+  <header class="VoteItem">
+    <div class="VoteCont"><a href="index.html"><img src="../../../../../assets/img/logo-premios-belcorp.png"></a></div>
+    <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
+  </header>
+  <div>
+    <div class="linkReturn">
+      <a class="VoteBack light SecTitle text--md" [routerLink]="['/awards/']"><i class="fa fa-angle-left"></i>Volver a la cartelera</a>
+    </div>
+    <div class="accLoaders">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Campañas</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar campañas y URL's</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <upload-file (change)="onFileChanged($event)"></upload-file>
+            </div>
+            <div>
+              <button mat-raised-button color="link" class="marginLR-10" (click)="UploadCampaign()" [disabled]="loading">Subir</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Equipos</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar equipos y URL's</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <upload-file (change)="onFileChanged($event)"></upload-file>
+            </div>
+            <div>
+              <button mat-raised-button color="link" class="marginLR-10" (click)="UploadTeam()" [disabled]="loading">Subir</button>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Carga de Imagenes</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Presionar para cargar imagenes al servidor</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <upload-image (change)="onImagesChanged($event)"></upload-image>
+            </div>
+            <div>
+              <button mat-raised-button color="link" (click)="UploadImages()" class="marginLR-10" [disabled]="loading">Subir</button>
+            </div>
+            <div>
+              <section class="example-section">
+                <mat-progress-bar class="example-margin"
+                                  [color]="color"
+                                  [mode]="mode"
+                                  [value]="value"
+                                  [bufferValue]="bufferValue">
+                </mat-progress-bar>
+              </section>
+            </div>
+
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="txtCabMatPanel">Reportes</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="txtDesMatPanel">Generar reportes</span>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="row marginLR-30">
+            <div>
+              <button mat-raised-button class="button-circle" color="primary"
+                      matTooltip="Descargar Reporte Historias"
+                      [matTooltipPosition]="position.value"
+                      (click)="GetReportRanking()"><i class="material-icons">save_alt</i></button>
+              
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+</main>
+
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>

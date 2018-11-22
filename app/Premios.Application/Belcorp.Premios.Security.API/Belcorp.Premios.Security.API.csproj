@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Belcorp.Premios.Infrastructure.Transport\Belcorp.Premios.Infrastructure.Transport.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="premiosKey.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

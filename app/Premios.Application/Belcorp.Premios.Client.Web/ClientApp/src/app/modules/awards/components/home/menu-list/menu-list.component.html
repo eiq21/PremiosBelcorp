@@ -1,0 +1,17 @@
+<aside class="pb_sidebar">
+  <nav class="pb_nav">
+    <span class="pb_nav-welcome">¡ Bienvenido {{ userName }} !</span>
+    <ul class="pb_nav-items">
+      <li class="pb_nav-title">Opciones </li>
+      <li *ngIf="this.isAdmin"><a class="pb_nav-link" (click)="goToAdminPage()"> <span>Administrar</span></a></li>
+      <li *ngIf="this.isExternal"><a class="pb_nav-link" (click)="gotoChangePassword()"><span>Cambiar clave</span></a></li>
+      <li><a class="pb_nav-link" (click)="logOutSession()"> <span>Cerrar Sesión</span></a></li>
+    </ul>
+  </nav>
+</aside>
+<!-- Se agregó .hamburger con este botón aparece el sidebar -->
+<div class="hamburger" (click)="viewMenu()">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</div>

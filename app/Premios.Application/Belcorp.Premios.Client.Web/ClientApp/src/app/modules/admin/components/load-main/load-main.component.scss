@@ -1,0 +1,95 @@
+.Vote {
+  max-width: 100%;
+  color: #ffffff;
+  padding: 1.25rem 4.6875rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .Vote {
+    padding: 0.625rem;
+  }
+}
+
+.VoteItem {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 0 0 1rem 0;
+}
+
+.VoteCont, .VoteTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+
+.VoteCont img, .VoteTitle img {
+  max-width: 7vw;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .VoteCont img, .VoteTitle img {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .VoteBackResp {
+    display: block !important;
+  }
+}
+
+.text--right {
+  text-align: right !important;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .VoteBack {
+    display: none !important;
+  }
+}
+
+.VoteBack i {
+  font-size: 1.125em;
+  padding-right: 0.625rem;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.Hide {
+  display: none;
+}
+
+.light {
+  font-family: 'Museo Sans';
+}
+
+.linkReturn {
+   margin-bottom: 50px;
+}
+
+.txtCabMatPanel {
+  font-weight: bold;
+  color: #330B3D;
+}
+
+.txtDesMatPanel {
+  color: #621E63;
+  font-style:italic;
+}
+
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}

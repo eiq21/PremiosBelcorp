@@ -9,6 +9,7 @@
     using System.Collections.Generic;
     using Belcorp.Premios.Application.Context.AuthenticationModule.Service;
     using System.Linq;
+    using Belcorp.Premios.Infrastructure.CrossCutting.DTO;
 
     public class CustomProfileService : IProfileService
     {
@@ -25,23 +26,23 @@
 
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            var esAdmin = _authenticationAppService.IsAdministrator(context.Subject.GetSubjectId());
+            UserDetailProfile udp = _authenticationAppService.getDetailProfile(context.Subject.GetSubjectId());
 
             var claims = new List<Claim>
             {
-                //new Claim("sub", user.UserId.ToString()),
-                //new Claim("name", user.Username),
-                //new Claim("givenname", user.FirstName),
-                //new Claim("surname", user.LastName),
-                //new Claim("preferred_username", user.Username),
-                //new Claim("username", user.Username),
-                //new Claim("email", user.Email),
-                //new Claim("admin", user.ToString())
-                 
-                //new Claim("name", "Miguel Salvador"),
-                new Claim("admin", esAdmin.ToString())
+                new Claim("name", context.Subject.GetSubjectId()),
+                new Claim("external", udp.IsExternal.ToString()),
+                new Claim("admin", udp.IsAdministrator.ToString())
             };
-          
+
+
+            //var claims = new List<Claim>
+            //{
+            //    new Claim("name", context.Subject.GetSubjectId()),
+            //    new Claim("external", true.ToString()),
+            //    new Claim("admin", true.ToString())
+            //};
+
             context.IssuedClaims = claims;
         }
 

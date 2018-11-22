@@ -1,0 +1,17 @@
+<div class="Related">
+  <h2 class="SecTitle text--lg" id="glow">Más historias fuera de serie</h2>
+  <div *ngFor="let iter of listSuggestion" class="RelatedContainer">
+      <a class="tileLink" (click)="goToOtherVideo(iter.TeamId)">
+        <div class="Preview">
+          <img class="preview__img" src="../../../../assets/img/carga/{{iter.ValueUrl}}" />
+        </div>
+      </a>
+      <div class="Info">
+        <a class="tileLink" (click)="goToOtherVideo(iter.TeamId)">
+          <h3 class="ThirdTitle lh-title">{{iter.Name}}</h3>
+          <p>{{iter.Description}}</p>
+        </a>
+      </div>
+  </div>
+
+</div>

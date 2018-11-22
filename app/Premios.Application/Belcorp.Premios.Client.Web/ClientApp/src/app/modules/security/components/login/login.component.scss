@@ -1,0 +1,138 @@
+.Container {
+  max-width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  font-family: 'Museo Sans Bold';
+}
+
+.Container header {
+  padding: 2em 5em 0;
+}
+
+.pbForm {
+  font-size: 1.5em;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  transform: translateY(calc(-100%/5));
+}
+
+.pbForm .pbLogTitle {
+  text-align: center;
+  color: white;
+  font-size: 1.8em;
+  letter-spacing: -1px;
+  display: block;
+}
+
+.pbForm .pbByeTitle {
+  font-size: .7em;
+  color: #a47faa;
+  text-align: center;
+}
+
+.pbForm .pbForm-wrap .pbInput {
+  font-size: 1em;
+  padding: .5em .8em;
+  color: white;
+  background: #ab8cae;
+}
+
+.pbForm .pbForm-wrap input {
+  display: block;
+  border: none;
+  margin: 1em 0 0 0;
+}
+
+.pbForm .pbForm-wrap input:last-child {
+  margin-bottom: 1em;
+}
+
+.pbForm .pbForm-wrap input::placeholder {
+  color: white;
+  font-size: .8em;
+}
+
+.pbForm .pbForm-wrap input:focus {
+  outline: none;
+}
+
+.pbForm .pbForm-wrap .pbSend {
+  font-size: 1em;
+  background: white;
+  color: #e52e42;
+  display: inline-block;
+  width: 100%;
+  border-radius: 12px;
+  padding: .5em .8em;
+  font-family: 'Museo Sans Bolder';
+  cursor: pointer;
+}
+
+.VoteItem {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  padding: 0 0 1rem 0;
+}
+
+.VoteCont,
+.VoteTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+
+.VoteCont
+img,
+.VoteTitle
+img {
+  max-width: 7vw;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+
+  .VoteCont
+  img,
+  .VoteTitle
+  img {
+    display: none;
+  }
+}
+
+
+.pbForm .pbForm-wrap .pbSend {
+  margin-bottom: 1em;
+}
+
+.Container {
+  display: flex;
+}
+
+
+
+.row {
+  margin-bottom: 1em;
+}
+
+
+.pbForm .pbForm-wrap .invalid-feedback {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.pbForm .pbForm-wrap .pbInput .is-invalid {
+  border-color: #dc3545;
+}

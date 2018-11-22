@@ -1,0 +1,76 @@
+<section class="VoteItem">
+  <a class="VoteBack light SecTitle text--md" [routerLink]="['/awards/']"><i class="fa fa-angle-left"></i>Volver a la cartelera</a>
+  <article class="Temporal">
+    <div class="Video">
+      <div class="VideoTitleWrap">
+        <h1 class="VideoTitle SecTitle text--xxxl" id="videoTitle">{{ objDetail.Name }}</h1>
+        <div id="RateVote" class="RateVote" (click)="mostrarAdvertencia(objDetail.VotationId)" #rateVote>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div>
+      </div>
+      <div class="VideoVimeo">
+        <div class="Vimeo-wrapper" id="videoDetalle"></div>
+      </div>
+      <div class="tabs mTB15">
+        <ul class="barTab">
+          <li class="tab1" data-tabby-bar="1" (click)="activeTab1()" data-tabby-active>
+            <div class="barTitle SecTitle text--lg">Sinopsis</div>
+          </li>
+          <li class="tab2" data-tabby-bar="2" (click)="activeTab2()">
+            <div class="barTitle SecTitle text--lg">Protagonistas</div>
+          </li>
+        </ul>
+        <div class="content mT15">
+          <div class="Sinopsis" data-tabby-content="1" data-tabby-active>
+            <div class="pbScroll">
+              {{ objDetail.Synopsis }}
+            </div>
+          </div>
+          <div class="Collaborator" data-tabby-content="2">
+            <div class="pbScroll">
+              {{ objDetail.Protagonists }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabsResp Hide">
+        <div class="content">
+          <div class="Sinopsis">
+            <div class="pbScroll">
+              {{ objDetail.Synopsis }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <detail-suggestions [modalPublic]="modalPublic" [listSuggestion]="listSuggestion"></detail-suggestions>
+  </article>
+</section>
+<div class="Hide" id="responsiveImg">
+  <div class="backgroundF"></div>
+</div>
+<div class="Hide" id="template">
+  <div class="Rate grCenter" id="ratevideo">
+    <div id="ratingVoteStars" class="rating">
+      <input type="radio" class="RateAction" name="star" id="star5" (click)="calificarVideo($event, 5, objDetail.TeamId, objDetail.VotationId)" /><label for="star5"></label>
+      <input type="radio" class="RateAction" name="star" id="star4" (click)="calificarVideo($event, 4, objDetail.TeamId, objDetail.VotationId)" /><label for="star4"></label>
+      <input type="radio" class="RateAction" name="star" id="star3" (click)="calificarVideo($event, 3, objDetail.TeamId, objDetail.VotationId)" /><label for="star3"></label>
+      <input type="radio" class="RateAction" name="star" id="star2" (click)="calificarVideo($event, 2, objDetail.TeamId, objDetail.VotationId)" /><label for="star2"></label>
+      <input type="radio" class="RateAction" name="star" id="star1" (click)="calificarVideo($event, 1, objDetail.TeamId, objDetail.VotationId)" /><label for="star1"></label>
+    </div>
+    <div class="RateText">
+      ¡Califica esta historia!
+    </div>
+  </div>
+</div>
+
+
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>
+
