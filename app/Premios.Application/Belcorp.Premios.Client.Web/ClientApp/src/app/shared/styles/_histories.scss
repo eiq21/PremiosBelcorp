@@ -1,0 +1,15 @@
+.History {
+  position: relative;
+
+  background: {
+    color: $mockupGray;
+  }
+}
+
+figcaption {
+  position: absolute;
+  bottom: rem(20px);
+  padding: rem(20px);
+  font-size: em(28px);
+  color: $text;
+}

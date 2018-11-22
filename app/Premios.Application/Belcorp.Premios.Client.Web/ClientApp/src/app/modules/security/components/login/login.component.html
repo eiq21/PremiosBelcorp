@@ -1,0 +1,33 @@
+<div class="Container">
+  <header class="VoteItem">
+    <div class="VoteCont"><img src="../../../../../assets/img/logo-premios-belcorp.png"></div>
+    <div class="VoteTitle"><img src="../../../../../assets/img/logo-efs.png" alt="Equipos fuera de serie"></div>
+  </header>
+  <div class="pbForm">
+    <div class="pbLogTitle"> <span>Regístrate</span></div>
+    <form [formGroup]="loginForm" class="form" novalidate>
+      <div class="pbForm-wrap">
+        <input id="user" name="user" class="pbInput" type="text"
+               formControlName="username" placeholder="Usuario de red:" autocomplete="off" [ngClass]="{ 'is-invalid': formErrors.username }">
+        <div *ngIf="formErrors.username" class="invalid-feedback">
+          <div>Usuario es requerido</div>
+        </div>
+        <input id="password" name="password" class="pbInput" formControlName="password" type="password"
+               placeholder="Contraseña:" autocomplete="off" (keyup)="$event.keyCode == 13 && Login()" [ngClass]="{ 'is-invalid': formErrors.password }">
+        <div *ngIf="formErrors.password" class="invalid-feedback">
+          <div>Usuario es requerido</div> 
+        </div>
+        <br />
+        <button class="pbSend fbForm-send" [disabled]="loading" value="Ingresar" (click)="Login()">Ingresar</button>
+      </div>
+    </form>
+
+    <div class="pbByeTitle">
+      <p>¿Dudas? Escríbenos a ccorporativa@belcorp.biz</p>
+    </div>
+  </div>
+</div>
+
+<div class="loading-shade" *ngIf="loading">
+  <mat-spinner *ngIf="loading" [color]="warn"></mat-spinner>
+</div>

@@ -18,6 +18,7 @@ using Belcorp.Premios.Infrastructure.Security.CORS;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using Belcorp.Premios.Security.API.CustomIdentity;
+using Belcorp.Premios.Infrastructure.CrossCutting.AppSettingModel;
 
 namespace Belcorp.Premios.Security.API
 {
@@ -44,7 +45,7 @@ namespace Belcorp.Premios.Security.API
             services.ConfigureDI();
             services.AddOptions();
 
-            //services.Configure<LdapService>(Configuration.GetSection("ldap"));
+            services.Configure<LdapConfig>(Configuration.GetSection("LdapConfig"));
             services.AddSecurity(Configuration);
 
             var cert = new X509Certificate2(
@@ -69,7 +70,11 @@ namespace Belcorp.Premios.Security.API
             //       options.ApiName = Constants.IdentityServer.API_RESOURCE_SECURITY;
             //   });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+            .AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,22 @@
+.Bye {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  color: #A5A8AB;
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.Bye img {
+  width: 10vw;
+}
+
+@media screen and (min-width: 0) and (max-width: 639px) {
+  .Bye img {
+    width: 35vw;
+  }
+}

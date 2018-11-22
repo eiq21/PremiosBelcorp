@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Remove="wwwroot\ReporteHistoriasPB.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\ReporteHistoriasPB.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

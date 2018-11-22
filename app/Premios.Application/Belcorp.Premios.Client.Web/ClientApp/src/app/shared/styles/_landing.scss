@@ -1,0 +1,43 @@
+.Container {
+  @include edContainer;
+  @include full;
+  @include noPaddingContainer;
+  height: 100vh;
+  @include mainCenter;
+  @include crossCenter
+}
+
+.Version {
+
+
+  &Type {
+    height: 40vh;
+    width: 40vw;
+    @include mainCenter;
+    @include crossCenter;
+    margin: 10px;
+
+    &.bgLand--00 {
+      background: url('../../../../../assets/img/bgland01.jpg');
+      background-size: cover;
+    }
+
+    &.bgLand--01 {
+      background: url('../../../../../assets/img/bgland02.jpg');
+      background-size: cover;
+    }
+    // transition: 450ms opacity;
+    a {
+      display: block;
+      padding: 80px;
+      color: $text;
+      transition: all .3s ease-in;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+
+      &:hover {
+        transform: scale(1.5);
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+      }
+    }
+  }
+}

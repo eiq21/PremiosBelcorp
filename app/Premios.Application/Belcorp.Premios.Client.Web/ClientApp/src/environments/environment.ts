@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+  AwardsUrl: 'http://localhost:7945/api/',
+  IdentityUrl: 'http://localhost:25612/'
+}
+
+

@@ -20,12 +20,26 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
             
         }
 
+        public PremiosContext(DbContextOptions<PremiosContext> options) : base(options)
+        {
+            _principal = null; 
+
+        }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.EnableAutoHistory(null);
             #region Configuraciones
 
+            modelBuilder.ApplyConfiguration(new TipoUrlConfiguration());
             modelBuilder.ApplyConfiguration(new CampaniaConfiguration());
+            modelBuilder.ApplyConfiguration(new CampaniaUrlConfiguracion());
+            modelBuilder.ApplyConfiguration(new UsuarioAdminConfiguration());
+            modelBuilder.ApplyConfiguration(new EquipoConfiguration());
+            modelBuilder.ApplyConfiguration(new EquipoUrlConfiguration());
+            modelBuilder.ApplyConfiguration(new VotacionConfiguration());
+            modelBuilder.ApplyConfiguration(new UsuarioExternoConfiguration());
 
             #endregion
 
@@ -33,6 +47,12 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
         }
         public virtual DbSet<Campania> Campania { get; set; }
         public virtual DbSet<UsuarioAdmin> UsuarioAdmin { get; set; }
+        public virtual DbSet<CampaniaUrl> CampaniaUrl { get; set; }
+        public virtual DbSet<TipoUrl> TipoUrl { get; set; }
+        public virtual DbSet<Equipo> Equipo { get; set; }
+        public virtual DbSet<EquipoUrl> EquipoUrl { get; set; }
+        public virtual DbSet<Votacion> Votacion { get; set; }
+        public virtual DbSet<UsuarioExterno> UsuarioExterno { get; set; }
 
         public override int SaveChanges()
         {
@@ -42,6 +62,11 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
 
         private void AuditEntities()
         {
+            if (_principal == null)
+            {
+                return;
+            }
+          
             string userName = _principal.Identity.Name;
             DateTime now = DateTime.Now;
 
@@ -69,6 +94,8 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
                 }
                 else if (entry.State == EntityState.Modified) // If the entity was updated
                 {
+                    entry.Property("FechaCreacion").IsModified = false;
+                    entry.Property("UsuarioCreacion").IsModified = false;
                     if (entry.Properties.Where(p => p.Metadata.Name.ToLower() == "UsuarioModificacion".ToLower()).Any())
                     {
                         entry.Property("UsuarioModificacion").CurrentValue = userName;
