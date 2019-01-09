@@ -1,0 +1,16 @@
+Ö
+|C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\Controllers\AuthenticationController.csutf-8{
+rC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\Controllers\BaseController.csutf-8}
+tC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\Controllers\ValuesController.csutf-8Ñ
+{C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\InstanceProviders\ContainerProvider.csutf-8h
+_C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\Program.csutf-8h
+_C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\Startup.csutf-8Ñ
+{C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\CustomIdentity\ConfigIdentity.csutf-8ã
+ÅC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\CustomIdentity\CustomProfileService.csutf-8õ
+ëC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\CustomIdentity\CustomResourceOwnerPasswordValidator.csutf-8Ä
+wC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\CustomIdentity\CustomUser.csutf-8à
+C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\CustomIdentity\IdentityExtensions.csutf-8Å
+xC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\ExceptionHandling\ApiError.csutf-8Ö
+|C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\ExceptionHandling\ApiException.csutf-8è
+ÖC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\ExceptionHandling\ApiExceptionExtension.csutf-8å
+ÇC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Security.API\_Code\ExceptionHandling\ApiExceptionFilter.csutf-8

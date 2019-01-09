@@ -107,7 +107,8 @@ namespace Belcorp.Premios.API.Controllers
         [HttpPost]
         public IActionResult GetRankingReport()
         {
-            var caller = User as ClaimsPrincipal;
+
+            var caller = this.User;
             if (!caller.HasClaim("admin", "True"))
             {
                 return BadRequest("Usuario no tiene permiso de generar el reporte");

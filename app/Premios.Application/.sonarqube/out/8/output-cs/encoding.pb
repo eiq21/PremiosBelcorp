@@ -1,0 +1,13 @@
+Ç
+yC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\ClosedXMLAgent.csutf-8É
+zC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\IClosedXMLAgent.csutf-8ó
+çC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ExportRankingReportRequest.csutf-8í
+àC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ImportCampaignRequest.csutf-8é
+ÑC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ImportTeamRequest.csutf-8ô
+èC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ExportRankingReportResponse.csutf-8î
+äC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ImportCampaignResponse.csutf-8ê
+ÜC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ImportTeamResponse.csutf-8y
+pC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\ILDAPAgent.csutf-8x
+oC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\LDAPAgent.csutf-8ã
+ÅC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\Request\ValidateUserRequest.csutf-8å
+ÇC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\Respose\ValidateUserResponse.csutf-8

@@ -10,6 +10,5 @@ namespace Belcorp.Premios.Infrastructure.Transport.Common
         public int? CodigoError { get; set; }
         public string TipoError { get; set; }
         public string MensajeError { get; set; }
-        //public string MensajeDetalle { get; set; }
     }
 }

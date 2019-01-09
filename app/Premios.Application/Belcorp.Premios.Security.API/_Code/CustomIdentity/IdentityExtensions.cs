@@ -1,6 +1,4 @@
-﻿//using CustomIdentityServer4.UserServices;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Belcorp.Premios.Security.API.CustomIdentity
 {

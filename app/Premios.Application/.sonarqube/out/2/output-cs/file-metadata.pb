@@ -1,0 +1,11 @@
+w
+uC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\Campania.csz
+xC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\CampaniaUrl.csu
+sC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\Equipo.csx
+vC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\EquipoUrl.csv
+tC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\TipoUrl.cs{
+yC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\UsuarioAdmin.cs}
+{C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\UsuarioExterno.csw
+uC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\Domain\Votacion.cs^
+ZC:\Users\miguel.salvador\AppData\Local\Temp\.NETCoreApp,Version=v2.1.AssemblyAttributes.csº
+µC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Data.Entity\obj\Debug\netcoreapp2.1\Belcorp.Premios.Infrastructure.Data.Entity.AssemblyInfo.cs

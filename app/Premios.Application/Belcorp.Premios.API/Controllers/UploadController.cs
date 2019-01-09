@@ -19,19 +19,16 @@ namespace Belcorp.Premios.API.Controllers
 {
     public class UploadController : BaseController
     {
-        private IUserExternalModule _userExternalModule;
+        private readonly IUserExternalModule _userExternalModule;
         private readonly IAwardAppService _awardAppService;
-        //private readonly IHostingEnvironment _environment;
         public IConfiguration _configuration { get; }
 
 
         public UploadController(IUserExternalModule userExternalModule, IAwardAppService awardAppService, IConfiguration configuration)
-            //, IHostingEnvironment environment)
         {
             this._userExternalModule = userExternalModule;
             this._awardAppService = awardAppService;
             _configuration = configuration;
-            // _environment = environment ?? throw new ArgumentNullException(nameof(environment));
         }
 
 
@@ -55,7 +52,6 @@ namespace Belcorp.Premios.API.Controllers
             }
 
             Stream sm = file.OpenReadStream();
-            //FileStream ms = new FileStream(file.OpenReadStream());
             string archivo = "";
             using (StreamReader sr = new StreamReader(sm, System.Text.Encoding.Default, true))
             {

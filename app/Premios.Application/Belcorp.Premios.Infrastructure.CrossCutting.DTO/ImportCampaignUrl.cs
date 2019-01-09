@@ -6,7 +6,6 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
 {
     public class ImportCampaignUrl
     {
-        //public int CampaniaUrlId { get; set; }
         public int CampaniaId { get; set; }
         public int TipoUrlId { get; set; }
         public string ValorUrl { get; set; }

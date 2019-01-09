@@ -15,13 +15,11 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
     public class UserExternalModule : IUserExternalModule
     {
 
-        private readonly IRepository<UserExternal> _userExternalRepository;
         private readonly IUnitOfWork<PremiosContext> _unitOfWork;
 
         public UserExternalModule(IUnitOfWork<PremiosContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _userExternalRepository = _unitOfWork.GetRepository<UserExternal>();
         }
 
         public bool ChangePassword(string nroDocumento, string claveActual, string claveNueva, ref string mensaje)
@@ -71,7 +69,7 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
                 new[] { "\r\n", "\r", "\n" },
                 StringSplitOptions.None).ToList();
 
-            if (data.Count() <= 0)
+            if (data.Any())
             {
                 mensaje = "El archivo no tiene lineas";
                 return response;
@@ -81,14 +79,12 @@ namespace Belcorp.Premios.Application.Context.UserModule.Service
                        where x.Split(",").Length != 2
                        select x).ToList();
 
-            if (bugs != null && bugs.Count() > 0)
+            if (bugs != null && bugs.Any())
             {
                 mensaje = "Existen registro con valores errados";
                 return response;
             }
 
-            List<UsuarioExterno> usuariosEx = new List<UsuarioExterno>();
-            
             List< UploadUserExternal> uploadUserExternal = data.Select((b, index) => new UploadUserExternal
             {
                 IdTrabajador = index + 1,

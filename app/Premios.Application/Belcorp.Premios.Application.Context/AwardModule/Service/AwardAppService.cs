@@ -24,11 +24,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
     public class AwardAppService : IAwardAppService
     {
         private readonly IUnitOfWork<PremiosContext> _unitOfWork;
-        private readonly IRepository<Campaign> _campaignRepository;
-        private readonly IRepository<CampaignUrl> _campaignUrlRepository;
-        private readonly IRepository<TypeUrl> _typeUrlRepository;
-        private readonly ICampaignAdapter _campaignAdapter;
-        //private readonly ICampaignAdapter _campaignAdapter;
         private readonly IClosedXMLAgent _closedXMLAgent;
 
         public AwardAppService(
@@ -36,16 +31,13 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             IClosedXMLAgent closedXMLAgent
         ) {
             _unitOfWork = unitOfWork;
-            _campaignRepository = _unitOfWork.GetRepository<Campaign>();
-            _campaignUrlRepository = _unitOfWork.GetRepository<CampaignUrl>();
-            _typeUrlRepository = _unitOfWork.GetRepository<TypeUrl>();
             _closedXMLAgent = closedXMLAgent;
         }
 
         private int? GetActiveCampaign()
         {
             int? activeCampaign = (from cu in _unitOfWork.DbContext.CampaniaUrl
-                                   where cu.Activo == true && cu.Eliminado == false
+                                   where cu.Activo && !cu.Eliminado
                                    select cu.CampaniaId).FirstOrDefault();
 
             return activeCampaign;
@@ -58,8 +50,8 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             var query = (from cu in _unitOfWork.DbContext.CampaniaUrl
                          join c in _unitOfWork.DbContext.Campania on cu.CampaniaId equals c.CampaniaId
                          join t in _unitOfWork.DbContext.TipoUrl on cu.TipoUrlId equals t.TipoUrlId
-                         where cu.CampaniaId == activeCampaign.Value && c.Activo == true && c.Eliminado == false &&
-                               cu.Activo == true && cu.Eliminado == false
+                         where cu.CampaniaId == activeCampaign.Value && c.Activo  && !c.Eliminado &&
+                               cu.Activo  && !cu.Eliminado 
                          select new CampaignUrl()
                          {
                              CampaignUrlId = cu.CampaniaUrlId,
@@ -68,7 +60,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                              ValueUrl = cu.ValorUrl,
                              Description = cu.Descripcion
                          });
-            //where c.CampaignId);
             var lstCampaignUrl = query.ToList();
 
             return lstCampaignUrl;
@@ -79,7 +70,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
             int? activeCampaign = this.GetActiveCampaign();
             int[] typesUrl = new int[] { (int)Enums.TiposUrl.VideoBaldosa, (int)Enums.TiposUrl.FotoBaldosa };
             List<Tiles> lstTiles = new List<Tiles>();
-            //List<int> lstTeamsUsed = new List<int>();
             Tiles objTile = null;
 
             var resultBase = (from e in _unitOfWork.DbContext.Equipo
@@ -88,7 +78,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                          where typesUrl.Contains(t.Secuencial) && e.CampaniaId == activeCampaign.Value
                          select new
                          {
-                             //TeamUrlId = eq.EquipoUrlId,
                              TeamId = e.EquipoId,
                              TypeUrlId = eq.TipoUrlId,
                              Name = e.Nombre,
@@ -96,8 +85,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                              ValueUrl = eq.ValorUrl,
                              Sequential = t.Secuencial
                          }).ToList();
-            //GroupBy(x => x.TeamId).SelectMany(t => t).OrderBy(x => Guid.NewGuid()).ThenBy(x => x.TeamId);
-            //
+             
             foreach (var tile in resultBase)
             {
                 objTile = new Tiles();
@@ -154,7 +142,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                          into vl
                          from vlj in vl.DefaultIfEmpty()
                          where e.CampaniaId == activeCampaign.Value &&
-                               t.Secuencial == (int)Enums.TiposUrl.VideoHistoria && e.Activo == true && e.Eliminado == false
+                               t.Secuencial == (int)Enums.TiposUrl.VideoHistoria && e.Activo && !e.Eliminado
                                && e.EquipoId == teamId
                         select new DetailByTeam()
                          {
@@ -167,7 +155,6 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                              VotationId = vlj.VotacionId
 
                         });
-            //where c.CampaignId);
             var lstTeamDetail = query.ToList();
 
             return lstTeamDetail;
@@ -244,7 +231,7 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
                          into vl
                          from vlj in vl.DefaultIfEmpty()
                          where e.CampaniaId == activeCampaign.Value && 
-                         eu.TipoUrlId == 10 && e.Activo == true && e.Eliminado == false && vlj.CodUsuario != codeUser
+                         eu.TipoUrlId == 10 && e.Activo && !e.Eliminado && vlj.CodUsuario != codeUser
                          select new Suggestions()
                          {
                              TeamId = e.EquipoId,
@@ -260,13 +247,12 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
 
         public bool ImportCampaign(IFormFile file, string userName)
         {
-            ImportCampaignResponse importCampaignResponse = new ImportCampaignResponse();
             var importFile = new ImportCampaignRequest()
             {
                 file = file
             };
 
-            importCampaignResponse = _closedXMLAgent.ImportCampaign(importFile, userName);
+            ImportCampaignResponse importCampaignResponse = _closedXMLAgent.ImportCampaign(importFile, userName);
 
             importCampaignResponse.CampaignUrls.ForEach(x => {
                x.TipoUrlId = _unitOfWork.DbContext.TipoUrl.Where(t => t.Secuencial == x.TipoUrlId).FirstOrDefault().TipoUrlId;
@@ -285,13 +271,12 @@ namespace Belcorp.Premios.Application.Context.AwardModule.Service
 
         public bool ImportTeams(IFormFile file, string userName)
         {
-            ImportTeamResponse importTeamResponse = new ImportTeamResponse();
             var importFile = new ImportTeamRequest()
             {
                 file = file
             };
 
-            importTeamResponse = _closedXMLAgent.ImportTeam(importFile, userName);
+            ImportTeamResponse importTeamResponse = _closedXMLAgent.ImportTeam(importFile, userName);
 
             importTeamResponse.TeamUrls.ForEach(x => {
                 x.TipoUrlId = _unitOfWork.DbContext.TipoUrl.Where(t => t.Secuencial == x.TipoUrlId).FirstOrDefault().TipoUrlId;

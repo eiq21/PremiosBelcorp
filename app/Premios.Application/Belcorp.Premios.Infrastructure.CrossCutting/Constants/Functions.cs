@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Belcorp.Premios.Infrastructure.CrossCutting.Constants
 {
-    public class Functions
+    public static class Functions
     {
         public static string GetMessage(string codigo)
         {

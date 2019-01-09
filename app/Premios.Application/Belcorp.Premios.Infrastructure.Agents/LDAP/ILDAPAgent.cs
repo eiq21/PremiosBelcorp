@@ -9,6 +9,5 @@ namespace Belcorp.Premios.Infrastructure.Agents.LDAP
     public interface ILDAPAgent
     {
         ValidateUserResponse ValidateUser(ValidateUserRequest validateUserRequest);
-        //ListUsersResponse ListUsers(ListUsersRequest listUsersRequest);
     }
 }

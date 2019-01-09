@@ -18,8 +18,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
 
         public ImportCampaignResponse ImportCampaign(ImportCampaignRequest importCampaignRequest, string userName)
         {
-            
-            ImportCampaignResponse importCampaignResponse = new ImportCampaignResponse();
             List<ImportCampaign> lstCampaign = new List<ImportCampaign>();
             List<ImportCampaignUrl> lstCampaignUrls = new List<ImportCampaignUrl>();
 
@@ -93,8 +91,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
 
             #endregion
 
-//            lstCampaign.ForEach(x => { x.CampaignUrls = lstCampaignUrls; });
-
             return new ImportCampaignResponse()
             {
                 Campaigns = lstCampaign,
@@ -104,8 +100,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
 
         public ImportTeamResponse ImportTeam(ImportTeamRequest importTeamRequest, string userName)
         {
-
-            ImportTeamResponse importTeamResponse = new ImportTeamResponse();
             List<ImportTeam> lstTeam = new List<ImportTeam>();
             List<ImportTeamUrl> lstTeamUrls = new List<ImportTeamUrl>();
 
@@ -184,8 +178,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
 
             #endregion
 
-            //            lstTeam.ForEach(x => { x.TeamUrls = lstTeamUrls; });
-
             return new ImportTeamResponse()
             {
                 Teams = lstTeam,
@@ -197,7 +189,6 @@ namespace Belcorp.Premios.Infrastructure.Agents.ClosedXML
 
             var dtRankingReport = exportRankingReportRequest.rankingReports.ToTable();
             var wkReport = new XLWorkbook(templateRoot);
-            var exportRankingReportResponse = new ExportRankingReportResponse();
 
             wkReport.Worksheet(1).Cell(6, 1).InsertData(dtRankingReport);
 

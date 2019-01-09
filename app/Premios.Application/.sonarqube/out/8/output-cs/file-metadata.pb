@@ -1,0 +1,15 @@
+{
+yC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\ClosedXMLAgent.cs|
+zC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\IClosedXMLAgent.csê
+çC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ExportRankingReportRequest.csã
+àC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ImportCampaignRequest.csá
+ÑC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Request\ImportTeamRequest.csí
+èC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ExportRankingReportResponse.csç
+äC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ImportCampaignResponse.csâ
+ÜC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\ClosedXML\Response\ImportTeamResponse.csr
+pC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\ILDAPAgent.csq
+oC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\LDAPAgent.csÑ
+ÅC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\Request\ValidateUserRequest.csÖ
+ÇC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\LDAP\Respose\ValidateUserResponse.cs^
+ZC:\Users\miguel.salvador\AppData\Local\Temp\.NETCoreApp,Version=v2.1.AssemblyAttributes.cs∞
+´C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.Agents\obj\Debug\netcoreapp2.1\Belcorp.Premios.Infrastructure.Agents.AssemblyInfo.cs

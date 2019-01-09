@@ -12,12 +12,10 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Specification
     {
 
         private readonly IUnitOfWork<PremiosContext> _unitOfWork;
-        private readonly IRepository<UsuarioAdmin> _usuarioRepository;
 
         public UserSpecification(IUnitOfWork<PremiosContext> unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _usuarioRepository = _unitOfWork.GetRepository<UsuarioAdmin>();
         }
 
         public bool IsAdministrator(string username)

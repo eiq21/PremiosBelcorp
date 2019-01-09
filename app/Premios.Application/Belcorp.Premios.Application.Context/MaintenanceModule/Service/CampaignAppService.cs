@@ -14,7 +14,6 @@ namespace Belcorp.Premios.Application.Context.MaintenanceModule.Service
 {
     public class CampaignAppService : ICampaignAppService
     {
-        private readonly IRepository<Campaign> _campaignRepository;
         private readonly IUnitOfWork<PremiosContext> _unitOfWork;
         private readonly ICampaignAdapter _campaignAdapter;
         
@@ -23,7 +22,6 @@ namespace Belcorp.Premios.Application.Context.MaintenanceModule.Service
             ICampaignAdapter campaignAdapter)
         {
             _unitOfWork = unitOfWork;
-            _campaignRepository = _unitOfWork.GetRepository<Campaign>();
             _campaignAdapter = campaignAdapter;
         }
 

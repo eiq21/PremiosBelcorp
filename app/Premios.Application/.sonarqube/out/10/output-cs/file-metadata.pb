@@ -1,0 +1,13 @@
+ó
+îC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AuthenticationModule\Service\AuthenticationAppService.csò
+ïC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AuthenticationModule\Service\IAuthenticationAppService.csò
+ïC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AuthenticationModule\Specifications\IUserSpecification.csó
+îC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AuthenticationModule\Specifications\UserSpecification.csÖ
+ÇC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AwardModule\Service\AwardAppService.csÜ
+ÉC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\AwardModule\Service\IAwardAppService.csé
+ãC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\MaintenanceModule\Service\CampaignAppService.csè
+åC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\MaintenanceModule\Service\ICampaignAppService.csà
+ÖC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\UserModule\Service\IUserExternalModule.csá
+ÑC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\UserModule\Service\UserExternalModule.cs^
+ZC:\Users\miguel.salvador\AppData\Local\Temp\.NETCoreApp,Version=v2.1.AssemblyAttributes.cs¨
+ßC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Application.Context\obj\Debug\netcoreapp2.1\Belcorp.Premios.Application.Context.AssemblyInfo.cs

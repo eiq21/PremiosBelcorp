@@ -1,0 +1,14 @@
+s
+jC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\AwardController.csutf-8r
+iC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\BaseController.csutf-8v
+mC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\CampaignController.csutf-8t
+kC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\UploadController.csutf-8r
+iC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\UserController.csutf-8t
+kC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\ValuesController.csutf-8{
+rC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\InstanceProviders\ContainerProvider.csutf-8_
+VC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Program.csutf-8_
+VC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Startup.csutf-8x
+oC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiError.csutf-8|
+sC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiException.csutf-8…
+|C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiExceptionExtension.csutf-8‚
+yC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiExceptionFilter.csutf-8

@@ -48,22 +48,6 @@
                     },
                     UserClaims = { "name", "role", "admin", "user", Constants.IdentityServer.API_RESOURCE_PROTOCOLS }
                 },
-                //new ApiResource(Constants.IdentityServer.API_RESOURCE_REPORTS)
-                //{
-                //    ApiSecrets =
-                //    {
-                //        new Secret(_configuration["IdentityServer:ApiResourceReportsSecret"].Sha256())
-                //    },
-                //    Scopes =
-                //    {
-                //        new Scope
-                //        {
-                //            Name = Constants.IdentityServer.API_RESOURCE_REPORTS_SCOPE,
-                //            DisplayName = "Scope for the apiReports ApiResource"
-                //        }
-                //    },
-                //    UserClaims = { "name", "role", "admin", "user", Constants.IdentityServer.API_RESOURCE_REPORTS }
-                //},
                 new ApiResource(Constants.IdentityServer.API_RESOURCE_SECURITY)
                 {
                     ApiSecrets =

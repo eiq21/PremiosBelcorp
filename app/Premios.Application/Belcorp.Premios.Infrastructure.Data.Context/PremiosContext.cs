@@ -16,7 +16,7 @@ namespace Belcorp.Premios.Infrastructure.Data.Context
 
         public PremiosContext(DbContextOptions<PremiosContext> options, IPrincipal principal) : base (options)
         {
-            _principal = principal as IPrincipal;
+            _principal = principal;
             
         }
 

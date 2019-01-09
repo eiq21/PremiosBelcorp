@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>Belcorp.Premios.Infrastructure.CrossCutting.DTO</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>63ca4a25-a008-4089-a179-4c0ad54ac309</ProjectGuid>
+  <FullPath>C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.CrossCutting.DTO\Belcorp.Premios.Infrastructure.CrossCutting.DTO.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\.sonarqube\out\0\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.CrossCutting.DTO\bin\Debug\netcoreapp2.1\Belcorp.Premios.Infrastructure.CrossCutting.DTO.dll.RoslynCA.json|C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.Infrastructure.CrossCutting.DTO\bin\Debug\netcoreapp2.1\Belcorp.Premios.Infrastructure.CrossCutting.DTO.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\.sonarqube\out\0</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp2.1</TargetFramework>
+</ProjectInfo>

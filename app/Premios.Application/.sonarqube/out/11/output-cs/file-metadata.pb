@@ -1,0 +1,17 @@
+l
+jC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\AwardController.csk
+iC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\BaseController.cso
+mC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\CampaignController.csm
+kC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\UploadController.csk
+iC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\UserController.csm
+kC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Controllers\ValuesController.cst
+rC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\InstanceProviders\ContainerProvider.csX
+VC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Program.csX
+VC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\Startup.csq
+oC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiError.csu
+sC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiException.cs~
+|C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiExceptionExtension.cs{
+yC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\_Code\ExceptionHandling\ApiExceptionFilter.cs^
+ZC:\Users\miguel.salvador\AppData\Local\Temp\.NETCoreApp,Version=v2.1.AssemblyAttributes.cs‘
+ŒC:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\obj\Debug\netcoreapp2.1\Belcorp.Premios.API.RazorAssemblyInfo.csŒ
+‡C:\Miguel\GitHub\PremiosBelcorp\app\Premios.Application\Belcorp.Premios.API\obj\Debug\netcoreapp2.1\Belcorp.Premios.API.AssemblyInfo.cs

@@ -14,7 +14,7 @@ namespace Belcorp.Premios.API._Code.ExceptionHandling
 {
     public class ApiExceptionFilter : ExceptionFilterAttribute
     {
-        private ILogger<ApiExceptionFilter> _Logger;
+        private readonly ILogger<ApiExceptionFilter> _Logger;
 
         public ApiExceptionFilter(ILogger<ApiExceptionFilter> logger)
         {
@@ -32,8 +32,6 @@ namespace Belcorp.Premios.API._Code.ExceptionHandling
                 var ex = context.Exception as ApiException;
                 context.Exception = null;
                 apiError = new ApiError(ex.Message);
-                //apiError.errors = ex.Errors;
-
                 context.HttpContext.Response.StatusCode = ex.StatusCode;
 
                 _Logger.LogWarning($"Application thrown error: {ex.Message}", ex);
@@ -72,20 +70,6 @@ namespace Belcorp.Premios.API._Code.ExceptionHandling
 
                 context.HttpContext.Response.StatusCode = 500;
 
-                //string body;
-                //var position = context.HttpContext.Request.Body.Position;
-                //context.HttpContext.Request.Body.Seek(0, SeekOrigin.Begin);
-                //using (StreamReader reader = new StreamReader(context.HttpContext.Request.Body))
-                //{
-                //    body = reader.ReadToEnd();
-                //    context.HttpContext.Request.Body.Seek(position, SeekOrigin.Begin);
-                //}
-
-                //var queryString = context.HttpContext.Request.QueryString.Value;
-
-                // handle logging here
-                //_Logger.LogError(new EventId(0), context.Exception, msg);
-                //_Logger.LogError(context.Exception.GetBaseException(), "Error no manejado" + body + ", " + queryString);
                 _Logger.LogError(context.Exception.GetBaseException().StackTrace, context.Exception);
             }
 

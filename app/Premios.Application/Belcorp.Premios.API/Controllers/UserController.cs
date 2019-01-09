@@ -15,8 +15,8 @@ namespace Belcorp.Premios.API.Controllers
 {
     public class UserController : BaseController
     {
-        private IAuthenticationAppService _authenticationAppService;
-        private IUserExternalModule _userExternalModule;
+        private readonly IAuthenticationAppService _authenticationAppService;
+        private readonly IUserExternalModule _userExternalModule;
 
         public UserController(
             IAuthenticationAppService authenticationAppService,

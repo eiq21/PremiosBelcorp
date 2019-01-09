@@ -16,12 +16,10 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
     public class AuthenticationAppService : IAuthenticationAppService
     {
         private readonly ILDAPAgent _ldapAgent;
-        private readonly ISecurityService _securityService;
         private readonly IUnitOfWork<PremiosContext> _unitOfWork;
 
         public AuthenticationAppService(
             IUnitOfWork<PremiosContext> unitOfWork,
-            ISecurityService securityService,
             ILDAPAgent ldapAgent)
         {
             _unitOfWork = unitOfWork;
@@ -30,7 +28,6 @@ namespace Belcorp.Premios.Application.Context.AuthenticationModule.Service
 
         public UserDetailProfile getDetailProfile(string username)
         {
-            //throw new NotImplementedException();
             UserDetailProfile udp = _unitOfWork.ExecuteSqlQuery<UserDetailProfile>("usp_ConsultaDetalleUsuario", new GetUserDetailParameter() { UserName = username } ).FirstOrDefault();
             return udp;
         }

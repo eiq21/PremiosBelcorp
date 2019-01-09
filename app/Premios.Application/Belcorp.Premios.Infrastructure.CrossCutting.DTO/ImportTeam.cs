@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
 {
     public class ImportTeam
     {
-
         public int EquipoId { get; set; }
         public int CampaniaId { get; set; }
         public string Nombre { get; set; }
@@ -18,6 +16,5 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.DTO
         public DateTime FechaCreacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public DateTime FechaModificacion { get; set; }
-
     }
 }

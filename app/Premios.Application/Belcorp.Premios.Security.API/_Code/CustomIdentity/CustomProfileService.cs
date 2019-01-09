@@ -24,9 +24,17 @@
             _authenticationAppService = authenticationAppService;
         }
 
+
+
+
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            UserDetailProfile udp = _authenticationAppService.getDetailProfile(context.Subject.GetSubjectId());
+            UserDetailProfile udp = null;
+
+            await Task.Run(() => {
+                udp = _authenticationAppService.getDetailProfile(context.Subject.GetSubjectId());
+            });
+            
 
             var claims = new List<Claim>
             {
@@ -34,23 +42,15 @@
                 new Claim("external", udp.IsExternal.ToString()),
                 new Claim("admin", udp.IsAdministrator.ToString())
             };
-
-
-            //var claims = new List<Claim>
-            //{
-            //    new Claim("name", context.Subject.GetSubjectId()),
-            //    new Claim("external", true.ToString()),
-            //    new Claim("admin", true.ToString())
-            //};
-
             context.IssuedClaims = claims;
         }
 
         public async Task IsActiveAsync(IsActiveContext context)
         {
-            context.IsActive = true;
-            /*var user = _authenticationAppService.GetUserById(int.Parse(context.Subject.GetSubjectId()));
-            context.IsActive = user != null;*/
+            await Task.Run(() => {
+                context.IsActive = true;
+            });
+
         }
     }
 }

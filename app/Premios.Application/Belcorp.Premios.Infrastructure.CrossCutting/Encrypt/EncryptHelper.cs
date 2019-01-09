@@ -7,16 +7,8 @@ using System.Text;
 
 namespace Belcorp.Premios.Infrastructure.CrossCutting.Encrypt
 {
-    public class EncryptHelper
+    public static class EncryptHelper
     {
-
-        private static Random _ramdomObj;
-
-        static EncryptHelper()
-        {
-            _ramdomObj = new Random();
-        }
-
         public static string GetMd5Hash(string key)
         {
             MD5 md5Hasher = MD5.Create();
@@ -33,7 +25,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.Encrypt
         {
             String hashOfInput = GetMd5Hash(input);
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-            return (0 == comparer.Compare(hashOfInput, hash)) ? true : false;
+            return (0 == comparer.Compare(hashOfInput, hash));
         }
 
         public static string GenerateClave(int nroClave)
@@ -42,7 +34,7 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.Encrypt
             byte[] randomByte = new byte[nroClave];
             char[] chars = new char[nroClave];
             int allowedCharCount = _allowedChars.Length;
-
+            Random _ramdomObj = new Random();
             for (int i = 0; i < nroClave; i++)
             {
                 _ramdomObj.NextBytes(randomByte);
@@ -201,45 +193,6 @@ namespace Belcorp.Premios.Infrastructure.CrossCutting.Encrypt
             {
                 return null;
             }
-        }
-
-        public static string ToHex(byte[] bytes)
-        {
-            char[] c = new char[bytes.Length * 2];
-
-            byte b;
-
-            for (int bx = 0, cx = 0; bx < bytes.Length; ++bx, ++cx)
-            {
-                b = ((byte)(bytes[bx] >> 4));
-                c[cx] = (char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30);
-
-                b = ((byte)(bytes[bx] & 0x0F));
-                c[++cx] = (char)(b > 9 ? b + 0x37 + 0x20 : b + 0x30);
-            }
-
-            return new string(c);
-        }
-
-        public static byte[] HexToBytes(string str)
-        {
-            if (str.Length == 0 || str.Length % 2 != 0)
-                return new byte[0];
-
-            byte[] buffer = new byte[str.Length / 2];
-            char c;
-            for (int bx = 0, sx = 0; bx < buffer.Length; ++bx, ++sx)
-            {
-                // Convert first half of byte
-                c = str[sx];
-                buffer[bx] = (byte)((c > '9' ? (c > 'Z' ? (c - 'a' + 10) : (c - 'A' + 10)) : (c - '0')) << 4);
-
-                // Convert second half of byte
-                c = str[++sx];
-                buffer[bx] |= (byte)(c > '9' ? (c > 'Z' ? (c - 'a' + 10) : (c - 'A' + 10)) : (c - '0'));
-            }
-
-            return buffer;
         }
 
         /// <summary>

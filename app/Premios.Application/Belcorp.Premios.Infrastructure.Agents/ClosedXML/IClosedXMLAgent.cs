@@ -1,4 +1,5 @@
-﻿using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
+﻿
+using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Request;
 using Belcorp.Premios.Infrastructure.Agents.ClosedXML.Response;
 using System;
 using System.Collections.Generic;

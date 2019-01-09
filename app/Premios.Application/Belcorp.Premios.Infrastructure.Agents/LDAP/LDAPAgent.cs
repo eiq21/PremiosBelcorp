@@ -30,10 +30,9 @@ namespace Belcorp.Premios.Infrastructure.Agents.LDAP
                 ldapConn.Bind(validateUserRequest.Username + _config.Domain, validateUserRequest.Password);
                 isLoginTrue = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //grabar el log de errores
-                //throw;
             }
 
             
